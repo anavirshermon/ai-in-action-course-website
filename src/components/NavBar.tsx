@@ -47,7 +47,7 @@ export function NavBar() {
           href="/"
           className="font-heading text-sm font-semibold tracking-tight text-green-900"
         >
-          ENTP 6314
+          AI in Action
         </Link>
 
         <div className="hidden items-center gap-6 text-sm text-ink-soft sm:flex">
