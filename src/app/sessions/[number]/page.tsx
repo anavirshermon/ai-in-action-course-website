@@ -3,9 +3,9 @@ import { notFound } from "next/navigation";
 import { getSyllabus } from "@/lib/content/syllabus";
 import { getReadingLinks } from "@/lib/content/reading-links";
 import { sessionArcIndex } from "@/lib/schedule-status";
-import { splitLab, matchAssignment } from "@/lib/content/session-detail";
+import { splitSessionCover, matchAssignment } from "@/lib/content/session-detail";
 import { resolveHandbookMentions, isHandbookMention } from "@/lib/content/handbook-links";
-import { renderInlineMarkdown } from "@/lib/content/inline-markdown";
+import { renderInlineMarkdown, stripMarkdownBold } from "@/lib/content/inline-markdown";
 
 export const revalidate = 3600;
 
@@ -36,7 +36,7 @@ export default async function SessionDetailPage({
   const arcIdx = sessionArcIndex(syllabus.buildArcs, session.number);
   const arc = arcIdx !== null ? syllabus.buildArcs[arcIdx] : null;
 
-  const { concept, lab } = splitLab(session.whatWeCover);
+  const { concept, buildTechnique, lab } = splitSessionCover(session.whatWeCover);
   const readings = getReadingLinks().get(sessionNumber);
   const assignment = session.due ? matchAssignment(session.due) : null;
 
@@ -55,13 +55,13 @@ export default async function SessionDetailPage({
       </h1>
 
       {session.due && (
-        <p className="mt-4 rounded-[var(--radius-site)] border border-orange-500 bg-orange-200/30 px-4 py-2 text-sm text-orange-700">
+        <p className="mt-4 rounded-[var(--radius-site)] border border-orange-500 bg-orange-200/30 px-4 py-2 text-sm font-medium text-orange-700">
           Due: {assignment ? (
             <Link href={`/resources/assignments#${assignment.slug}`} className="underline">
-              {renderInlineMarkdown(session.due)}
+              {stripMarkdownBold(session.due)}
             </Link>
           ) : (
-            renderInlineMarkdown(session.due)
+            stripMarkdownBold(session.due)
           )}
         </p>
       )}
@@ -70,6 +70,13 @@ export default async function SessionDetailPage({
         <h2 className="font-heading text-lg font-semibold text-ink">What we cover</h2>
         <p className="mt-2 text-ink-soft">{renderInlineMarkdown(concept)}</p>
       </section>
+
+      {buildTechnique && (
+        <section className="mt-6">
+          <h2 className="font-heading text-lg font-semibold text-ink">Build technique</h2>
+          <p className="mt-2 text-ink-soft">{renderInlineMarkdown(buildTechnique)}</p>
+        </section>
+      )}
 
       {lab && (
         <section className="mt-6">
@@ -102,7 +109,12 @@ export default async function SessionDetailPage({
               return (
                 <li key={i}>
                   {link.url ? (
-                    <a href={link.url} className="underline hover:text-ink">
+                    <a
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline hover:text-ink"
+                    >
                       {link.label}
                     </a>
                   ) : (

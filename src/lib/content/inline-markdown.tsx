@@ -13,3 +13,11 @@ export function renderInlineMarkdown(text: string): React.ReactNode {
     return <Fragment key={i}>{part}</Fragment>;
   });
 }
+
+/** Strips source **bold** markers entirely. Used where a field's emphasis
+ * should come from consistent CSS (e.g. every "Due" line styled the same
+ * way) rather than from whichever cells the source markdown happened to
+ * bold — the syllabus table bolds some due-dates and not others. */
+export function stripMarkdownBold(text: string): string {
+  return text.replace(/\*\*/g, "");
+}

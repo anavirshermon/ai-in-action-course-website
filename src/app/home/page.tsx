@@ -10,7 +10,7 @@ import {
   type ScheduleStatus,
   type Deadline,
 } from "@/lib/schedule-status";
-import { renderInlineMarkdown } from "@/lib/content/inline-markdown";
+import { renderInlineMarkdown, stripMarkdownBold } from "@/lib/content/inline-markdown";
 
 // "Current session" only changes week to week — hourly revalidation keeps
 // this page accurate without opting the whole site into per-request rendering.
@@ -97,7 +97,7 @@ function ThisWeekPanel({
 
       {session.due && (
         <p className="mt-3 text-sm font-medium text-orange-700">
-          Due: {renderInlineMarkdown(session.due)}
+          Due: {stripMarkdownBold(session.due)}
         </p>
       )}
 
@@ -111,7 +111,12 @@ function ThisWeekPanel({
             {readings.links.map((link, i) => (
               <li key={i}>
                 {link.url ? (
-                  <a href={link.url} className="underline hover:text-ink">
+                  <a
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline hover:text-ink"
+                  >
                     {link.label}
                   </a>
                 ) : (
@@ -121,6 +126,15 @@ function ThisWeekPanel({
             ))}
           </ul>
         </div>
+      )}
+
+      {session.number !== null && (
+        <Link
+          href={`/sessions/${session.number}`}
+          className="mt-5 inline-block text-sm text-green-900 underline"
+        >
+          Full session details →
+        </Link>
       )}
 
       {status.nextSession && (
@@ -158,50 +172,74 @@ function NextDeadlineCallout({ deadline }: { deadline: Deadline }) {
 // Build arc timeline
 // ---------------------------------------------------------------------------
 
-const ARC_STYLES = [
+const ARC_BAND_STYLES = ["bg-orange-500 text-paper", "bg-green-700 text-paper"];
+const ARC_TICK_STYLES = [
   "border-orange-700 bg-orange-200/50 text-orange-700",
   "border-green-700 bg-green-500/15 text-green-700",
 ];
 
 function BuildArcTimeline({ sessions, arcs }: { sessions: SessionRow[]; arcs: BuildArc[] }) {
   const now = new Date();
+  const realSessions = sessions
+    .filter((s): s is SessionRow & { number: number } => s.number !== null)
+    .sort((a, b) => a.number - b.number);
+  const totalSessions = realSessions.length;
 
   return (
     <section>
       <h3 className="font-heading text-lg font-semibold text-green-900">The two build arcs</h3>
-      <div className="mt-2 flex gap-4 text-xs text-ink-soft">
-        {arcs.map((arc, i) => {
-          const range = parseArcRange(arc.label);
-          return (
-            <span key={arc.label} className="flex items-center gap-1.5">
-              <span
-                className={`inline-block h-2.5 w-2.5 rounded-full border ${ARC_STYLES[i]?.split(" ").slice(0, 2).join(" ")}`}
-              />
-              {range ? `Weeks ${range[0]}–${range[1]}` : arc.label}: {arc.label.replace(/^Weeks?\s+\S+\s+(?:and|through)\s+\S+\s+are\s+/i, "").replace(/\.$/, "")}
-            </span>
-          );
-        })}
-      </div>
+      <p className="mt-1 text-sm text-ink-soft">
+        Weeks 1–3 and 12–14 sit outside both arcs — foundations and the pitch.
+      </p>
 
-      <div className="mt-4 flex gap-1.5 overflow-x-auto pb-2">
-        {sessions.map((s) => {
-          const arcIdx = sessionArcIndex(arcs, s.number);
-          const temporal = getTemporalStatus(s.dateObj, now);
-          const style = arcIdx !== null ? ARC_STYLES[arcIdx] : "border-line bg-paper-dim text-ink-soft";
+      <div className="mt-4 min-w-[560px] overflow-x-auto pb-2">
+        {/* Arc bands, spanning their session-number range */}
+        <div
+          className="grid h-7 gap-1"
+          style={{ gridTemplateColumns: `repeat(${totalSessions}, minmax(2.25rem, 1fr))` }}
+        >
+          {arcs.map((arc, i) => {
+            const range = parseArcRange(arc.label);
+            if (!range) return null;
+            const label = arc.label
+              .replace(/^Weeks?\s+\S+\s+(?:and|through)\s+\S+\s+are\s+/i, "")
+              .replace(/\.$/, "");
+            return (
+              <div
+                key={arc.label}
+                style={{ gridColumn: `${range[0]} / ${range[1] + 1}` }}
+                className={`flex items-center justify-center rounded-md text-[10px] font-semibold uppercase tracking-wide ${ARC_BAND_STYLES[i]}`}
+              >
+                {label}
+              </div>
+            );
+          })}
+        </div>
 
-          return (
-            <div
-              key={`${s.moduleNumber}-${s.date}`}
-              title={`${s.date} — ${s.topic.replace(/\*\*/g, "")}`}
-              className={`flex min-w-[2.75rem] flex-col items-center rounded-md border px-1.5 py-2 text-center text-[10px] ${style} ${
-                temporal === "past" ? "opacity-40" : ""
-              } ${temporal === "current" ? "ring-2 ring-green-900" : ""}`}
-            >
-              <span className="font-semibold">{s.number ?? "—"}</span>
-              <span className="mt-0.5 whitespace-nowrap">{s.date}</span>
-            </div>
-          );
-        })}
+        {/* Session ticks, aligned to the same grid columns */}
+        <div
+          className="mt-1 grid gap-1"
+          style={{ gridTemplateColumns: `repeat(${totalSessions}, minmax(2.25rem, 1fr))` }}
+        >
+          {realSessions.map((s) => {
+            const arcIdx = sessionArcIndex(arcs, s.number);
+            const temporal = getTemporalStatus(s.dateObj, now);
+            const style = arcIdx !== null ? ARC_TICK_STYLES[arcIdx] : "border-line bg-paper-dim text-ink-soft";
+
+            return (
+              <div
+                key={s.number}
+                title={`${s.date} — ${s.topic.replace(/\*\*/g, "")}`}
+                className={`flex flex-col items-center rounded-md border px-1 py-1.5 text-center text-[10px] ${style} ${
+                  temporal === "past" ? "opacity-40" : ""
+                } ${temporal === "current" ? "ring-2 ring-green-900" : ""}`}
+              >
+                <span className="font-semibold">{s.number}</span>
+                <span className="mt-0.5 whitespace-nowrap">{s.date}</span>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
@@ -218,12 +256,12 @@ function QuickLinks() {
     { href: "/resources/assignments", label: "Assignments" },
   ];
   return (
-    <section className="flex gap-4">
+    <section className="flex flex-wrap items-baseline gap-x-8 gap-y-2 border-t border-line pt-6">
       {links.map((l) => (
         <Link
           key={l.href}
           href={l.href}
-          className="flex-1 rounded-[var(--radius-site)] border border-line px-4 py-3 text-center font-heading text-green-900 transition-colors hover:bg-paper-dim/60"
+          className="font-heading text-lg text-green-900 underline decoration-line underline-offset-4 transition-colors hover:decoration-green-900"
         >
           {l.label}
         </Link>

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { getAssignmentGuide } from "@/lib/content/assignments";
 import { getSyllabus, type EvaluationRow } from "@/lib/content/syllabus";
 import { getTrack } from "@/lib/track";
@@ -18,9 +19,12 @@ export default async function AssignmentsPage() {
       {intro["Read this first"] && <Markdown source={intro["Read this first"]} />}
 
       {!track && (
-        <p className="mt-4 rounded-[var(--radius-site)] border border-orange-500 bg-orange-200/30 px-4 py-2 text-sm text-orange-700">
-          Pick your track on the home page to see weights for your section. Showing both below.
-        </p>
+        <Link
+          href="/?pick=1"
+          className="mt-4 block rounded-[var(--radius-site)] border border-orange-500 bg-orange-200/30 px-4 py-2 text-sm text-orange-700 underline transition-colors hover:bg-orange-200/50"
+        >
+          Pick your track to see weights for your section →
+        </Link>
       )}
 
       <div className="mt-8 space-y-12">

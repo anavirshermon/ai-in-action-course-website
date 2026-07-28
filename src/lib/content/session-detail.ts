@@ -2,17 +2,45 @@ import { getAssignmentGuide, type Assignment } from "./assignments";
 
 export type SessionSplit = {
   concept: string;
+  buildTechnique: string | null;
   lab: string | null;
 };
 
-/** Splits a session's "what we cover" prose at the "**Lab:**" marker, when
- * present, so the sub-page can show an "In class" callout separately. */
-export function splitLab(whatWeCover: string): SessionSplit {
-  const idx = whatWeCover.indexOf("**Lab:**");
-  if (idx === -1) return { concept: whatWeCover, lab: null };
+const BUILD_TECHNIQUE_MARKER = "**Build technique:**";
+const LAB_MARKER = "**Lab:**";
+
+/** Splits a session's "what we cover" prose at the "**Build technique:**" and
+ * "**Lab:**" markers, when present, so the sub-page can show each as its own
+ * callout instead of one run-on paragraph. Build technique always precedes
+ * Lab in the source when both appear. */
+export function splitSessionCover(whatWeCover: string): SessionSplit {
+  const btIdx = whatWeCover.indexOf(BUILD_TECHNIQUE_MARKER);
+  const labIdx = whatWeCover.indexOf(LAB_MARKER);
+
+  if (btIdx === -1 && labIdx === -1) {
+    return { concept: whatWeCover, buildTechnique: null, lab: null };
+  }
+
+  if (btIdx !== -1 && labIdx !== -1) {
+    return {
+      concept: whatWeCover.slice(0, btIdx).trim(),
+      buildTechnique: whatWeCover.slice(btIdx + BUILD_TECHNIQUE_MARKER.length, labIdx).trim(),
+      lab: whatWeCover.slice(labIdx + LAB_MARKER.length).trim(),
+    };
+  }
+
+  if (labIdx !== -1) {
+    return {
+      concept: whatWeCover.slice(0, labIdx).trim(),
+      buildTechnique: null,
+      lab: whatWeCover.slice(labIdx + LAB_MARKER.length).trim(),
+    };
+  }
+
   return {
-    concept: whatWeCover.slice(0, idx).trim(),
-    lab: whatWeCover.slice(idx + "**Lab:**".length).trim(),
+    concept: whatWeCover.slice(0, btIdx).trim(),
+    buildTechnique: whatWeCover.slice(btIdx + BUILD_TECHNIQUE_MARKER.length).trim(),
+    lab: null,
   };
 }
 

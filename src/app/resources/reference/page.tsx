@@ -79,7 +79,12 @@ export default function ReferencePage() {
                   {s.links.map((link, i) => (
                     <li key={i}>
                       {link.url ? (
-                        <a href={link.url} className="underline hover:text-ink">
+                        <a
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline hover:text-ink"
+                        >
                           {link.label}
                         </a>
                       ) : (

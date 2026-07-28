@@ -27,6 +27,20 @@ export function PromptBlock({ text }: { text: string }) {
 }
 
 const components: Components = {
+  a(props) {
+    const { href, children, ...rest } = props;
+    const isExternal = /^https?:\/\//.test(href ?? "");
+    return (
+      <a
+        {...rest}
+        href={href}
+        target={isExternal ? "_blank" : undefined}
+        rel={isExternal ? "noopener noreferrer" : undefined}
+      >
+        {children}
+      </a>
+    );
+  },
   code(props) {
     const { className, children, ...rest } = props;
     const isPrompt = /language-prompt/.test(className ?? "");

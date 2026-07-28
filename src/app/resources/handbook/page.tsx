@@ -6,7 +6,7 @@ export default function HandbookPage() {
   const handbook = getHandbook();
 
   return (
-    <main className="mx-auto flex w-full max-w-5xl flex-1 gap-10 px-6 py-12">
+    <main className="mx-auto flex w-full max-w-5xl flex-1 flex-col gap-6 px-6 py-12 lg:flex-row lg:gap-10">
       <HandbookSidebar
         sections={handbook.sections.map((s) => ({
           title: s.title,
