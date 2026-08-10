@@ -11,13 +11,22 @@ You do not need to know how to code to build a working product this semester. Yo
 
 This handbook is written to be read in order, once, early in the semester. After that it becomes a reference you open when you get stuck. Every part tells you which session it supports, so you can skip ahead when you need to.
 
-Anything in a grey box is a prompt. Copy it, replace the bracketed parts, and paste it into Claude Code. The prompts are starting points, not magic words. Change them when your situation is different.
+Every grey box in this handbook has a label above it telling you where it goes. There are three kinds, and putting one in the wrong place is the most common day-one mistake.
 
-Three conventions used throughout:
+| Label | What it is | What you do with it |
+|---|---|---|
+| **PROMPT** | Something you say to Claude Code | Copy it, replace the bracketed parts, paste it into Claude Code |
+| **TERMINAL** | A command for your computer | Type or paste it into Terminal or PowerShell, then press enter |
+| **FILE: name** | What a file should contain | This is what you are aiming for, not something to paste anywhere |
+
+Prompts are starting points, not magic words. Change them when your situation is different.
+
+Three more conventions used throughout:
 
 **Do this** means it is required for a graded deliverable.
 **Try this** means it is optional and usually worth it.
 **Never** means it will cost you marks or break something.
+**You'll know it worked when** tells you what to look for on screen, so you never have to guess whether a step succeeded.
 
 ---
 
@@ -25,9 +34,9 @@ Three conventions used throughout:
 
 The course has two building phases, and they have different purposes. Knowing which one you are in matters more than any technique in this handbook.
 
-**Weeks 4 and 5 are probes.** You build small, fast, throwaway things: a landing page, a signup form, a fake pricing page. The purpose is not to build a product. The purpose is to find out whether anyone cares. You will throw most of this away, and that is the plan. Do not get attached.
+**Sessions 4 and 5 are probes.** You build small, fast, throwaway things: a landing page, a signup form, a fake pricing page. The purpose is not to build a product. The purpose is to find out whether anyone cares. You will throw most of this away, and that is the plan. Do not get attached.
 
-**Weeks 6 through 11 are the product.** After your idea is locked, you build one real thing and improve it every week. This is the work that becomes your MVP demo.
+**Sessions 6 through 9 are the product.** After your idea is locked, you build one real thing and improve it every week. This is the work that becomes your MVP demo at Session 10.
 
 | Session | Date | What you build that week |
 |---|---|---|
@@ -38,10 +47,12 @@ The course has two building phases, and they have different purposes. Knowing wh
 | 6 | 9/30 | The walking skeleton of your real product |
 | 7 | 10/7 | Your first real feature, plus analytics |
 | 8 | 10/21 | Your data layer and your AI feature |
-| 9 | 10/28 | Fixes from user testing |
-| 10 | 11/4 | Launch to real users |
-| 11 | 11/11 | MVP Demo Day |
-| 12 | 11/18 | Your pitch |
+| 9 | 10/28 | Fixes from user testing, then launch to real users |
+| 10 | 11/4 | MVP Demo Day |
+| 11 | 11/11 | Your pitch deck |
+| 12 | 11/18 | Iteration and pitch rehearsal |
+| 13 | 12/2 | Pitch Day. Nothing new is built |
+| 14 | 12/9 | Refine. Venture Package due 12/11 |
 
 ---
 
@@ -90,19 +101,27 @@ Set aside an hour. Most of it is waiting for things to install.
 
 **1. Get a Claude account with Claude Code access.** The Pro plan is about $20 a month and is required course material, the same way a textbook would be. Sign up at claude.ai.
 
-**2. Install VS Code.** It is free, at code.visualstudio.com. VS Code is just a window that shows your files. Think of it as Finder or File Explorer with better lighting. You will not be typing code into it, but you will want to see what Claude creates.
+**2. Install VS Code.** It is free, at code.visualstudio.com. VS Code is just a window that shows your files. Think of it as Finder or File Explorer with better lighting. You will type notes into it, never code. Claude writes the code. You write things like your build log and your project's instructions file.
 
-**3. Install Claude Code.** Open your terminal. On a Mac, press Cmd and Space, type "Terminal," and hit enter. On Windows, search for "PowerShell." Then paste one line:
+**3. Install Claude Code.** Open your terminal. On a Mac, press Cmd and Space, type "Terminal," and hit enter. On Windows, search for "PowerShell." Then paste the one line for your computer.
+
+**TERMINAL**, Mac or Linux:
 
 ```
-Mac or Linux:
 curl -fsSL https://claude.ai/install.sh | bash
+```
 
-Windows PowerShell:
+**TERMINAL**, Windows PowerShell:
+
+```
 irm https://claude.ai/install.ps1 | iex
 ```
 
+Copy only what is inside the box. **You'll know it worked when** the terminal stops scrolling and gives you back a normal blank prompt with no red text.
+
 **4. Make a course folder and start Claude Code.**
+
+**TERMINAL**
 
 ```
 mkdir entp6314
@@ -112,15 +131,61 @@ claude
 
 A browser window will open to log you in. When it finishes, you have an AI software engineer running in your terminal.
 
-**5. Create three free accounts.**
+**Where did that folder go?** Your terminal is always standing in one folder, the way a Finder window is always showing one folder. `mkdir entp6314` made a new folder inside wherever you were standing, and `cd entp6314` walked into it. If you ever lose track, type `pwd` and it tells you exactly where you are standing:
 
-- **github.com** stores your code. You need this by Session 3, on 9/9.
-- **vercel.com** puts your app on the internet. You also need this by Session 3.
-- **supabase.com** is a database. You do not need this until Session 8, on 10/21. Sign up now anyway so it is done.
+**TERMINAL**, with what it answers back:
+
+```
+pwd
+/Users/yourname/entp6314
+```
+
+That is the same folder you would see in Finder under your name. Open Finder and look at it once now, so the terminal and the window on your screen connect to the same place in your head.
+
+**What you will see when Claude Code wants to do something.** Claude Code asks permission before it edits a file or runs a command. You will see a prompt with the action and a yes or no choice. This is normal and it is not a warning that something is wrong.
+
+- Editing files inside your own project folder, running the app, installing what it needs: approve these freely.
+- Deleting things, or anything touching a folder outside your project: read it before you approve.
+
+Saying no does not break anything. It just tells Claude to try something else.
+
+**5. Create your accounts.**
+
+| Account | What it is for | Needed by | Cost |
+|---|---|---|---|
+| **claude.ai** | Claude Code itself | Session 2, 9/2 | About $20 a month, Pro plan |
+| **github.com** | The off-site copy of your project, and the link you hand in | Session 3, 9/9 | Free |
+| **vercel.com** | Puts your app on the internet at a real URL | Session 3, 9/9 | Free tier |
+| **formspree.io** | Collects email signups on your landing pages | Session 4, 9/16 | Free tier |
+| **supabase.com** | Your database, once you need one | Session 8, 10/21 | Free tier |
+
+Sign up for all of them now, even the later ones. It is ten minutes and it is done.
+
+GitHub is worth one extra sentence, because you will hear the name all semester: it is a website that keeps a copy of your project, and it is where the "repo link" that assignments ask for comes from. You will barely visit the site. Claude Code talks to it for you. Part 5 explains what is actually happening.
+
+### Every time you sit down to work
+
+Your terminal does not remember where you were last time. It always starts at the top, in your home folder. So every session begins the same way: walk into the folder of the project you are working on, then start Claude Code.
+
+**TERMINAL**
+
+```
+cd entp6314
+cd first-app
+claude
+```
+
+Replace `first-app` with whichever project you are working on that week. Part 4 shows the full layout, so you can see what lives where.
+
+**You'll know it worked when** Claude Code starts and tells you the folder it is working in, and that folder is your project. From Session 3 on, once your project has a `CLAUDE.md` instructions file, it will also mention reading that file. If it does not, you are standing one level too high. Type `ls` to see what is around you, `cd foldername` to go in, and `cd ..` to go back up.
+
+This is the single most common way students lose an evening. Claude with no project loaded will answer your questions and build things in the wrong place, and it will do it confidently.
 
 ### If the install fails
 
 Do not fight it alone for an hour. The official documentation is at code.claude.com/docs. Or open regular Claude at claude.ai and ask:
+
+**PROMPT**
 
 ```prompt
 I am installing Claude Code on [Mac / Windows] and got this error:
@@ -133,9 +198,9 @@ terminal before.
 
 Then bring it to class or the class channel. Debugging together earns participation credit.
 
-### The only eight terminal commands you need
+### The eight commands you type by hand
 
-You will use these all semester and nothing else. Claude Code handles everything more complicated.
+Everything more complicated than these, Claude Code runs for you. You will use these all semester.
 
 | Command | What it does |
 |---|---|
@@ -150,11 +215,29 @@ You will use these all semester and nothing else. Claude Code handles everything
 
 A terminal looks intimidating because it is mostly black and has no buttons. It is a text conversation with your computer. You already know how to have a text conversation.
 
+### Two windows, one screen
+
+The same black window does two different jobs, and telling them apart matters.
+
+| You are in | How you can tell | What you type |
+|---|---|---|
+| **The terminal** | A short prompt ending in `$` or `>` | The eight commands above |
+| **Claude Code** | It started after you typed `claude`, and it answers in sentences | Plain English, and slash commands |
+
+Slash commands are instructions to Claude Code itself rather than requests to build something. There are only two you need:
+
+| Command | What it does |
+|---|---|
+| `/init` | Creates your project's `CLAUDE.md` instructions file. Part 4 |
+| `/compact` | Clears out the clutter when a long session starts going in circles. Part 4 |
+
+To leave Claude Code and go back to the plain terminal, type `/exit`.
+
 ---
 
 ## Part 2. The five rules
 
-*Read this twice. Everything else in the handbook depends on it.*
+*Session 2, on 9/2. Read this twice. Everything else in the handbook depends on it.*
 
 ### Rule 1: Small steps beat big asks
 
@@ -166,13 +249,36 @@ The reason is not that AI cannot handle a big request. It often can. The reason 
 
 ### Rule 2: Always be able to go back
 
-Commit after every working feature. A commit is a save point, and Claude Code makes them for you when you ask. Part 5 covers this.
+Commit after every working feature. A commit is a save point, a snapshot of your whole project that you can return to later. Claude Code makes them for you when you ask.
+
+**PROMPT**, after every working feature:
+
+```prompt
+Commit this with a sensible message.
+```
+
+**PROMPT**, when something breaks:
+
+```prompt
+The app was working thirty minutes ago and now it is broken. Show me the
+recent commits and revert to the last working one.
+```
+
+That is the whole mechanism. Part 5 explains what is happening underneath and how to get a copy off your laptop, and it is your reading for Session 3.
 
 The confidence that you can undo anything is what makes non-programmers brave. Students who commit often try bolder things, because the worst case is losing twenty minutes.
 
 ### Rule 3: Never trust, always run
 
 After every change, open the app and click the thing. "Claude said it works" is not evidence that it works.
+
+If you do not know how to open your app yet, that is the first thing to fix:
+
+**PROMPT**
+
+```prompt
+How do I see this in my browser?
+```
 
 This is the single most important skill in this course. AI models will tell you a feature is complete, that tests pass, that a bug is fixed. Sometimes they are right. When they are wrong, they are wrong confidently and in detail. The only defence is looking with your own eyes.
 
@@ -184,10 +290,21 @@ No passwords. No API keys in chat messages. Nothing sensitive in code that goes 
 
 If a service gives you something it calls a "secret key," tell Claude Code:
 
+**PROMPT**
+
 ```prompt
 Store this in an environment variable, not in the code. Then show me how
 to confirm it is not going to end up on GitHub.
 ```
+
+An environment variable is a place to keep a secret outside your code. In practice it means two files do the work, and you should look at both with your own eyes rather than accept "done."
+
+| File | What is in it | Who sees it |
+|---|---|---|
+| `.env.local` | Your actual key | Only your laptop |
+| `.gitignore` | A list of files to leave out of the project's history | Everyone, which is fine, it holds no secrets |
+
+**You'll know it worked when** `.gitignore` contains a line reading `.env.local`, and your key appears nowhere else when you search the project for it. Ask Claude Code to show you both files and to search for the key. Read the answer yourself. This is the one mistake in the handbook with consequences outside this course.
 
 ### Rule 5: When stuck for twenty minutes, change strategy, not volume
 
@@ -217,7 +334,9 @@ You are not the engineer. You are the person who knows what it should do. Descri
 
 ### Plan
 
-Press Shift and Tab together to switch Claude Code into Plan mode. Or just say:
+Press Shift and Tab together to switch Claude Code into Plan mode. **You'll know it worked when** a plan mode indicator appears on screen. It is a toggle, so pressing it again turns it back off. If nothing seems to happen, do not press it repeatedly. Just say it instead:
+
+**PROMPT**
 
 ```prompt
 Before writing any code, give me a plan and wait for my approval.
@@ -235,11 +354,20 @@ Say yes, or say what to change. Then let it build.
 
 Ask:
 
+**PROMPT**
+
 ```prompt
 How do I see this in my browser?
 ```
 
-It will give you a command, usually `npm run dev`, and a link that looks like localhost:3000. Open it.
+What happens next depends on what Claude built, and both answers are correct:
+
+| If Claude built | You will | And you will see |
+|---|---|---|
+| Plain HTML in one folder, like your first app | Double-click `index.html`, or ask Claude to open it | Your page in a browser tab |
+| A Next.js app, which is what your real product uses | Run the command it gives you, usually `npm run dev` | A link like `localhost:3000` to click |
+
+`localhost` means the app is running on your own machine only. Nobody else can reach that link. Putting it somewhere strangers can reach is Part 5.
 
 ### Inspect
 
@@ -256,6 +384,8 @@ You can paste screenshots directly into Claude Code. A screenshot of a broken sc
 ### Your first app
 
 Use this in the Session 2 lab:
+
+**PROMPT**
 
 ```prompt
 I have never built software before. I want a simple one-page web app:
@@ -278,11 +408,46 @@ Then improve it three times using the loop. That is it. You are a builder now. T
 
 Claude Code starts every session with no memory of the last one. Two files fix this.
 
+Before either of them, start the way you always start, standing inside the project you are working on:
+
+**TERMINAL**
+
+```
+cd entp6314/first-app
+claude
+```
+
+### Where everything lives
+
+From here on, the handbook keeps telling you to put things "in your project folder." This is what it means. `entp6314` is the course folder you made in Part 1, and each project gets its own folder inside it:
+
+**FILE LAYOUT: your course folder by the end of the semester**
+
+```
+entp6314/
+  first-app/               <- Sessions 2 and 3, your practice project
+    CLAUDE.md              <- project memory (Part 4)
+  probe-idea-1/            <- Sessions 4 and 5, throwaway
+  probe-idea-2/            <- throwaway
+  my-product/              <- your real product, from Session 6 on
+    CLAUDE.md              <- project memory (Part 4)
+    prd.md                 <- your one-page PRD (Part 4)
+    build-log.md           <- graded, weekly (Part 6)
+    qa-report.md           <- required for the MVP demo (Part 13)
+    .env.local             <- your secret keys, never leaves your laptop (Rule 4)
+    research/              <- reports the research agents write (Part 7)
+    interviews/            <- one file per interview (Part 9)
+```
+
+Three things to notice. Each project folder has its own `CLAUDE.md`, which is why you have to start Claude Code from inside the right one. Your graded work lives in the real product folder, not in a probe folder, because the probes get thrown away. And you make none of these by hand. Ask Claude Code for them and it creates them where they belong.
+
 ### CLAUDE.md
 
 This is a file Claude Code reads automatically at the start of every session. It is your project's standing instructions.
 
-Create it by typing `/init` inside Claude Code, then edit it to look like this:
+Create it by typing `/init` inside Claude Code. That is a slash command, an instruction to Claude Code itself rather than a request to build something. Then open the file in VS Code and edit it to look like this. Editing this file is notes, not code, so it is yours to write:
+
+**FILE: CLAUDE.md**
 
 ```
 # Project: [name]
@@ -305,11 +470,21 @@ Create it by typing `/init` inside Claude Code, then edit it to look like this:
 
 Update the "Current focus" line every week. It is thirty seconds of work and it stops Claude from wandering off into parts of the project you are not touching.
 
+**You'll know it worked when** you quit Claude Code, start it again from the same folder, and it mentions reading `CLAUDE.md`. If it never mentions the file, you are starting it from the wrong folder. Check with `pwd`.
+
+### When Claude starts going in circles
+
+Long sessions get worse, not better. Claude Code has a limited amount of short-term memory, and a session full of dead ends fills it with clutter. When answers start repeating or drifting, type `/compact` to clear it out, or quit and start fresh.
+
+Neither one loses your work. Your files are on disk and your commits are save points. And because `CLAUDE.md` is read automatically at the start of every session, a fresh session already knows what matters.
+
 ### The one-page PRD
 
 PRD stands for Product Requirements Document, which sounds more corporate than it is. It is one page describing what you are building, written before you build it.
 
-You will write your real one before Session 6, when you build the walking skeleton. Learn the format now.
+You will write your real one before Session 6, when you build the walking skeleton. Save it in your project folder as `prd.md`, because later prompts ask Claude Code to read it by that name. Learn the format now.
+
+**FILE: prd.md**
 
 ```
 PRODUCT: [name]
@@ -352,50 +527,112 @@ When you have a PRD, paste it into Claude Code in Plan mode, read the plan it pr
 
 *Session 3, on 9/9.*
 
-### Git is unlimited undo
+### Two words that sound like one thing
 
-Git is a system that records the state of your project every time you tell it to. Each recorded state is a commit. You can return to any commit at any time.
+**Git** and **GitHub** are different things that share a syllable, and mixing them up is the most common confusion in this Part.
 
-You never need to learn git commands. Claude Code runs them for you.
+Git is a save-point system that runs on your laptop. It keeps a numbered history of your project, and it lets you go back to any point in that history. It is entirely local. Turn off the wifi and git still works.
 
-**After every working feature:**
+GitHub is a website that holds a copy of that history. It is what makes your work survive a dead laptop, and it is where the "repo link" that assignments ask for comes from.
+
+Staying with the restaurant analogy this handbook uses later: git is the notebook in the kitchen where you write down every version of the recipe. GitHub is the photocopy you keep off-site, in case the kitchen burns down.
+
+You never need to learn git commands. Claude Code runs them for you. What you need is to know which of the two you just did.
+
+### Commit, then push
+
+These are two separate actions. Doing one is not doing the other.
+
+| | Commit | Push |
+|---|---|---|
+| What it does | Records a save point | Sends your save points to GitHub |
+| Where the copy lives | Your laptop only | GitHub's servers |
+| How often | After every working feature | At least once per work session |
+| What breaks if you skip it | You cannot go back | Your laptop dies and the work is gone |
+
+Read the last row twice. A student who commits diligently all semester and never pushes has no backup at all, and feels completely safe. This happens every year.
+
+**PROMPT**, after every working feature:
 
 ```prompt
 Commit this with a sensible message.
 ```
 
-**When something breaks:**
+**PROMPT**, at least once per work session:
+
+```prompt
+Push this to GitHub.
+```
+
+**PROMPT**, the very first time, instead of the one above:
+
+```prompt
+Create a GitHub repository for this project and push it. Make the
+repository private. Walk me through any login steps.
+```
+
+**Never** create a public repository for your course project. Public means anyone can read every file, including any secret key that slipped through Rule 4. Private is one click at creation time and it is the default you want. You can share a private repo with an instructor without making it public.
+
+### What this actually looks like
+
+Ask Claude Code to show you the history. The exact formatting varies, but you get a list like this, one line per commit, newest at the top:
+
+**PROMPT**
+
+```prompt
+Show me my recent commits.
+```
+
+What comes back:
+
+```
+a4f2c91  Add email signup form to landing page      12 minutes ago
+7b3e8d5  Fix chart not updating after edit          1 hour ago
+2c9a1f7  Add expense pie chart                      2 hours ago
+e81b4a3  First working version                      yesterday
+```
+
+That is the undo list. "Revert to the last working one" means going back to one of those lines. The messages are why you ask for sensible ones. At Session 9 you will be reading this list looking for the moment before things broke.
+
+**PROMPT**, when something breaks:
 
 ```prompt
 The app was working thirty minutes ago and now it is broken. Show me the
 recent commits and revert to the last working one.
 ```
 
-**Once per work session:**
-
-```prompt
-Push this to GitHub.
-```
-
-The first time, say instead:
-
-```prompt
-Create a GitHub repository for this project and push it. Walk me through
-any login steps.
-```
+**You'll know the push worked when** you open github.com in a browser, click your repository, and see your files listed with those same commit messages beside them. Do this the first time. Claude Code saying "pushed successfully" is exactly the kind of claim Rule 3 exists for.
 
 **Never** go a whole session without committing. The one time you do is the time you will need it.
 
+### Your git history is graded
+
+This is not just housekeeping. The commit history is one of the artifacts this course assesses, alongside your build log, because it shows how you worked rather than what you ended up with. A history of small, frequent, sensibly labelled commits looks like someone taking steady steps. One enormous commit at midnight looks like what it is.
+
+You also hand in the repository link three times: with the First App on 9/16, with the MVP demo on 11/4, and with the final package on 12/11. That link is the GitHub web address of your project.
+
 ### Deploying gets you a real URL
 
-Deploying means putting your app on the internet so other people can open it.
+Deploying is a third thing, and it is not pushing. Push sends your code to GitHub, where it is stored. Deploy sends your app to Vercel, where it runs and strangers can use it.
+
+| Action | Destination | Result |
+|---|---|---|
+| Commit | Your laptop | A save point |
+| Push | GitHub | A backup, and your repo link |
+| Deploy | Vercel | A live URL anyone can open |
+
+**PROMPT**
 
 ```prompt
 Deploy this app to Vercel. Walk me through it step by step. I have never
 done this before.
 ```
 
-The first time takes about fifteen minutes of following instructions. After that it is one command.
+The first time takes about fifteen minutes of following instructions. It will ask you to connect your GitHub account, because Vercel takes the code from your repository. That is the first time the two halves visibly connect.
+
+**You'll know it worked when** Vercel gives you a URL ending in `.vercel.app`, you open it on your phone, and your app appears. Text it to a friend. If it works for them, it is really deployed.
+
+After the first time, it is one command.
 
 This matters more than it sounds. A live URL turns your idea from something you describe into something a stranger can use. That is the difference between asking someone whether they would like your product and watching whether they sign up. The second one is evidence. The first one is conversation.
 
@@ -407,7 +644,7 @@ This matters more than it sounds. A live URL turns your idea from something you 
 
 The build log is your own record of what you did. It is individual, not shared with your team. Each person keeps their own.
 
-It is graded twice: a checkpoint on 11/11 with the MVP demo, and a final pass on 12/11.
+It is graded twice: a checkpoint on 11/4 with the MVP demo, and a final pass on 12/11.
 
 At the final pass you mark your best entries and annotate each one. **Graduate section: four entries. Undergraduate section: three.**
 
@@ -419,7 +656,9 @@ The build log is the evidence of that. A student who describes three failed appr
 
 ### The format
 
-One entry a week. Five minutes. Keep it in a file called `build-log.md` in your project folder.
+One entry a week. Five minutes. Keep it in a file called `build-log.md` in your real product folder, not in a probe folder, because the probes get thrown away and this is graded.
+
+**FILE: build-log.md**
 
 ```
 ## [date]
@@ -473,9 +712,11 @@ It also makes things up. Both of these are true at once, and managing that is th
 
 **The iron rule: every factual claim gets a URL.** AI invents facts confidently. Made-up citations look exactly like real ones. You are graded on its errors as if they were your own, because they are.
 
-Run these from a `research/` folder inside your project.
+The prompts below all end by telling Claude Code to write its report into a `research/` folder inside your project. You do not need to create that folder first. Claude makes it.
 
 ### 7.1 Opportunity scan
+
+**PROMPT**
 
 ```prompt
 You are a market research analyst. Research this problem space:
@@ -504,6 +745,8 @@ The fastest way to find a real problem is to read people complaining about the o
 
 **Job postings.** If companies are hiring humans to do something repetitive, that is a job someone would pay software to do.
 
+**PROMPT**
+
 ```prompt
 Search for complaints about [category of tool] from the last 18 months.
 Look at G2, Capterra, app store reviews, and Reddit.
@@ -522,6 +765,8 @@ Write to research/complaints.md.
 
 ### 7.3 Competitor teardown
 
+**PROMPT**
+
 ```prompt
 Research these competitors: [list them, or say "find the top 5 products
 that do X"].
@@ -538,6 +783,8 @@ Mark any claim you inferred rather than verified with [UNVERIFIED].
 ```
 
 ### 7.4 Market sizing, bottom up only
+
+**PROMPT**
 
 ```prompt
 Help me size the market bottom up for [product] at [price] per month.
@@ -556,6 +803,8 @@ market" is not a market size.
 ### 7.5 The "why now" test
 
 Every venture that works has a reason it could not have been built three years ago. For AI ventures the reason has to be specific. "AI is big" is not a reason.
+
+**PROMPT**
 
 ```prompt
 I claim [product] is newly possible because [specific AI capability].
@@ -604,6 +853,8 @@ A conversation gets you level one or two. A landing page gets you level three an
 
 ### 8.1 Build the landing page
 
+**PROMPT**
+
 ```prompt
 Build a one-page landing site for [product idea].
 
@@ -635,6 +886,8 @@ Where to put it:
 **Never** buy email lists, use fake testimonials, or claim the product exists when it does not. Say it is coming. A waitlist is honest. A fake product is not, and in this course it is an integrity issue.
 
 ### 8.3 Read the result honestly
+
+**PROMPT**
 
 ```prompt
 Here is the traffic and signup data from my landing page: [paste].
@@ -671,6 +924,8 @@ Minimums, all due 10/14 with the Discovery Report:
 
 ### 9.1 Draft the interview guide
 
+**PROMPT**
+
 ```prompt
 I am doing customer discovery for [idea], targeting [user].
 
@@ -690,6 +945,8 @@ That last line matters. AI writes leading questions by default, because it is tr
 ### 9.2 Rehearse against an AI customer
 
 This is practice. It is not data.
+
+**PROMPT**
 
 ```prompt
 Role-play a [busy restaurant owner in Dallas]. You are skeptical, busy,
@@ -720,6 +977,8 @@ After each interview, write or dictate your notes into a file: `interviews/perso
 
 If you recorded with consent, you can transcribe:
 
+**PROMPT**
+
 ```prompt
 Transcribe this recording into interviews/person-N.md. Keep the exact
 wording. Do not clean up the grammar or summarize. I need the verbatim
@@ -727,6 +986,8 @@ quotes.
 ```
 
 Then, once you have several:
+
+**PROMPT**
 
 ```prompt
 Read all files in interviews/.
@@ -748,6 +1009,8 @@ Point four is the one that matters. AI is agreeable by default and will happily 
 
 **Try this** as a follow-up:
 
+**PROMPT**
+
 ```prompt
 Now argue that our idea is wrong, using only the interview evidence.
 Build the strongest case you can that we should not build this.
@@ -758,6 +1021,8 @@ If the AI cannot build that case from your interviews, either your idea is unusu
 ### 9.5 Surveys
 
 Surveys are weaker than interviews and much weaker than behavior. Use them to test something specific across more people, after interviews have told you what to ask.
+
+**PROMPT**
 
 ```prompt
 Draft a 6-question survey testing [specific hypothesis].
@@ -814,6 +1079,8 @@ A walking skeleton is the thinnest possible version where a user can complete th
 
 The reason is that end-to-end problems are the expensive ones. If you build a beautiful front end for three weeks and then discover the data model does not work, you have lost three weeks. If you connect everything badly on day one, you find that problem immediately.
 
+**PROMPT**
+
 ```prompt
 Read CLAUDE.md and prd.md. We are building the MVP.
 
@@ -826,7 +1093,30 @@ Plan first. Then go one step at a time, and tell me what to test after
 each step.
 ```
 
-**Do this** before you leave the Session 6 lab: get the skeleton running and commit it. If it is not running, that is what office hours are for, and it is much cheaper to fix in week 6 than in week 10.
+**Do this** before you leave the Session 6 lab: get the skeleton running and commit it. If it is not running, that is what office hours are for, and it is much cheaper to fix at Session 6 than at Session 10.
+
+### Your first real feature, and analytics
+
+*Session 7, on 10/7.*
+
+The skeleton walks. Now give it one feature that a user would actually notice, chosen from the three in your PRD. One. The cut list exists so that you can answer "which one" without a meeting.
+
+Work in the core loop from Part 3, and commit after each step that works.
+
+Two things belong in this week and not later.
+
+**Analytics, before you have users.** You put analytics on your landing pages back at Session 4, but that was a different project. This is your real product, and it needs its own. You cannot measure what you did not instrument, and there is no way to recover last week's usage data after the fact. Install it now, while the app is quiet and a mistake costs nothing.
+
+**PROMPT**
+
+```prompt
+Add Vercel Analytics to this app. Then tell me how to see how many
+people used it and which pages they visited.
+```
+
+**You'll know it worked when** you open your deployed URL, click around, and see your own visit appear on the Vercel Analytics dashboard within a few minutes.
+
+**A deployed version that matches what you built.** From this week on, deploy at the end of every work session, not only when something is due. A product that only runs on your laptop cannot be user-tested, and user testing starts in two weeks.
 
 ---
 
@@ -867,6 +1157,8 @@ Authentication, payments, and email. Three things that look simple and are not. 
 - **Payments** use Stripe.
 - **Email** uses a service, never code you wrote.
 
+**PROMPT**
+
 ```prompt
 Add sign-in to the app using Supabase Auth. Support email and Google.
 
@@ -879,6 +1171,8 @@ The general rule for build versus buy: if it is not the thing that makes your pr
 ### Your data model
 
 A data model is a plain English description of what you store and how the pieces relate.
+
+**PROMPT**
 
 ```prompt
 Here is what our app needs to store, in plain English:
@@ -899,6 +1193,8 @@ That last question catches a category of problem early. Most data model bugs are
 
 Many products in this course call an AI model as part of what they do. Summarizing a document, drafting a reply, categorizing an entry.
 
+**PROMPT**
+
 ```prompt
 I want the app to [AI feature].
 
@@ -911,18 +1207,13 @@ Add a sensible fallback message for when the API fails or is slow.
 
 Two things to watch.
 
-**Cost.** For an MVP at classroom scale, expect a few dollars a month, not hundreds. Ask Claude to estimate before you launch. If the estimate is large, your prompt is probably sending far more text than it needs to.
+**Cost.** This is a second, separate charge. Your Claude Pro subscription pays for Claude Code, which is you talking to Claude. An API key is your app talking to Claude, and it is billed on its own, by usage. For an MVP at classroom scale, expect a few dollars a month, not hundreds. Ask Claude to estimate before you launch. If the estimate is large, your prompt is probably sending far more text than it needs to. Set a spending limit on the API account the day you create it.
 
 **Failure.** APIs go down and time out. If your app shows a spinner forever when that happens, your demo will be the time it happens. Always have a fallback message.
 
 ### Analytics
 
-You should have installed analytics at Session 7. If you did not, do it now.
-
-```prompt
-Add Vercel Analytics to this app. Then tell me how to see how many
-people used it and which pages they visited.
-```
+You installed analytics at Session 7, in Part 10. If you did not, go back and do it now, before you add anything else this week.
 
 You cannot measure what you did not instrument. There is no way to recover last week's usage data after the fact. This is why it goes in early.
 
@@ -966,6 +1257,8 @@ Design that screen deliberately. It should say what this is, what to do first, a
 
 Button labels, error messages, and empty states are the interface. AI is genuinely excellent at drafting these, and you are the editor.
 
+**PROMPT**
+
 ```prompt
 Rewrite every piece of text in this interface: buttons, error messages,
 empty states, form labels, and confirmations.
@@ -980,6 +1273,8 @@ This is the cheapest quality upgrade available to you. It takes twenty minutes a
 
 1. Take screenshots of every screen of your app.
 2. Paste them into Claude, in Claude Code or at claude.ai:
+
+**PROMPT**
 
 ```prompt
 Critique these screens against Nielsen's usability heuristics.
@@ -999,6 +1294,8 @@ I can hand each item straight to Claude Code.
 
 **Try this** for consistency: ask for a design system rather than styling things one at a time.
 
+**PROMPT**
+
 ```prompt
 Define a small design system for this app: a color palette, a spacing
 scale, and three text sizes. Then apply it consistently everywhere.
@@ -1015,6 +1312,8 @@ Ad hoc styling is why student projects look like four different products stitche
 There are three separate things to test, and most teams only do the first one.
 
 ### 13.1 Does it break?
+
+**PROMPT**
 
 ```prompt
 Act as a hostile QA tester on this app. Systematically try to break it:
@@ -1049,6 +1348,8 @@ If your product calls an AI model, that feature can run without errors and still
 3. Grade each output yourself: good, acceptable, or bad.
 4. For every bad one, work out why.
 
+**PROMPT**
+
 ```prompt
 Here are ten real inputs to our [AI feature] and the outputs it produced:
 
@@ -1070,7 +1371,7 @@ Put the result in your demo. A team that says "our summarizer works well on docu
 
 ### 13.3 Can a human use it?
 
-**Do this: each team runs at least three moderated user tests with real humans before the MVP demo on 11/11.** You will have two weeks. Start early, because scheduling other people is the slow part.
+**Do this: each team runs at least three moderated user tests with real humans before the MVP demo on 11/4.** The requirement is assigned at Session 8 on 10/21, so you have two weeks. Start early, because scheduling other people is the slow part. Send the messages before you have read this protocol, not after.
 
 The protocol is simple and hard to follow:
 
@@ -1089,7 +1390,7 @@ Their confusion outranks any AI opinion about your design.
 
 ## Part 14. Shipping to real users
 
-*Session 10, on 11/4.*
+*Session 9, on 10/28.*
 
 This is the week your product stops being a class project and starts being something real people use. Two things change.
 
@@ -1113,6 +1414,8 @@ The moment a real person types real information into your app, you have taken on
 
 **Who can see it?** Check this rather than assuming. A common and serious mistake is a database configured so that any user can read every other user's rows.
 
+**PROMPT**
+
 ```prompt
 Review the database security rules for this app. Can any signed-in user
 read or modify data belonging to another user? Show me exactly how the
@@ -1122,6 +1425,8 @@ rules prevent that, and test it.
 **Did they agree to it?** If you are recording interviews, ask first. If you are storing user data, say so somewhere visible. If you are sending their input to a third-party AI service, that belongs in the same sentence.
 
 A single honest paragraph on your site is enough for this course:
+
+**PROMPT**
 
 ```prompt
 Write a short, plain-language note for our site explaining what data we
@@ -1156,9 +1461,9 @@ Write your triage decisions in your build log. That is exactly the kind of judgm
 
 ## Part 15. The demo
 
-*Session 11, on 11/11. This session is the assessment.*
+*Session 10, on 11/4. This session is the assessment.*
 
-You get seven minutes for a graduate team, five for undergraduate. It is a live demo of the product, not a slide deck about the product.
+You get eight minutes. It is a live demo of the product, not a slide deck about the product.
 
 ### The checklist
 
@@ -1190,9 +1495,18 @@ Polish is not on that list. Polish is nearly free now, so it is not what disting
 
 ## Part 16. The pitch
 
-*Session 12, on 11/18. Pitch Day is 12/2.*
+*Sessions 11 and 12, on 11/11 and 11/18. Pitch Day is 12/2.*
 
 A demo shows the product works. A pitch argues the business works. They are different claims and they need different evidence.
+
+What you are working toward:
+
+| | Graduate | Undergraduate |
+|---|---|---|
+| Pitch length on 12/2 | 8 minutes, then 4 minutes of questions | 8 minutes, then 3 minutes of questions |
+| Slides | 10 maximum | 8 maximum |
+
+Two dates sit around Pitch Day. A near-final deck is due **11/29** for written feedback. It is ungraded, and it only helps if the deck is genuinely near final. The full Venture Package is due **12/11**, after you have pitched.
 
 ### 16.1 The narrative comes before the slides
 
@@ -1201,6 +1515,8 @@ Do not open your deck first. Write the story first.
 The structure that works: name the change in the world, describe the stakes, show the promised land for your customer, then explain the thing you have that gets them there, and prove it.
 
 AI ventures have an obvious change to name, which is exactly the problem. Every deck this year opens with "AI is transforming everything." Specificity is the only way out. Name the change in your industry, in the last eighteen months, with a date.
+
+**PROMPT**
 
 ```prompt
 Here is our pitch narrative: [paste].
@@ -1238,6 +1554,8 @@ Your Session 6 answer to "what if Anthropic ships this next quarter" is the raw 
 
 ### 16.4 Deck critique
 
+**PROMPT**
+
 ```prompt
 You are a skeptical Series A investor who has seen 400 AI pitch decks
 this year. Review my deck slide by slide [paste text or screenshots].
@@ -1249,6 +1567,8 @@ Be blunt. Then tell me the one slide that loses you, and why.
 ```
 
 ### 16.5 The murder board
+
+**PROMPT**
 
 ```prompt
 Generate the 20 hardest questions an investor would ask this venture.
@@ -1262,7 +1582,7 @@ Follow up twice before moving on.
 Grade each answer from 1 to 5 at the end.
 ```
 
-**Do this at least once before Pitch Day**, and log it. Since Sessions 11 and 12 are now combined, you get fewer live rehearsal rounds in class, and this is what makes up the difference.
+**Do this at least once before Pitch Day**, and log it. It is a requirement, not a suggestion. The murder board at Session 12 gives you two live rounds; this is the third, and it is the one you can run at midnight.
 
 ### The rule that does not change
 
@@ -1306,7 +1626,7 @@ The pattern where you send the same request eight times with more emphasis each 
 
 **Backend** The logic that does the work. The kitchen.
 
-**Commit** A save point in your project's history.
+**Commit** A save point in your project's history, stored on your own machine until you push it.
 
 **Context window** The AI's short-term memory. It is why long sessions get worse and why `/compact` helps.
 
@@ -1317,6 +1637,10 @@ The pattern where you send the same request eight times with more emphasis each 
 **Environment variable** The safe place to keep API keys, outside your code.
 
 **Frontend** What users see and click. The dining room.
+
+**Git** The save-point system that runs on your own laptop. Keeps the history, lets you go back.
+
+**GitHub** The website that holds a copy of that history. Where your repo link comes from. Not the same thing as git.
 
 **Hallucination** When AI confidently makes something up. The reason for every verification rule in this handbook.
 
@@ -1332,7 +1656,13 @@ The pattern where you send the same request eight times with more emphasis each 
 
 **Prompt** What you tell the AI.
 
-**Repo** Short for repository. Your project folder, tracked by git.
+**Push** Sending your commits from your laptop up to GitHub. Committing is not pushing.
+
+**Repo** Short for repository. Your project folder stored on GitHub. When an assignment asks for a repo link, it wants the GitHub web address.
+
+**Slash command** An instruction to Claude Code itself rather than a request to build something. `/init` and `/compact` are the two you need.
+
+**Version control** The general name for what git does: keeping a history you can move around in.
 
 **Walking skeleton** The thinnest end-to-end version of your product where the core action works, badly.
 

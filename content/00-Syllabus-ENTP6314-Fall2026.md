@@ -60,9 +60,9 @@ You build something in class almost every week. This is deliberate. The barrier 
 
 The course has two distinct building phases, and they have different purposes.
 
-**Weeks 4 and 5 are probes.** You build small, fast, deliberately disposable things: a landing page for each problem you are considering, and a signup form to see whether anyone cares. These are not products. They are instruments for collecting evidence. Most of them will fail, and finding that out in September costs you an evening rather than a semester.
+**Sessions 4 and 5 are probes.** You build small, fast, deliberately disposable things: a landing page for each problem you are considering, and a signup form to see whether anyone cares. These are not products. They are instruments for collecting evidence. Most of them will fail, and finding that out in September costs you an evening rather than a semester.
 
-**Weeks 6 through 11 are the product.** Once your idea is locked, you build one real thing and improve it every week. Walking skeleton in week six. First feature in week seven. Data and AI features in week eight. Design fixes in week nine. Launch to real users in week ten. Demo in week eleven.
+**Sessions 6 through 9 are the product.** Once your idea is locked, you build one real thing and improve it every week. Walking skeleton at Session 6. First feature and analytics at Session 7. Data and AI features at Session 8. Design fixes, testing, and launch to real users at Session 9. You demo it at Session 10.
 
 Knowing which arc you are in matters. In the first, getting attached to your work is the risk. In the second, abandoning it is.
 
@@ -70,10 +70,10 @@ Knowing which arc you are in matters. In the first, getting attached to your wor
 
 | Module | Sessions | The question it answers | What it produces |
 |---|---|---|---|
-| 1. Foundations | 1 to 3 | What is this technology and how do I direct it? | Your first working app |
+| 1. Foundations of AI | 1 to 3 | What is this technology and how do I direct it? | Your first working app |
 | 2. Discovery | 4 to 7 | What should I build, for whom, against whom, and why will I win? | Discovery Report |
-| 3. Build | 8 to 11 | How do I turn that into a real, tested, shipped product? | MVP Demo |
-| 4. Pitch | 12 to 14 | How do I make it investable? | Pitch Day and Venture Package |
+| 3. Iterate and Extend | 8 to 9 | How do I turn that into a real, tested, shipped product? | A launched product |
+| 4. Pitch | 10 to 14 | How do I demo it, and how do I make it investable? | MVP Demo, Pitch Day, and Venture Package |
 
 ### Weekly rhythm
 
@@ -137,8 +137,8 @@ Course grades are based on class participation and six assessments tied to the s
 | First App and Build Memo | Individual | 5% | 9/16 |
 | Industry AI-Impact Memo | Individual | 10% | 9/30 |
 | Discovery Report | Team | 15% | 10/14 |
-| MVP Demo | Team | 20% | In class 11/11 |
-| Individual Build Log | Individual | 10% | Checkpoint 11/11, final 12/11 |
+| MVP Demo | Team | 20% | In class 11/4 |
+| Individual Build Log | Individual | 10% | Checkpoint 11/4, final 12/11 |
 | Final Venture Package and Pitch Day | Team | 20% | Pitch 12/2, package 12/11 |
 
 ### Undergraduate section
@@ -148,8 +148,8 @@ Course grades are based on class participation and six assessments tied to the s
 | Class Participation | Individual | 20% | Ongoing |
 | First App and Build Memo | Individual | 10% | 9/16 |
 | Discovery Report | Team | 15% | 10/14 |
-| MVP Demo | Team | 20% | In class 11/11 |
-| Individual Build Log | Individual | 15% | Checkpoint 11/11, final 12/11 |
+| MVP Demo | Team | 20% | In class 11/4 |
+| Individual Build Log | Individual | 15% | Checkpoint 11/4, final 12/11 |
 | Final Venture Package and Pitch Day | Team | 20% | Pitch 12/2, package 12/11 |
 
 In both sections, 25 percent of your grade is earned individually through graded assignments, 55 percent through team work, and 20 percent through participation.
@@ -166,11 +166,11 @@ Detailed rubrics for every assessment are in the Assignment Guide on the course 
 
 Minimum eight real interviews for graduate teams, five for undergraduate. AI-generated interviews are not admissible as evidence.
 
-**MVP Demo.** A live, working demonstration of your product's core workflow in front of the class. Seven minutes for graduate teams, five for undergraduate, plus structured feedback from a peer panel and the instructor. Submit the same day: live URL, repository, edge-case testing report, and summaries of at least three real user tests. Graded on whether the workflow runs, whether evidence visibly shaped the product, the quality of your testing, and your command of the questions.
+**MVP Demo.** A live, working demonstration of your product's core workflow in front of the class. Eight minutes, plus structured feedback from a peer panel and the instructor. Submit the same day: live URL, repository, edge-case testing report, and summaries of at least three real user tests. Graded on whether the workflow runs, whether evidence visibly shaped the product, the quality of your testing, and your command of the questions.
 
 **Individual Build Log.** Your own weekly record, kept from Session 4 onward. One entry a week, about five minutes: what you tried, what broke, how you fixed it, what you learned. This is individual, not shared with your team.
 
-Graded twice. At the checkpoint on 11/11, on whether it is current, specific, and honest. At the final pass on 12/11, you annotate your best entries: four for graduate students, three for undergraduates. **One annotation must describe a case where AI was confidently wrong, you caught it, and what it would have cost if you had not.**
+Graded twice. At the checkpoint on 11/4, on whether it is current, specific, and honest. At the final pass on 12/11, you annotate your best entries: four for graduate students, three for undergraduates. **One annotation must describe a case where AI was confidently wrong, you caught it, and what it would have cost if you had not.**
 
 **Final Venture Package and Pitch Day.** An eight-minute investor pitch on 12/2, judged live by external judges and the instructor, plus four minutes of questions. The package, due 12/11: final deck, live product URL and repository, evidence appendix, and an AI-usage appendix documenting your most pivotal prompts and agent workflows.
 
@@ -200,15 +200,15 @@ Final grades will be assigned based on the following scale: 93 to 100% (A), 90 t
 
 ## Course Schedule
 
-### Module 1: Foundations
+### Module 1: Foundations of AI
 
 | # | Date | Topic | Due | What we cover |
 |---|---|---|---|---|
-| 1 | 8/26 | Introduction | | Live build demo: an app built and deployed in front of you before any theory. What LLMs and agents actually are, in plain language. The jagged frontier: where AI is strong and where it fails. Why the cost of a first product collapsed, and what that means for founders. |
-| 2 | 9/2 | Installing Tools I | | Software 3.0 and the autonomy slider. The terminal and VS Code, demystified. The core build loop: describe, plan, approve, build, run, inspect, iterate. **Lab:** install the toolchain and build your first working app. |
-| 3 | 9/9 | Installing Tools II | Team registration, in class | How agents work and how they fail. Project memory, plan mode, and the one-page PRD. Git as save points, and deploying to a live URL. **Lab:** agent workflows; teams finalized with two to three candidate problems. |
+| 1 | 8/26 | Introduction | | Current state of AI in 2026: use cases, economic and societal impact, entrepreneurship, and labor markets. Why AI is helpful for new product development. Course grading and expectations. |
+| 2 | 9/2 | Installing and Understanding Tools, Part I | | English as a programming language. Conceptual frameworks for building with AI. Unpacking AI jargon: LLMs, prompts, agents, skills, human in the loop. **Lab:** install Claude Code and explore its key elements, then build your first working landing page and web application. |
+| 3 | 9/9 | Installing and Understanding Tools, Part II | Team composition, submitted before class | Understanding AI agents and their use cases. Verification as the differentiator. Writing a strong product requirements document. **Lab:** install git and create your first repository, then add one or two features to your first web application. |
 
-**Readings.** Session 1: Tedeschi, *The Decline of Travel Agents* (Stripe Economics, 2026); Benedict Evans, *AI Eats the World* (2026). Session 2: Karpathy, *Software Is Changing (Again)* (2025); Handbook Parts 1 to 3. Session 3: Anthropic, *Building Effective Agents* (2024, graduate section); Handbook Parts 4 to 6.
+**Readings.** Session 1: Tedeschi, *The Decline of Travel Agents* (Stripe Economics, 2026). Session 2: Handbook Parts 1 to 3; purchase your Claude Pro subscription; Karpathy, *Software Is Changing (Again)* (2025). Session 3: Handbook Parts 4 to 6.
 
 ### Module 2: Discovery
 
@@ -216,35 +216,35 @@ Final grades will be assigned based on the following scale: 93 to 100% (A), 90 t
 
 | # | Date | Topic | Due | What we cover |
 |---|---|---|---|---|
-| 4 | 9/16 | Finding Market Problems | **First App and Build Memo** | Complements, substitutes, and Jevons paradox: when intelligence gets cheap, what gets valuable? The vertical AI thesis and the "why now" test. **Build technique:** landing pages in one prompt. **Lab:** AI-assisted opportunity scan, then ship a live landing page for each candidate problem. |
-| 5 | 9/23 | Understanding Customers | Idea lock, in class | The Mom Test and Jobs to Be Done. The evidence hierarchy: opinions, quotes, behavior, money. Why synthetic personas are rehearsal and never evidence. **Build technique:** capturing signups and reading the numbers. **Lab:** instrument the probes, build the interview guide, rehearse against an AI skeptic. |
-| 6 | 9/30 | Assessing Competition | **Industry AI-Impact Memo** (graduate) | The three-layer stack and the wrapper debate. What is and is not a moat, with Chegg, Jasper, and sherlocking as cautionary tales. **Build technique:** scoping the MVP, the cut list, the walking skeleton. **Lab:** get your walking skeleton running end to end. |
-| 7 | 10/7 | Formulating Strategy | | Positioning and the beachhead. AI business models: per-seat, usage-based, and outcome-based pricing. Unit economics including inference costs. **Build technique:** your first real feature, and analytics from day one. **Lab:** ship feature one, then peer red-teaming. |
-| — | **10/14** | **No class** | **Discovery Report + interview log** | Optional office-hours clinic for report questions. |
+| 4 | 9/16 | Finding Market Problems | **First App and Build Memo** | Complements, substitutes, and Jevons paradox. Vertical applications of AI. Assessing the viability of market opportunities. **Lab:** run the agent workflow to evaluate two or three candidate problem areas. |
+| 5 | 9/23 | Understanding Customers | Idea lock, in class | The importance of customer discovery and validation. Using AI for customer research. Using AI to assess qualitative customer data. **Lab:** design interview questions and structure, then conduct practice interviews. |
+| 6 | 9/30 | Assessing Competition and Moats | **Industry AI-Impact Memo** | Understanding the layers of the AI value chain. Building defensible AI-specific moats. **Lab:** write a PRD an agent can build from. |
+| 7 | 10/7 | Business Model and Unit Economics | | AI business models, pricing, and unit economics. |
+| — | **10/14** | **Break, no in-person class** | **Discovery Report + interview log** | Optional office-hours clinic for report questions. |
 
-**Readings.** Session 4: Gil, *AI Market Clarity* (2025); Tan, *Where Enterprises Are Actually Adopting AI* (a16z, 2026); Requests for Startups from Y Combinator, Bessemer, Greylock, and Sequoia; Handbook Parts 7 and 8. Session 5: Christensen et al., *Know Your Customers' Jobs to Be Done* (HBR, 2016); Blank, *The Path to Epiphany*, ch. 2; Handbook Part 9. Session 6: Cahn, *AI's $600B Question* (Sequoia, 2024); Handbook Part 10. Session 7: *How A.I. Helped One Man (and His Brother) Build a $1.8 Billion Company* (NYT, 2026).
+**Readings.** Session 4: Gil, *AI Market Clarity* (2025); Tan, *Where Enterprises Are Actually Adopting AI* (a16z, 2026); Requests for Startups from Y Combinator, Bessemer, Greylock, and Sequoia; Handbook Parts 7 and 8. Session 5: Torres, *Customer Interviews* (2022); Blank, *The Path to Epiphany*, ch. 2. Session 6: *How A.I. Helped One Man (and His Brother) Build a $1.8 Billion Company* (NYT, 2026). Session 7: no assigned readings.
 
-### Module 3: Build
+### Module 3: Iterate and Extend
 
 | # | Date | Topic | Due | What we cover |
 |---|---|---|---|---|
-| 8 | 10/21 | Mapping Product Infrastructure | | How software fits together, in plain English, using your own running product as the example. What you never build yourself: auth, payments, email. **Build technique:** your data model, and calling an AI API from your app. **Lab:** ship the data layer and the AI feature. |
-| 9 | 10/28 | Polishing and Testing | | Usability fundamentals and time to first value. Testing what you built: hostile-user QA, and whether your AI feature actually produces good output. **Build technique:** the AI design critique loop. **Lab:** cross-team user test swap, then implement your top three fixes. |
-| 10 | 11/4 | Shipping to Real Users | | Getting your first real users and reading your analytics. Handling real user data: what you store, where it lives, consent, and what you are responsible for. **Build technique:** triage before demo day. **Lab:** supervised build and launch. |
-| 11 | 11/11 | MVP Demo Day | **MVP Demo + build log checkpoint** | Demoing well: narrate value, not technology. Live demonstrations with structured peer panel feedback. What metrics mean at MVP stage. |
+| 8 | 10/21 | Mapping Product Infrastructure: From Skeleton to Real Application | | The architecture of a software product, as a non-technical overview. Build versus buy at the component level. **Lab:** integrate new components into your product, such as payment processing, a database, and a call to an LLM for AI features. |
+| 9 | 10/28 | Polishing Design and Testing | | Usability and design judgment for non-designers. AI-assisted design critique and edge-case testing. Shipping to real users, and the responsibilities that come with their data. **Lab:** run design iterations on your product, then publish your consent-and-data-use paragraph. |
 
-**Readings.** Session 8: Handbook Part 11. Session 9: Nielsen, *10 Usability Heuristics* (NN/g); Handbook Parts 12 and 13. Session 10: Handbook Part 14. Session 11: Handbook Part 15.
+**Readings.** Session 8: Handbook Part 11. Session 9: Nielsen, *Ten Usability Heuristics* (NN/g, 2024).
 
 ### Module 4: Pitch
 
 | # | Date | Topic | Due | What we cover |
 |---|---|---|---|---|
-| 12 | 11/18 | Developing and Practicing Your Pitch | | Narrative before slides, and honest bottom-up market sizing. The five questions investors ask AI startups, run as a drill. **Lab:** deck sprint with AI critique, then murder-board rehearsal against assigned investor personas. |
-| — | **11/25** | **Thanksgiving, no class** | Near-final deck by 11/29 for feedback | |
+| 10 | 11/4 | MVP Demo Day | **MVP Demo + build log checkpoint** | Demoing well: narrating user value rather than technology. What metrics mean at the MVP stage, and how to report what you could not measure. Live demonstrations with structured peer-panel feedback. **Lab:** live presentations of the MVP demo. |
+| 11 | 11/11 | Developing Compelling Pitches | | Guest speaker: Marlow B. Hooper of Harvey. The anatomy of a successful pitch. Common questions investors ask startups. **Lab:** develop your pitch, and run user testing of the product. |
+| 12 | 11/18 | Product Iteration and Pitch Practice | | Acting on feedback: what to fix in the product, what to fix in the story, what to acknowledge out loud. Delivery mechanics: timing, who speaks, and answering questions under pressure. Murder-board rehearsal against investor, customer, and diligence personas. **Lab:** pitch practice. |
+| — | **11/25** | **Fall break, no in-person class** | Near-final deck by 11/29 for feedback | |
 | 13 | 12/2 | Pitch Day | **Pitch, graded live** | Final pitches to external judges. Debrief: what did the judges actually reward? |
 | 14 | 12/9 | Refine, no in-person class | **Venture Package, build log final, peer evaluations, all due 12/11** | Incorporate Pitch Day feedback. Optional team exit meetings by Zoom. |
 
-**Readings.** Session 12: Sequoia, *Writing a Business Plan*; Raskin, *The Greatest Sales Deck I've Ever Seen* (2016); Handbook Part 16.
+**Readings.** Session 10: no assigned readings; submit the MVP Demo package. Session 11: Sequoia, *Writing a Business Plan*; Kawasaki, *The 10/20/30 Rule of PowerPoint* (2005). Session 12: no new readings; teams arrive with a draft deck.
 
 ---
 

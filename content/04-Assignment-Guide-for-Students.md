@@ -28,8 +28,8 @@ Some words used throughout, defined once:
 | First App and Build Memo | Alone | 5% | 10% | 9/16 |
 | Industry AI-Impact Memo | Alone | 10% | *not assigned* | 9/30 |
 | Discovery Report | Team | 15% | 15% | 10/14 |
-| MVP Demo | Team | 20% | 20% | In class 11/11 |
-| Individual Build Log | Alone | 10% | 15% | Checkpoint 11/11, final 12/11 |
+| MVP Demo | Team | 20% | 20% | In class 11/4 |
+| Individual Build Log | Alone | 10% | 15% | Checkpoint 11/4, final 12/11 |
 | Venture Package and Pitch Day | Team | 20% | 20% | Pitch 12/2, package 12/11 |
 | Class participation | Alone | 20% | 20% | Ongoing |
 
@@ -180,11 +180,11 @@ Due **10/14**. One report covering:
 
 ## MVP Demo
 
-**Both sections: 20%. Team assignment. In class 11/11.**
+**Both sections: 20%. Team assignment. In class 11/4.**
 
 ### What this is
 
-A live demonstration of your working product, in front of the class, on the projector. Seven minutes for graduate teams, five for undergraduate, followed by five minutes of questions from a peer panel and me.
+A live demonstration of your working product, in front of the class, on the projector. Eight minutes, followed by five minutes of questions from a peer panel and me.
 
 It is the product running live. It is not a slide deck about the product.
 
@@ -196,7 +196,7 @@ The question period is the other half. It reveals in about ninety seconds whethe
 
 ### What to submit and when
 
-The demo happens **in class on 11/11**. Submit the same day:
+The demo happens **in class on 11/4**. Submit the same day:
 
 - Your live product web address
 - Your repository link
@@ -205,7 +205,7 @@ The demo happens **in class on 11/11**. Submit the same day:
 - If your product uses AI inside it, your evaluation of whether that feature actually produces good output
 - Your individual build log, for the checkpoint (see next assignment)
 
-Start scheduling the user tests early. Other people's calendars are the slow part, and you have from 10/28 to 11/11.
+Start scheduling the user tests early. Other people's calendars are the slow part, and you have from 10/21 to 11/4. The tests are assigned at Session 8 and the protocol for running them is taught at Session 9 — send the scheduling messages before you know the protocol, not after.
 
 ### What a strong version looks like
 
@@ -220,7 +220,7 @@ Start scheduling the user tests early. Other people's calendars are the slow par
 
 ## Individual Build Log
 
-**Graduate: 10%. Undergraduate: 15%. You do this alone. Checkpoint 11/11, final 12/11.**
+**Graduate: 10%. Undergraduate: 15%. You do this alone. Checkpoint 11/4, final 12/11.**
 
 ### What this is
 
@@ -240,7 +240,7 @@ For undergraduates it is worth fifteen percent, which is the largest individual 
 
 **Weekly from 9/16.** Keep a file called `build-log.md` in your project. Each entry: what I tried, what broke, how I fixed it including dead ends, what I learned, what is next.
 
-**Checkpoint, 11/11.** Submit the log as it stands with your team's demo. Graded on whether it is current, specific, and honest.
+**Checkpoint, 11/4.** Submit the log as it stands with your team's demo. Graded on whether it is current, specific, and honest.
 
 **Final pass, 12/11.** Mark your best entries and write a short annotation on each: what you were trying to do, what AI gave you, what you changed. **Graduate section: four entries. Undergraduate section: three.**
 

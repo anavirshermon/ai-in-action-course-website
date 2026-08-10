@@ -1,14 +1,18 @@
 import { Fragment } from "react";
 
 /**
- * Renders short inline markdown (only **bold** is used in table cells
- * throughout the source docs) without pulling in a full markdown parser.
+ * Renders short inline markdown without pulling in a full markdown parser.
+ * Handles **bold**, used in syllabus table cells, and *italic*, used for
+ * work titles in the reading list ("Torres, *Customer Interviews* (2022)").
  */
 export function renderInlineMarkdown(text: string): React.ReactNode {
-  const parts = text.split(/(\*\*[^*]+\*\*)/g).filter(Boolean);
+  const parts = text.split(/(\*\*[^*]+\*\*|\*[^*]+\*)/g).filter(Boolean);
   return parts.map((part, i) => {
     if (part.startsWith("**") && part.endsWith("**")) {
       return <strong key={i}>{part.slice(2, -2)}</strong>;
+    }
+    if (part.startsWith("*") && part.endsWith("*") && part.length > 2) {
+      return <em key={i}>{part.slice(1, -1)}</em>;
     }
     return <Fragment key={i}>{part}</Fragment>;
   });

@@ -2,6 +2,7 @@ import { getSyllabus } from "@/lib/content/syllabus";
 import { getReadingLinks } from "@/lib/content/reading-links";
 import { getHandbook } from "@/lib/content/handbook";
 import { Markdown } from "@/components/Markdown";
+import { renderInlineMarkdown } from "@/lib/content/inline-markdown";
 
 function EvaluationTable({ title, rows }: { title: string; rows: { assessment: string; ownership: string; weight: string; due: string }[] }) {
   return (
@@ -85,10 +86,10 @@ export default function ReferencePage() {
                           rel="noopener noreferrer"
                           className="underline hover:text-ink"
                         >
-                          {link.label}
+                          {renderInlineMarkdown(link.label)}
                         </a>
                       ) : (
-                        link.label
+                        renderInlineMarkdown(link.label)
                       )}
                     </li>
                   ))}

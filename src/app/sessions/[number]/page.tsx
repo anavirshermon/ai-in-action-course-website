@@ -115,10 +115,10 @@ export default async function SessionDetailPage({
                       rel="noopener noreferrer"
                       className="underline hover:text-ink"
                     >
-                      {link.label}
+                      {renderInlineMarkdown(link.label)}
                     </a>
                   ) : (
-                    link.label
+                    renderInlineMarkdown(link.label)
                   )}
                 </li>
               );
