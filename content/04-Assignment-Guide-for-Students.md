@@ -11,7 +11,7 @@ This guide answers one question for every assignment: what exactly am I supposed
 
 It does not teach you how to build anything. That is the Handbook (`03-Student-Guide-Building-with-AI.md`). This document is only about deliverables.
 
-The two sections carry different weights, different due dates, and in two cases different assignments. Every section below states both. Pick your track at the top of the course website and the page will show only the numbers that apply to you.
+The two sections carry different weights, different due dates, and in two cases different assignments. Pick your track at the top of the course website and these pages will show only what applies to you. If you have not picked one, you will see both.
 
 Some words used throughout, defined once:
 
@@ -88,15 +88,19 @@ It is also graded generously on purpose. This is an on-ramp rather than a filter
 
 ### What to submit and when
 
-Due **9/16** for the graduate section, before Session 4, and **9/15** for the undergraduate section. Submit three things:
+**Graduate.** Due **9/16**, before Session 4.
+
+**Undergraduate.** Due **9/15**, before Session 4.
+
+Submit three things:
 
 1. A live web address where your app can be opened
 2. A link to your GitHub repository
 3. A memo explaining what you built and why: what market problem it solves, and how customers would use it
 
-**Graduate memos are two pages single-spaced**, and must also cover the challenges you faced along the way. What broke, how you recovered, and which AI-prompting techniques worked well for you.
+**Graduate.** Your memo is two pages single-spaced, and must also cover the challenges you faced along the way. What broke, how you recovered, and which AI-prompting techniques worked well for you.
 
-**Undergraduate memos are one page single-spaced.**
+**Undergraduate.** Your memo is one page single-spaced.
 
 ### What a strong version looks like
 
@@ -113,7 +117,11 @@ Due **9/16** for the graduate section, before Session 4, and **9/15** for the un
 
 ### What this is
 
-A team-written proposal outlining your group's candidate ideas for a new product. **Graduate teams write three pages single-spaced covering three ideas. Undergraduate teams write two pages covering two ideas.**
+A team-written proposal outlining your group's candidate ideas for a new product.
+
+**Graduate.** Three pages single-spaced, covering three ideas.
+
+**Undergraduate.** Two pages single-spaced, covering two ideas.
 
 ### Why you are doing it
 
@@ -123,7 +131,11 @@ It also gives me a chance to push back before you spend six weeks building the w
 
 ### What to submit and when
 
-Due **9/30** for the graduate section and **9/29** for the undergraduate section, before the Assessing Competition and Moats session. One document per team, briefly covering, for each idea:
+**Graduate.** Due **9/30**, before the Assessing Competition and Moats session.
+
+**Undergraduate.** Due **9/29**, before the Assessing Competition and Moats session.
+
+One document per team, briefly covering, for each idea:
 
 1. Why your group is interested in it
 2. What problem it solves, and for whom
@@ -135,7 +147,7 @@ More details will be available on Canvas.
 ### What a strong version looks like
 
 - The problem is described from the customer's side, not from the solution's side
-- The three (or two) ideas are genuinely different rather than three versions of one idea
+- The ideas are genuinely different from each other rather than variations on one idea
 - You say something honest about which one you currently favor and why
 - **Weak version:** three descriptions of software features with no named customer and no reason to think anyone wants them.
 
@@ -176,7 +188,11 @@ Your progress is graded as "Poor Progress," "Marginal Progress," "Good Progress,
 
 A team-written summary of the research your group conducted across the discovery sessions: finding market problems, understanding customers, assessing competition and moats, and working out a business model.
 
-**Graduate teams submit up to twelve double-spaced pages** plus figures, appendices, and references. **Undergraduate teams submit up to eight double-spaced pages** plus appendices and references. Appendices do not count toward the page limit.
+**Graduate.** Up to twelve double-spaced pages, plus figures, appendices, and references.
+
+**Undergraduate.** Up to eight double-spaced pages, plus appendices and references.
+
+Appendices do not count toward the page limit.
 
 ### Why you are doing it
 
@@ -186,7 +202,11 @@ Writing it forces you to notice what you do not actually know yet. Many teams di
 
 ### What to submit and when
 
-Due **10/21** for the graduate section and **10/20** for the undergraduate section, submitted with the Mapping Product Infrastructure session. One report covering:
+**Graduate.** Due **10/21**, with the Mapping Product Infrastructure session.
+
+**Undergraduate.** Due **10/20**, with the Mapping Product Infrastructure session.
+
+One report covering:
 
 - The market problem you are solving, defined explicitly, and why now is the right time to target it
 - The size of the target market, with the assumptions behind your estimate stated
@@ -213,7 +233,11 @@ You will use AI throughout to conduct this research, and you must verify and val
 
 ### What this is
 
-A live demonstration of your working product, in front of the class, on the projector. **Eight minutes for graduate teams and six for undergraduate**, followed by questions from a peer panel and me.
+A live demonstration of your working product, in front of the class, on the projector, followed by questions from a peer panel and me.
+
+**Graduate.** Eight minutes.
+
+**Undergraduate.** Six minutes.
 
 It is the product running live. It is not a slide deck about the product.
 
@@ -225,7 +249,11 @@ The question period is the other half. It tends to reveal in about ninety second
 
 ### What to submit and when
 
-The demo happens **in class on 11/4** for the graduate section and **11/3** for the undergraduate section. Submit through Canvas the same day:
+**Graduate.** The demo happens in class on **11/4**.
+
+**Undergraduate.** The demo happens in class on **11/3**.
+
+Submit through Canvas the same day:
 
 - Your live product web address
 - Your GitHub repository link
@@ -251,7 +279,11 @@ Start scheduling any user testing early. Other people's calendars are usually th
 
 ### What this is
 
-Your own weekly record of what you personally did on the project, kept from Session 4 onward. **Graduate entries run about three pages, undergraduate about two.**
+Your own weekly record of what you personally did on the project, kept from Session 4 onward.
+
+**Graduate.** Entries run about three pages each.
+
+**Undergraduate.** Entries run about two pages each.
 
 This is yours. It is not shared with your team, and your teammates do not write it.
 
@@ -267,11 +299,13 @@ Do not leave it to December. It cannot be reconstructed.
 
 **Weekly from Session 4.** Keep a file called `build-log.md` in your project. Each entry covers what you built that week, what unique things you tried, what broke along the way, how you fixed it including dead ends, and what you learned.
 
-**Final submission, 12/9 for the graduate section and 12/8 for the undergraduate section.** Combine your **four most interesting weekly logs** into a single document.
+**Graduate.** Final submission due **12/9**. Combine your four most interesting weekly logs into a single document.
+
+**Undergraduate.** Final submission due **12/8**. Combine your four most interesting weekly logs into a single document.
 
 **Your final submission must also describe a case where AI was confidently wrong, how you caught it, and what you learned from the incident.** This is not optional and it carries the most weight in the assignment.
 
-Undergraduate build logs are graded as "Poor," "Average," "Good," or "Excellent," and each corresponds to a particular score. More details are on Canvas.
+**Undergraduate.** Your combined build log is graded as "Poor," "Average," "Good," or "Excellent," and each corresponds to a particular score. More details are on Canvas.
 
 ### What a strong version looks like
 
@@ -290,9 +324,11 @@ The second one takes about four minutes to write and is worth several times the 
 
 ### What this is
 
-Two things graded together. A live pitch presentation, and a final package of documents submitted the following week.
+Two things graded together. A live pitch presentation, and a final package of documents submitted the following week. Both sections get five minutes of Q&A after the pitch.
 
-**Graduate teams pitch for ten minutes and are judged live by external judges.** **Undergraduate teams pitch for eight minutes.** Both are followed by five minutes of Q&A.
+**Graduate.** A ten-minute pitch, judged live by external judges.
+
+**Undergraduate.** An eight-minute pitch.
 
 ### Why you are doing it
 
@@ -300,15 +336,21 @@ The demo proved the product works. This has to prove the business works, which i
 
 ### What to submit and when
 
-**Pitch Day, 12/2 (graduate) or 12/1 (undergraduate), in class.**
+**Graduate.** Pitch Day is **12/2**, in class. The Venture Package is due **12/9**.
 
-**Venture Package, due 12/9 (graduate) or 12/8 (undergraduate):**
+**Undergraduate.** Pitch Day is **12/1**, in class. The Venture Package is due **12/8**.
+
+The Venture Package contains:
 
 - The final pitch deck, with an appendix of supporting evidence
 - A live product web address and a GitHub repository link
 - A two-page double-spaced **AI-usage report** documenting the most impactful uses of AI over the semester, such as pivotal prompts and agent workflows
 - The **Discovery Report, revised and reframed as a Go-to-Market Strategy document**. This is an update rather than a rewrite, so every substantive change must be visibly annotated with highlighting or a short change log, making it clear what shifted and why
-- **Real customer evidence.** Graduate teams document a minimum of **six real interviews** and what they learned from each. Undergraduate teams document a minimum of **four**
+- **Real customer evidence**, meaning documented interviews with actual people and what you learned from each
+
+**Graduate.** A minimum of six real interviews.
+
+**Undergraduate.** A minimum of four real interviews.
 
 More details will be provided in class and on Canvas.
 

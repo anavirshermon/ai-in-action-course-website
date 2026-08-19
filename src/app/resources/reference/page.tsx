@@ -1,4 +1,5 @@
-import { getSyllabus } from "@/lib/content/syllabus";
+import { getSyllabus, forTrack } from "@/lib/content/syllabus";
+import { getTrack } from "@/lib/track";
 import { getReadingLinks } from "@/lib/content/reading-links";
 import { getHandbook } from "@/lib/content/handbook";
 import { Markdown } from "@/components/Markdown";
@@ -30,8 +31,9 @@ function EvaluationTable({ title, rows }: { title: string; rows: { assessment: s
   );
 }
 
-export default function ReferencePage() {
+export default async function ReferencePage() {
   const syllabus = getSyllabus();
+  const track = await getTrack();
   const readingLinks = Array.from(getReadingLinks().values()).sort(
     (a, b) => a.sessionNumber - b.sessionNumber
   );
@@ -54,20 +56,27 @@ export default function ReferencePage() {
 
       <section id="syllabus" className="mt-10 scroll-mt-24 border-t border-line pt-8">
         <h2 className="font-heading text-2xl font-semibold text-ink">Syllabus</h2>
-        <p className="mt-2 text-sm text-ink-soft">
-          {syllabus.courseCode.grad.label} · {syllabus.classMeeting.grad?.dayTime},{" "}
-          {syllabus.classMeeting.grad?.room}
-        </p>
-        <p className="mt-1 text-sm text-ink-soft">
-          {syllabus.courseCode.undergrad.label} · {syllabus.classMeeting.undergrad?.dayTime},{" "}
-          {syllabus.classMeeting.undergrad?.room}
-        </p>
+        {(track ? [track] : (["grad", "undergrad"] as const)).map((t) => (
+          <p key={t} className="mt-1 text-sm text-ink-soft">
+            {syllabus.courseCode[t].label} · {syllabus.classMeeting[t]?.dayTime},{" "}
+            {syllabus.classMeeting[t]?.room}
+          </p>
+        ))}
         <p className="mt-1 text-sm text-ink-soft">
           {syllabus.instructor.name} · {syllabus.instructor.email} · Office{" "}
           {syllabus.instructor.office}
         </p>
-        <EvaluationTable title="Graduate section" rows={syllabus.evaluation.grad} />
-        <EvaluationTable title="Undergraduate section" rows={syllabus.evaluation.undergrad} />
+        {track ? (
+          <EvaluationTable
+            title={track === "grad" ? "Graduate section" : "Undergraduate section"}
+            rows={forTrack(syllabus.evaluation, track)}
+          />
+        ) : (
+          <>
+            <EvaluationTable title="Graduate section" rows={syllabus.evaluation.grad} />
+            <EvaluationTable title="Undergraduate section" rows={syllabus.evaluation.undergrad} />
+          </>
+        )}
       </section>
 
       <section id="reading-list" className="mt-10 scroll-mt-24 border-t border-line pt-8">
