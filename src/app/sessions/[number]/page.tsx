@@ -1,19 +1,21 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getSyllabus } from "@/lib/content/syllabus";
+import { getSyllabus, forTrack, DEFAULT_TRACK } from "@/lib/content/syllabus";
+import { getTrack } from "@/lib/track";
 import { getReadingLinks } from "@/lib/content/reading-links";
 import { sessionArcIndex } from "@/lib/schedule-status";
 import { splitSessionCover, matchAssignment } from "@/lib/content/session-detail";
 import { resolveHandbookMentions, isHandbookMention } from "@/lib/content/handbook-links";
 import { renderInlineMarkdown, stripMarkdownBold } from "@/lib/content/inline-markdown";
 
-export const revalidate = 3600;
-
 export function generateStaticParams() {
   const { sessions } = getSyllabus();
-  return sessions
-    .filter((s) => s.number !== null)
-    .map((s) => ({ number: String(s.number) }));
+  const numbers = new Set(
+    [...sessions.grad, ...sessions.undergrad]
+      .map((s) => s.number)
+      .filter((n): n is number => n !== null)
+  );
+  return [...numbers].sort((a, b) => a - b).map((n) => ({ number: String(n) }));
 }
 
 export default async function SessionDetailPage({
@@ -25,10 +27,12 @@ export default async function SessionDetailPage({
   const sessionNumber = Number(number);
 
   const syllabus = getSyllabus();
-  const session = syllabus.sessions.find((s) => s.number === sessionNumber);
+  const track = await getTrack();
+  const trackSessions = forTrack(syllabus.sessions, track);
+  const session = trackSessions.find((s) => s.number === sessionNumber);
   if (!session) notFound();
 
-  const realSessions = syllabus.sessions.filter((s) => s.number !== null);
+  const realSessions = trackSessions.filter((s) => s.number !== null);
   const idx = realSessions.findIndex((s) => s.number === sessionNumber);
   const prev = idx > 0 ? realSessions[idx - 1] : null;
   const next = idx < realSessions.length - 1 ? realSessions[idx + 1] : null;
@@ -47,7 +51,8 @@ export default async function SessionDetailPage({
       </Link>
 
       <p className="mt-4 text-sm uppercase tracking-[0.15em] text-orange-700">
-        {session.moduleName} · {session.date}
+        {(track ?? DEFAULT_TRACK) === "grad" ? "Graduate" : "Undergraduate"} · {session.moduleName} ·{" "}
+        {session.date}
         {arc && ` · ${arc.label.replace(/\.$/, "")}`}
       </p>
       <h1 className="mt-2 font-heading text-3xl font-semibold text-green-900">

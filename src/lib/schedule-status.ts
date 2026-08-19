@@ -1,9 +1,10 @@
 import type { BuildArc, SessionRow } from "./content/syllabus";
 
 /** Extracts the session range a build-arc label refers to, e.g.
- * "Weeks 4 and 5 are probes." -> [4, 5], "Weeks 6 through 11..." -> [6, 11]. */
+ * "Sessions 4 and 5 are probes." -> [4, 5], "Sessions 6 through 9..." -> [6, 9].
+ * The syllabus prose says "Sessions"; older drafts said "Weeks", so both parse. */
 export function parseArcRange(label: string): [number, number] | null {
-  const m = label.match(/Weeks?\s+(\d+)\s+(?:and|through)\s+(\d+)/i);
+  const m = label.match(/(?:Weeks?|Sessions?)\s+(\d+)\s+(?:and|through)\s+(\d+)/i);
   if (!m) return null;
   return [Number(m[1]), Number(m[2])];
 }

@@ -55,7 +55,12 @@ export default function ReferencePage() {
       <section id="syllabus" className="mt-10 scroll-mt-24 border-t border-line pt-8">
         <h2 className="font-heading text-2xl font-semibold text-ink">Syllabus</h2>
         <p className="mt-2 text-sm text-ink-soft">
-          {syllabus.courseCode} · {syllabus.classMeeting?.dayTime}, {syllabus.classMeeting?.room}
+          {syllabus.courseCode.grad.label} · {syllabus.classMeeting.grad?.dayTime},{" "}
+          {syllabus.classMeeting.grad?.room}
+        </p>
+        <p className="mt-1 text-sm text-ink-soft">
+          {syllabus.courseCode.undergrad.label} · {syllabus.classMeeting.undergrad?.dayTime},{" "}
+          {syllabus.classMeeting.undergrad?.room}
         </p>
         <p className="mt-1 text-sm text-ink-soft">
           {syllabus.instructor.name} · {syllabus.instructor.email} · Office{" "}
@@ -71,7 +76,8 @@ export default function ReferencePage() {
           {readingLinks.map((s) => (
             <div key={s.sessionNumber}>
               <p className="font-heading text-base text-ink">
-                Session {s.sessionNumber} — {s.title} ({s.date})
+                Session {s.sessionNumber} — {s.title}
+                {s.date && ` (${s.date})`}
               </p>
               {s.links.length === 0 ? (
                 <p className="text-sm text-ink-soft">No assigned readings.</p>

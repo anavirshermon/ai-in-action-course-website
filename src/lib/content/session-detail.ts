@@ -45,9 +45,24 @@ export function splitSessionCover(whatWeCover: string): SessionSplit {
 }
 
 /** Matches a session's "due" text against known assignment titles, for linking
- * "Due: **First App and Build Memo**" to /resources/assignments#slug. */
+ * "Due: **First App and Build Memo**" to /resources/assignments#slug.
+ *
+ * A due cell can name two assignments (the last session lists the venture
+ * package and the build log). We link the one mentioned FIRST in the cell,
+ * which is the one the cell leads with, rather than whichever happens to come
+ * first in the Assignment Guide. */
 export function matchAssignment(dueText: string): Assignment | null {
   const clean = dueText.replace(/\*\*/g, "");
   const { assignments } = getAssignmentGuide();
-  return assignments.find((a) => clean.includes(a.title)) ?? null;
+
+  let best: Assignment | null = null;
+  let bestIndex = Infinity;
+  for (const a of assignments) {
+    const i = clean.indexOf(a.title);
+    if (i !== -1 && i < bestIndex) {
+      best = a;
+      bestIndex = i;
+    }
+  }
+  return best;
 }

@@ -34,7 +34,9 @@ export function getReadingLinks(): Map<number, SessionReadings> {
 
   const raw = readContentFile(FILE);
   const lines = raw.split("\n");
-  const headingRegex = /^## Session (\d+) — (.+?) \(([^)]+)\)$/;
+  // The date is optional: the two sections meet on different days, so headings
+  // now carry only the session number and title.
+  const headingRegex = /^## Session (\d+) — (.+?)(?: \(([^)]+)\))?$/;
 
   const headingLines: { number: number; title: string; date: string; lineIndex: number }[] = [];
   lines.forEach((line, i) => {
@@ -43,7 +45,7 @@ export function getReadingLinks(): Map<number, SessionReadings> {
       headingLines.push({
         number: Number(m[1]),
         title: m[2],
-        date: m[3],
+        date: m[3] ?? "",
         lineIndex: i,
       });
     }

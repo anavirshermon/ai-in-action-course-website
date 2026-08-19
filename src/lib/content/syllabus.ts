@@ -1,4 +1,5 @@
 import { readContentFile, splitSections, parseFirstTable } from "./markdown-utils";
+import type { Track } from "../track";
 
 const FILE = "00-Syllabus-ENTP6314-Fall2026.md";
 
@@ -46,24 +47,42 @@ export type BuildArc = {
   detail: string;
 };
 
+/** Per-track values. The two sections meet on different days, carry different
+ * course numbers, and diverge on two sessions, so anything the reader sees that
+ * depends on their section is keyed this way. */
+export type ByTrack<T> = { grad: T; undergrad: T };
+
+export type CourseCode = {
+  /** e.g. "ENTP 6314" */
+  number: string;
+  /** e.g. "MIS 6361", or null if not cross-listed */
+  crossListedWith: string | null;
+  /** e.g. "ENTP 6314 / MIS 6361" */
+  label: string;
+};
+
 export type Syllabus = {
-  courseCode: string;
+  courseCode: ByTrack<CourseCode>;
   courseTitle: string;
   courseSubtitle: string;
   instructor: Instructor;
   ta: string;
-  crossListedWith: string | null;
-  classMeeting: ClassMeeting | null;
+  classMeeting: ByTrack<ClassMeeting | null>;
   officeHoursSlot: string;
   officeHoursNote: string;
-  evaluation: {
-    grad: EvaluationRow[];
-    undergrad: EvaluationRow[];
-  };
-  sessions: SessionRow[];
+  evaluation: ByTrack<EvaluationRow[]>;
+  sessions: ByTrack<SessionRow[]>;
   modules: ModuleInfo[];
   buildArcs: BuildArc[];
 };
+
+/** The graduate section is the default view for a reader who has not picked a
+ * track, matching how the rest of the site falls back. */
+export const DEFAULT_TRACK: Track = "grad";
+
+export function forTrack<T>(value: ByTrack<T>, track: Track | null): T {
+  return value[track ?? DEFAULT_TRACK];
+}
 
 function parseDate(mmdd: string): Date {
   const [month, day] = mmdd.replace(/\*\*/g, "").trim().split("/").map(Number);
@@ -79,6 +98,66 @@ function parseEvaluationTable(body: string): EvaluationRow[] {
     weight: r[2] ?? "",
     due: r[3] ?? "",
   }));
+}
+
+/** "Graduate: ENTP 6314, cross-listed with MIS 6361." for each track. */
+function parseCourseCodes(body: string): ByTrack<CourseCode> {
+  const build = (label: "Graduate" | "Undergraduate"): CourseCode => {
+    const m = body.match(
+      new RegExp(
+        `^${label}:\\s*([A-Z]{2,4}\\s?\\d{3,4})(?:,\\s*cross-listed with ([A-Z]{2,4}\\s?\\d{3,4}))?`,
+        "m"
+      )
+    );
+    if (!m) throw new Error(`syllabus: no "${label}:" line under "## Course Code"`);
+    const crossListedWith = m[2] ?? null;
+    return {
+      number: m[1],
+      crossListedWith,
+      label: crossListedWith ? `${m[1]} / ${crossListedWith}` : m[1],
+    };
+  };
+  return { grad: build("Graduate"), undergrad: build("Undergraduate") };
+}
+
+/** "Graduate — Section 501: Wednesday, 7 to 9:45 PM, Room: JSOM 13.501" */
+function parseClassMeetings(body: string): ByTrack<ClassMeeting | null> {
+  const build = (label: "Graduate" | "Undergraduate"): ClassMeeting | null => {
+    const m = body.match(
+      new RegExp(`^${label}\\s*[—-]\\s*Section\\s+(\\S+):\\s+(.+?),\\s+Room:\\s+(.+)$`, "m")
+    );
+    return m ? { section: m[1], dayTime: m[2], room: m[3] } : null;
+  };
+  return { grad: build("Graduate"), undergrad: build("Undergraduate") };
+}
+
+function parseSchedule(scheduleBody: string): SessionRow[] {
+  const scheduleModules = splitSections(scheduleBody, 3);
+  const sessions: SessionRow[] = [];
+
+  scheduleModules.forEach((mod, modIdx) => {
+    const table = parseFirstTable(mod.body);
+    if (!table) return;
+    for (const row of table.rows) {
+      const [numRaw, dateRaw, topicRaw, dueRaw, coverRaw] = row;
+      const numberClean = numRaw.replace(/\*\*/g, "").trim();
+      const isNoClass = numberClean === "—" || numberClean === "-";
+      sessions.push({
+        moduleNumber: modIdx + 1,
+        moduleName: mod.title,
+        number: isNoClass ? null : Number(numberClean),
+        date: dateRaw.replace(/\*\*/g, "").trim(),
+        dateObj: parseDate(dateRaw),
+        topic: topicRaw,
+        due: dueRaw,
+        whatWeCover: coverRaw,
+        isNoClass,
+      });
+    }
+  });
+
+  sessions.sort((a, b) => a.dateObj.getTime() - b.dateObj.getTime());
+  return sessions;
 }
 
 let cached: Syllabus | null = null;
@@ -103,17 +182,8 @@ export function getSyllabus(): Syllabus {
 
   const ta = byTitle("Teaching Assistant").trim();
 
-  const courseCodeBody = byTitle("Course Code");
-  const crossListMatch = courseCodeBody.match(/cross-listed with ([A-Z]{2,4}\s?\d{3,4})/);
-  const crossListedWith = crossListMatch ? crossListMatch[1] : null;
-
-  const classScheduleBody = byTitle("Class Schedule for Fall 2026");
-  const classMatch = classScheduleBody.match(
-    /^Section\s+(\S+):\s+(.+?),\s+Room:\s+(.+)$/m
-  );
-  const classMeeting: ClassMeeting | null = classMatch
-    ? { section: classMatch[1], dayTime: classMatch[2], room: classMatch[3] }
-    : null;
+  const courseCode = parseCourseCodes(byTitle("Course Code"));
+  const classMeeting = parseClassMeetings(byTitle("Class Schedule for Fall 2026"));
 
   const officeHoursBody = byTitle("Office Hours");
   const [officeHoursSlot = "", ...officeHoursRest] = officeHoursBody
@@ -126,32 +196,10 @@ export function getSyllabus(): Syllabus {
   const gradBody = evalSections.find((s) => s.title === "Graduate section")?.body ?? "";
   const ugBody = evalSections.find((s) => s.title === "Undergraduate section")?.body ?? "";
 
-  const scheduleBody = byTitle("Course Schedule");
-  const scheduleModules = splitSections(scheduleBody, 3);
-  const sessions: SessionRow[] = [];
-
-  scheduleModules.forEach((mod, modIdx) => {
-    const table = parseFirstTable(mod.body);
-    if (!table) return;
-    for (const row of table.rows) {
-      const [numRaw, dateRaw, topicRaw, dueRaw, coverRaw] = row;
-      const isNoClass = numRaw.replace(/\*\*/g, "").trim() === "—";
-      const numberClean = numRaw.replace(/\*\*/g, "").trim();
-      sessions.push({
-        moduleNumber: modIdx + 1,
-        moduleName: mod.title,
-        number: isNoClass ? null : Number(numberClean),
-        date: dateRaw.replace(/\*\*/g, "").trim(),
-        dateObj: parseDate(dateRaw),
-        topic: topicRaw,
-        due: dueRaw,
-        whatWeCover: coverRaw,
-        isNoClass,
-      });
-    }
-  });
-
-  sessions.sort((a, b) => a.dateObj.getTime() - b.dateObj.getTime());
+  const sessions: ByTrack<SessionRow[]> = {
+    grad: parseSchedule(byTitle("Course Schedule (Graduate)")),
+    undergrad: parseSchedule(byTitle("Course Schedule (Undergraduate)")),
+  };
 
   const courseStructureBody = byTitle("Course Structure");
   const structureSections = splitSections(courseStructureBody, 3);
@@ -180,12 +228,11 @@ export function getSyllabus(): Syllabus {
   }
 
   cached = {
-    courseCode: crossListedWith ? `ENTP 6314 / ${crossListedWith}` : "ENTP 6314",
+    courseCode,
     courseTitle,
     courseSubtitle,
     instructor,
     ta,
-    crossListedWith,
     classMeeting,
     officeHoursSlot,
     officeHoursNote,

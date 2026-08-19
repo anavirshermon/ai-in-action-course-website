@@ -17,11 +17,16 @@ export default function LandingPage() {
         <p className="mt-4 max-w-xl text-lg text-ink-soft">{thesisRest}</p>
 
         <div className="mt-12">
-          <TrackPicker />
+          <TrackPicker
+            gradLabel={syllabus.courseCode.grad.label}
+            undergradLabel={syllabus.courseCode.undergrad.label}
+          />
         </div>
 
         <p className="mt-8 text-sm text-ink-soft">
-          {syllabus.courseCode} · Wednesdays, 7–9:45 PM
+          {syllabus.courseCode.grad.label} · {syllabus.classMeeting.grad?.dayTime}
+          <br />
+          {syllabus.courseCode.undergrad.label} · {syllabus.classMeeting.undergrad?.dayTime}
         </p>
       </div>
     </main>

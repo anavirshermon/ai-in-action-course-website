@@ -1,7 +1,7 @@
-# ENTP 6314 — Fall 2026
+# ENTP 6314 and ENTP 4332 — Fall 2026
 ## AI in Action: Building Products, Ventures, and Competitive Advantage
 
-*Syllabus version date: July 27, 2026*
+*Syllabus version date: August 19, 2026*
 
 ---
 
@@ -19,15 +19,17 @@ TBD
 
 ## Course Code
 
-This class is cross-listed with MIS 6361.
+Graduate: ENTP 6314, cross-listed with MIS 6361.
+Undergraduate: ENTP 4332, cross-listed with ITSS 4332.
 
 ## Class Schedule for Fall 2026
 
-Section 501: Wednesday, 7 to 9:45 PM, Room: JSOM 2.902
+Graduate — Section 501: Wednesday, 7 to 9:45 PM, Room: JSOM 13.501
+Undergraduate — Section 001: Tuesday, 1 to 3:45 PM, Room: SOM 22.110
 
 ## Office Hours
 
-X, JSOM 4.222
+Tuesdays, 11 AM to 12 PM, JSOM 4.222
 
 Students are welcome to visit office hours without an appointment to discuss course details (e.g., logistics, material, assignments, exams). If the above time does not work for you, or if you have something specific to discuss, please email me to schedule an appointment.
 
@@ -35,17 +37,17 @@ Students are welcome to visit office hours without an appointment to discuss cou
 
 ## Course Description
 
-AI is transforming every industry. Learn to harness it. Deploy AI tools for market analysis, competitive intelligence, and customer insights. Build AI-powered product prototypes. Develop AI-enabled ventures from concept to investor pitch. Understand how AI reshapes competition, business models, and organizations. Learn from practitioners and thought leaders. Work in teams to create AI-assisted strategic analyses, functional prototypes, go-to-market strategies, and investor-ready pitch decks. Leverage the AI tools reshaping business while understanding broader implications for strategy and society. Hands-on practice meets strategic thinking.
+This course focuses on building new products and ventures with the help of artificial intelligence (AI). There are two parts to this course. First, students will learn how to use AI to conduct market research, formulate strategy, assess competition, and identify customer needs. Second, students will use AI to build new products. Working in teams, they will create AI-assisted strategic analyses, functional prototypes, go-to-market strategies, and investor-ready pitch decks. Throughout the course, students will also learn how AI is reshaping the nature of competition, viable business models, and the structure of organizations, and get to hear first-hand accounts from industry executives and startup founders. The course combines hands-on practice with strategic thinking, helping students leverage cutting-edge AI tools, while also understanding their broader implications for strategy and society.
 
 ---
 
 ## Course Structure
 
-This course is built around one project. You will form a team in week three, find a problem worth solving, build a working product that solves it, and pitch it to outside investors in week thirteen. Everything in the schedule serves that arc.
+This course is built around one project. You will form a team in week three, find a problem worth solving, build a working product that solves it, and pitch it in week thirteen. Everything in the schedule serves that arc.
 
 ### Every class has two halves
 
-Class runs two hours and forty-five minutes. From week four onward, every session is split:
+Class runs two hours and forty-five minutes. From week two onward, every session is split:
 
 | | Time | What happens |
 |---|---|---|
@@ -54,15 +56,15 @@ Class runs two hours and forty-five minutes. From week four onward, every sessio
 | **Lab** | ~60 min | Laptops open, teams building, instructor and TA circulating |
 | **Debrief** | ~15 min | What broke, what worked, what is due next week |
 
-You build something in class almost every week. This is deliberate. The barrier for non-technical students is not skill, it is fear, and the only thing that removes it is shipping something and watching it work.
+You build something in class almost every week. This is deliberate. The barrier for non-technical students is usually not skill, it is fear, and the thing that tends to remove it is shipping something and watching it work.
 
 ### Two build arcs
 
 The course has two distinct building phases, and they have different purposes.
 
-**Sessions 4 and 5 are probes.** You build small, fast, deliberately disposable things: a landing page for each problem you are considering, and a signup form to see whether anyone cares. These are not products. They are instruments for collecting evidence. Most of them will fail, and finding that out in September costs you an evening rather than a semester.
+**Sessions 4 and 5 are probes.** You build small, fast, deliberately disposable things: a landing page for each candidate problem area your team is considering. These are not products. They are instruments for collecting evidence. Many of them will fail, and finding that out in September usually costs you an evening rather than a semester.
 
-**Sessions 6 through 9 are the product.** Once your idea is locked, you build one real thing and improve it every week. Walking skeleton at Session 6. First feature and analytics at Session 7. Data and AI features at Session 8. Design fixes, testing, and launch to real users at Session 9. You demo it at Session 10.
+**Sessions 6 through 9 are the product.** Once your team has chosen an idea, you build one real thing and improve it every week. You add two or three features at Session 6, integrate real components such as a database or an LLM call at Session 8, and iterate on design and testing at Session 9. You demo it at Session 10.
 
 Knowing which arc you are in matters. In the first, getting attached to your work is the risk. In the second, abandoning it is.
 
@@ -70,56 +72,60 @@ Knowing which arc you are in matters. In the first, getting attached to your wor
 
 | Module | Sessions | The question it answers | What it produces |
 |---|---|---|---|
-| 1. Foundations of AI | 1 to 3 | What is this technology and how do I direct it? | Your first working app |
-| 2. Discovery | 4 to 7 | What should I build, for whom, against whom, and why will I win? | Discovery Report |
+| 1. Foundations of AI-Enabled Product Development | 1 to 3 | What is this technology and how do I direct it? | Your first working app |
+| 2. Building with Strategic Intent | 4 to 7 | What should I build, for whom, against whom, and why will I win? | Product Proposal and Discovery Report |
 | 3. Iterate and Extend | 8 to 9 | How do I turn that into a real, tested, shipped product? | A launched product |
-| 4. Pitch | 10 to 14 | How do I demo it, and how do I make it investable? | MVP Demo, Pitch Day, and Venture Package |
+| 4. Pitch | 10 to 13 | How do I demo it, and how do I make it investable? | MVP Demo, Pitch Day, and Venture Package |
 
 ### Weekly rhythm
 
-Before class: one reading and one short video, forty-five minutes total, plus a five-minute build log entry.
+Before class: the assigned reading, plus a short build log entry once the build starts.
 In class: concept, technique, lab.
 After class: keep building. Talk to users.
 
 ### Teams
 
-Teams of three to four, formed by the end of Session 3. Working alone is permitted with instructor sign-off, and comes with reduced scope so the bar stays fair.
+Teams are formed by the end of Session 3, and team composition is submitted before that class. Working alone is permitted with instructor sign-off, and comes with reduced scope so the bar stays fair.
 
-Your idea locks at the end of Session 5. Pivots are allowed through Session 7 with instructor sign-off. After the Discovery Report is submitted on 10/14, you may change your solution but not your validated problem.
+Your team brings candidate problem areas to Session 4, narrows them through the Product Proposal at Session 6, and commits to one idea for the rest of the semester. After the Discovery Report is submitted, you may change your solution but not your validated problem.
 
 ---
 
 ## Course Objectives
 
-By the end of this course, you will be able to:
+### Graduate section
 
-1. **Build and ship working software by directing an AI**, without prior programming experience. You will specify what you want, review the plan, run the result, and deploy it to a public URL.
+By the end of this course and the completion of all deliverables, you will be able to take an idea from concept to launched product with the help of AI tools. This includes four objectives.
 
-2. **Recognize when AI output is wrong.** This is the course's central skill. You will verify research claims against sources, test whether your own AI feature produces useful output, and document at least one case where a model was confidently wrong and you caught it.
+1. **Design, build, validate, and ship a working digital product by directing AI coding tools.** You will translate a market idea into a product requirements document (PRD); scaffold, iterate, and deploy a publicly accessible web application with version control; extend that application beyond a prototype by integrating a data layer and at least one external component (e.g., authentication, payment processing, a call to an LLM); diagnose and recover from failures in AI-generated code; and revise the product's design and interface in response to usability heuristics and evidence from user testing.
 
-3. **Generate real evidence from real people**, and tell it apart from synthetic evidence. You will run customer interviews, run behavioral tests on live products, and rank what you learn by how much weight it can actually bear.
+2. **Use AI to produce and verify a strategic analysis of the market opportunity linked to your product.** This includes defining the market problem and the case for timing of entry; sizing the target market (e.g., TAM) with defensible assumptions and strong evidence; designing, conducting, and synthesizing primary and secondary customer research into validated customer needs that influence product features; mapping the competitive landscape and the layers of the AI value chain to identify where your venture captures value; specifying a business model, pricing logic, and unit economics; and arguing for the defensibility of a proposed moat. Central to this objective is validation and verification, which means distinguishing AI-generated claims that are supported by evidence from those that are conjectured or hallucinated.
 
-4. **Assess defensibility in markets where everyone has the same model.** You will map a competitive field, distinguish real moats from claimed ones, and answer honestly what survives if a frontier lab ships your product as a feature.
+3. **Communicate the venture to an external audience.** You will construct an investor-facing narrative that leads with the customer problem and demonstrated value rather than the underlying technology, defend your assumptions under live questioning, and revise both the product and the pitch story in response to feedback and critiques.
 
-5. **Formulate a business model with defensible unit economics**, including the cost of inference, and position a venture against a specific alternative for a specific customer.
+4. **Assess how AI is reshaping work, society, industries, and entrepreneurship.** This includes understanding the ethical, regulatory, and workforce implications of deploying AI at scale, and articulating what those implications mean for how you design your own venture.
 
-6. **Explain how AI is reshaping work, industries, and entrepreneurship**, using empirical evidence rather than assertion, and identify where it substitutes for human labor and where it complements it.
+### Undergraduate section
 
-7. **Pitch a venture and defend it under questioning.** You will present to external judges and answer the questions investors actually ask AI startups.
+By the end of this course and the completion of all deliverables, you will be able to take an idea to a working product with the help of AI tools. This includes four objectives.
 
-**Graduate and undergraduate sections** cover the same material and the same seven objectives. The graduate section carries an additional individual analytical assignment, higher evidence thresholds, and open-ended rather than templated frameworks. Specific differences are noted in each assignment description.
+1. **Build, test, and deploy a working digital product by directing AI coding tools.** You will write a product requirements document; build and deploy a publicly accessible web application under version control; add a data layer and at least one additional component to that application; identify and fix problems in AI-generated products; and improve the product's design and interface based on usability principles and feedback from real users.
+
+2. **Use AI to research and evaluate the market opportunity linked to your product.** This includes defining the market problem your product solves and the argument for current timing of entry; estimating the size of the target market with reasonable evidence; designing and conducting customer interviews and summarizing what you learned; identifying and comparing direct competitors; and explaining what would make your product difficult to copy. Throughout, you will practice checking AI-generated claims against real sources rather than accepting them at face value.
+
+3. **Pitch the product and business plan in a live presentation**, presenting the customer problem and the value delivered rather than the technology, and answering questions about your assumptions.
+
+4. **Describe how AI is changing work, industries, and entrepreneurship**, including its ethical and workforce implications, and connect those changes to your own product.
 
 ---
 
 ## Required Course Materials
 
-There are no reading materials that must be purchased. All assigned readings are freely available or linked on the course website.
+**A Claude Pro subscription (about $20 per month plus tax) is required course material.** It is the toolchain this course teaches. If UT Dallas changes institutional access to Claude by the start of class, there may be the possibility of using that instead of purchasing a subscription. Other AI tools (e.g., OpenAI's Codex or Google Antigravity) may be used after discussion with the instructor. If cost is a barrier, please contact me in the first week.
 
-**A Claude Pro subscription (about $20 per month) is required course material.** It is the toolchain this course teaches, in the same way a textbook would be required in another course. If cost is a barrier, contact me in the first week.
+All other tools used in the course have free tiers sufficient for this work, including GitHub, Vercel, and Supabase. Access instructions for each are on the course website and will also be provided in class.
 
-**Visual Studio Code** is free and recommended: code.visualstudio.com.
-
-All other services used in the course have free tiers sufficient for this work: GitHub, Vercel, and Supabase.
+Other than the above, there are no materials to be purchased. Required and optional readings, noted in the course schedule below, are available online for free and, where possible, in Canvas.
 
 Setup instructions are in Part 1 of the course Handbook, which you should complete before Session 2.
 
@@ -127,68 +133,65 @@ Setup instructions are in Part 1 of the course Handbook, which you should comple
 
 ## Course Evaluation
 
-Course grades are based on class participation and six assessments tied to the semester-long venture project.
+Course grades are based on class participation and a set of assessments tied to the semester-long venture project. The two sections carry different weights and, in a few cases, different assessments.
 
 ### Graduate section
 
 | Assessment | Individual or team | Weight | Due |
 |---|---|---|---|
 | Class Participation | Individual | 20% | Ongoing |
-| First App and Build Memo | Individual | 5% | 9/16 |
-| Industry AI-Impact Memo | Individual | 10% | 9/30 |
-| Discovery Report | Team | 15% | 10/14 |
-| MVP Demo | Team | 20% | In class 11/4 |
-| Individual Build Log | Individual | 10% | Checkpoint 11/4, final 12/11 |
-| Final Venture Package and Pitch Day | Team | 20% | Pitch 12/2, package 12/11 |
+| First App and Build Memo | Individual | 10% | 9/16 |
+| Product Proposal | Team | 5% | 9/30 |
+| Discovery Report | Team | 20% | 10/21 |
+| MVP Demo | Team | 10% | In class 11/4 |
+| Individual Build Log | Individual | 15% | 12/9 |
+| Final Venture Package and Pitch Presentation | Team | 20% | Pitch 12/2, package 12/9 |
 
 ### Undergraduate section
 
 | Assessment | Individual or team | Weight | Due |
 |---|---|---|---|
 | Class Participation | Individual | 20% | Ongoing |
-| First App and Build Memo | Individual | 10% | 9/16 |
-| Discovery Report | Team | 15% | 10/14 |
-| MVP Demo | Team | 20% | In class 11/4 |
-| Individual Build Log | Individual | 15% | Checkpoint 11/4, final 12/11 |
-| Final Venture Package and Pitch Day | Team | 20% | Pitch 12/2, package 12/11 |
-
-In both sections, 25 percent of your grade is earned individually through graded assignments, 55 percent through team work, and 20 percent through participation.
+| Attendance | Individual | 5% | Ongoing |
+| First App and Build Memo | Individual | 5% | 9/15 |
+| Product Proposal | Team | 5% | 9/29 |
+| Progress Week Meeting | Team | 5% | In class 10/6 |
+| Discovery Report | Team | 15% | 10/20 |
+| MVP Demo | Team | 10% | In class 11/3 |
+| Individual Build Log | Individual | 15% | 12/8 |
+| Final Venture Package and Pitch Presentation | Team | 20% | Pitch 12/1, package 12/8 |
 
 Detailed rubrics for every assessment are in the Assignment Guide on the course website.
 
 ### What the assessments are
 
-**First App and Build Memo.** Build and deploy a small working web app using Claude Code. Submit a live URL, a repository link, and a one-page memo: what you built, two things that broke, how you recovered, and one prompt that worked well. This is an on-ramp, graded generously. Its purpose is to guarantee every student can operate the toolchain before team work begins.
+**First App and Build Memo.** Build and deploy a small working web application using AI. Submit a live URL and a GitHub repository link, plus a memo explaining what you built and why you built it, meaning what market problem it solves and how customers would use it. Graduate memos are two pages single-spaced and also cover the challenges you faced along the way: what broke, how you recovered, and which AI-prompting techniques worked well. Undergraduate memos are one page single-spaced.
 
-**Industry AI-Impact Memo** *(graduate section only)*. A 1,200 to 1,500 word analysis of one industry or occupation. Where does AI substitute for human labor, where does it complement it, what new-entrant opportunity does that create, and what evidence would falsify your argument? At least five cited sources including one empirical study.
+**Product Proposal.** A team-written proposal outlining your group's candidate ideas for a new product. It should briefly cover why the group is interested in each idea, what problem it solves, the novelty and value of the proposed solution, and why AI can help build it. Graduate teams submit three pages single-spaced covering three ideas. Undergraduate teams submit two pages covering two ideas.
 
-**Discovery Report.** Twelve pages maximum plus appendices. The problem and why now, evidence from real customer interviews, what your landing-page probes actually showed, a sourced competitor analysis, a defensibility argument including what survives if a frontier lab ships your product, strategy and positioning, a business model with simple unit economics, and your kill criteria.
+**Progress Week Meeting** *(undergraduate section only)*. In Session 7, each team meets with me during class for fifteen to twenty minutes to discuss progress on the Discovery Report. Each team's progress is graded as "Poor Progress," "Marginal Progress," "Good Progress," or "Excellent Progress," which correspond to particular scores.
 
-Minimum eight real interviews for graduate teams, five for undergraduate. AI-generated interviews are not admissible as evidence.
+**Discovery Report.** A team-written summary of the research your group conducts across the discovery sessions. You will identify and define the market problem you are solving and explain why now is the right time to target that market. You will also size the target market, present what you learned from customer research, analyze your competitors, argue for the defensibility of your product's proposed moat, and lay out a business model with planned unit economics. You will use AI throughout to conduct this research but must verify and validate its output. AI is not permitted for the writing of the report. Graduate teams submit up to twelve double-spaced pages plus figures, appendices, and references. Undergraduate teams submit up to eight double-spaced pages plus appendices and references.
 
-**MVP Demo.** A live, working demonstration of your product's core workflow in front of the class. Eight minutes, plus structured feedback from a peer panel and the instructor. Submit the same day: live URL, repository, edge-case testing report, and summaries of at least three real user tests. Graded on whether the workflow runs, whether evidence visibly shaped the product, the quality of your testing, and your command of the questions.
+**MVP Demo.** A live, working demonstration of your product's core workflow in front of the class, eight minutes for graduate teams and six for undergraduate. Submit a live URL and a GitHub repository link through Canvas. This is graded on whether the product runs, whether and how evidence from the Discovery Report visibly shaped the product and its features, the quality of your testing and validation, and your responses to questions during the presentation.
 
-**Individual Build Log.** Your own weekly record, kept from Session 4 onward. One entry a week, about five minutes: what you tried, what broke, how you fixed it, what you learned. This is individual, not shared with your team.
+**Individual Build Log.** From Session 4 onward, keep a weekly build log covering what you built that week, what you tried, what broke, how you fixed it, and what you learned. Graduate entries run about three pages, undergraduate about two. At the end of the semester you submit your four most interesting weekly logs in a combined document. That final submission must also describe a case where AI was confidently wrong, how you caught it, and what you learned from the incident. Undergraduate build logs are graded as "Poor," "Average," "Good," or "Excellent," which correspond to particular scores. More details are on Canvas.
 
-Graded twice. At the checkpoint on 11/4, on whether it is current, specific, and honest. At the final pass on 12/11, you annotate your best entries: four for graduate students, three for undergraduates. **One annotation must describe a case where AI was confidently wrong, you caught it, and what it would have cost if you had not.**
+**Final Venture Package and Pitch Presentation.** Each team delivers a live pitch presentation followed by five minutes of Q&A. Graduate pitches run ten minutes and are judged live by external judges. Undergraduate pitches run eight minutes. Teams then submit a final package containing the final pitch deck with an appendix of supporting evidence, a live product URL, a GitHub repository, and a two-page double-spaced AI-usage report documenting the most impactful uses of AI over the semester, such as pivotal prompts and agent workflows. The package also includes the Discovery Report, revised and reframed as a Go-to-Market Strategy document. This is an update rather than a rewrite, so every substantive change must be visibly annotated with highlighting or a short change log, making it clear what shifted and why. A central addition to this deliverable is real customer evidence. Graduate teams must document a minimum of six real interviews and what they learned from each; undergraduate teams a minimum of four.
 
-**Final Venture Package and Pitch Day.** An eight-minute investor pitch on 12/2, judged live by external judges and the instructor, plus four minutes of questions. The package, due 12/11: final deck, live product URL and repository, evidence appendix, and an AI-usage appendix documenting your most pivotal prompts and agent workflows.
-
-**Peer evaluation.** A confidential end-of-term evaluation adjusts individual grades on team components by a multiplier of 0.85 to 1.10. Any member rated below 70 percent triggers a conversation before grades post. Students working alone are exempt. The Individual Build Log is not subject to the multiplier.
+**Peer evaluation.** A confidential end-of-term evaluation adjusts individual grades on team components by a multiplier. The graduate multiplier ranges from 0.85 to 1.10, and the undergraduate multiplier from 0.95 to 1.05. Individual assignments are not subject to multipliers.
 
 ### Class Participation (20%)
 
-Participation is not attendance, and it is not talking often. It is the quality of what you contribute. It is assessed across four things:
+Participation is not attendance, and it is not talking often. It is the quality of what you contribute. It is assessed across the following.
 
-**Contribution to class discussion.** Come prepared, having done the reading. Comments are judged on clarity of argument, application of the frameworks we are covering, and whether claims are supported by evidence from the readings or from your own venture. Repeating what a reading said is not a contribution. Disagreeing with it, with a reason, is.
+**Contribution to class discussion.** Come prepared, having studied the required pre-class material. A critical component of the course experience is rigorous and spirited discussion. Comments are judged on the clarity and coherence of ideas and arguments, and on your ability to support claims with quantitative or qualitative evidence from the course materials such as slides and readings. Engagement with your colleagues during student group presentations is also acknowledged.
+
+**Name tents.** I will provide name tents on the first day of class, and you should bring yours to every subsequent session. This is how I make sure you receive credit for what you contribute.
 
 **Engagement in lab.** Arrive with your toolchain working and your project in a state where you can make progress. Helping another student or another team debug counts, and counts substantially. The lab is not private work time.
 
-**Structured peer feedback.** Several sessions require you to evaluate other teams: the demo day peer panels, the murder-board investor personas in Session 12, and the ranked ballots on Pitch Day. Feedback that is specific and useful to the receiving team earns credit. Feedback that is generic does not.
-
-**Attendance and punctuality.** Attendance is your obligation and you are responsible for all work from every class meeting. Two unexcused absences per semester are allowed with no deduction, and you do not need to tell me about them. Beyond that, absence will significantly reduce your participation grade. Excused absences for authorized University activities or Religious Holy Days do not count against this. Arriving after the start time is marked late, and repeated lateness reduces participation points.
-
-I will provide name tents on the first day. Please bring yours to every session. This is how I make sure you receive credit for what you contribute.
+**Attendance and punctuality.** Attendance is your obligation. No right or privilege exists that permits you to be absent from any class meeting except for excused absences for authorized University activities or Religious Holy Days. Two unexcused absences per semester are allowed with no deduction, and you do not need to tell me about them. Beyond that, regular absence will severely affect your participation grade. Arriving after the start time is marked late, and excessive lateness reduces participation points. In the undergraduate section, attendance is separately graded and worth 5% of the course grade.
 
 ---
 
@@ -198,75 +201,94 @@ Final grades will be assigned based on the following scale: 93 to 100% (A), 90 t
 
 ---
 
-## Course Schedule
+## Course Schedule (Graduate)
 
-### Module 1: Foundations of AI
+### Module 1: Foundations of AI-Enabled Product Development
 
 | # | Date | Topic | Due | What we cover |
 |---|---|---|---|---|
 | 1 | 8/26 | Introduction | | Current state of AI in 2026: use cases, economic and societal impact, entrepreneurship, and labor markets. Why AI is helpful for new product development. Course grading and expectations. |
-| 2 | 9/2 | Installing and Understanding Tools, Part I | | English as a programming language. Conceptual frameworks for building with AI. Unpacking AI jargon: LLMs, prompts, agents, skills, human in the loop. **Lab:** install Claude Code and explore its key elements, then build your first working landing page and web application. |
-| 3 | 9/9 | Installing and Understanding Tools, Part II | Team composition, submitted before class | Understanding AI agents and their use cases. Verification as the differentiator. Writing a strong product requirements document. **Lab:** install git and create your first repository, then add one or two features to your first web application. |
+| 2 | 9/2 | Installing and Understanding Tools, Part I | | English as a programming language. Conceptual frameworks for building with AI. Unpacking AI jargon: LLMs, prompts, agents, skills, human in the loop. **Lab:** install Claude Code and explore its key elements, then build your first working web application. |
+| 3 | 9/9 | Installing and Understanding Tools, Part II | Team composition, submitted before class | Understanding AI agents and their use cases. Verification as a key differentiator. Writing a strong product requirements document. **Lab:** install git and create your first repository, then add one or two features to your first web application. |
 
-**Readings.** Session 1: Tedeschi, *The Decline of Travel Agents* (Stripe Economics, 2026). Session 2: Handbook Parts 1 to 3; purchase your Claude Pro subscription; Karpathy, *Software Is Changing (Again)* (2025). Session 3: Handbook Parts 4 to 6.
-
-### Module 2: Discovery
-
-*Arc 1, probes: Sessions 4 and 5. Arc 2, the product, begins Session 6.*
+### Module 2: Building with Strategic Intent
 
 | # | Date | Topic | Due | What we cover |
 |---|---|---|---|---|
-| 4 | 9/16 | Finding Market Problems | **First App and Build Memo** | Complements, substitutes, and Jevons paradox. Vertical applications of AI. Assessing the viability of market opportunities. **Lab:** run the agent workflow to evaluate two or three candidate problem areas. |
-| 5 | 9/23 | Understanding Customers | Idea lock, in class | The importance of customer discovery and validation. Using AI for customer research. Using AI to assess qualitative customer data. **Lab:** design interview questions and structure, then conduct practice interviews. |
-| 6 | 9/30 | Assessing Competition and Moats | **Industry AI-Impact Memo** | Understanding the layers of the AI value chain. Building defensible AI-specific moats. **Lab:** write a PRD an agent can build from. |
-| 7 | 10/7 | Business Model and Unit Economics | | AI business models, pricing, and unit economics. |
-| — | **10/14** | **Break, no in-person class** | **Discovery Report + interview log** | Optional office-hours clinic for report questions. |
-
-**Readings.** Session 4: Gil, *AI Market Clarity* (2025); Tan, *Where Enterprises Are Actually Adopting AI* (a16z, 2026); Requests for Startups from Y Combinator, Bessemer, Greylock, and Sequoia; Handbook Parts 7 and 8. Session 5: Torres, *Customer Interviews* (2022); Blank, *The Path to Epiphany*, ch. 2. Session 6: *How A.I. Helped One Man (and His Brother) Build a $1.8 Billion Company* (NYT, 2026). Session 7: no assigned readings.
+| 4 | 9/16 | Finding Market Problems | **First App and Build Memo** | Complements, substitutes, and Jevons paradox. Vertical industry applications of AI. Assessing the viability of market opportunities. **Lab:** run an AI agent workflow to evaluate three candidate problem areas, then build a landing page for each. |
+| 5 | 9/23 | Understanding Customers | | The importance of customer discovery and validation. Using AI for customer research and assessing qualitative customer data. **Lab:** design interview questions and structure, conduct practice interviews, then write a product requirements document for your chosen idea and iterate on it with AI. |
+| 6 | 9/30 | Assessing Competition and Moats | **Product Proposal** | Understanding the layers of the AI value chain. Building defensible AI-specific moats. **Lab:** run an AI agent workflow to evaluate competitors and the value chain of your target market, then add two or three features to your working product. |
+| 7 | 10/7 | Business Model and Unit Economics | | AI business models, pricing, and unit economics. Identifying the core value proposition. Building a positioning statement. **Lab:** draft your positioning statement, value proposition, business model choice, and pricing hypothesis, then identify which features are core and which are peripheral and adjust the application accordingly. |
+| — | **10/14** | **Break, no in-person class** | | Optional office-hours clinic for Discovery Report questions. |
 
 ### Module 3: Iterate and Extend
 
 | # | Date | Topic | Due | What we cover |
 |---|---|---|---|---|
-| 8 | 10/21 | Mapping Product Infrastructure: From Skeleton to Real Application | | The architecture of a software product, as a non-technical overview. Build versus buy at the component level. **Lab:** integrate new components into your product, such as payment processing, a database, and a call to an LLM for AI features. |
-| 9 | 10/28 | Polishing Design and Testing | | Usability and design judgment for non-designers. AI-assisted design critique and edge-case testing. Shipping to real users, and the responsibilities that come with their data. **Lab:** run design iterations on your product, then publish your consent-and-data-use paragraph. |
-
-**Readings.** Session 8: Handbook Part 11. Session 9: Nielsen, *Ten Usability Heuristics* (NN/g, 2024).
+| 8 | 10/21 | Mapping Product Infrastructure: From Skeleton to Real Application | **Discovery Report** | The architecture of a software product, as a non-technical overview. Build versus buy at the component level. Adding a data layer to your product. **Lab:** integrate new components into your product, such as payment processing, a database, or a call to an LLM for AI features. |
+| 9 | 10/28 | Polishing Design and Testing | | Guest workshop: Jenny S. Le'Dang, Senior Product Designer at American Airlines. Usability and design judgment for non-designers. AI-assisted design critique and edge-case testing. **Lab:** build a design system for your product, then run design iterations. |
 
 ### Module 4: Pitch
 
 | # | Date | Topic | Due | What we cover |
 |---|---|---|---|---|
-| 10 | 11/4 | MVP Demo Day | **MVP Demo + build log checkpoint** | Demoing well: narrating user value rather than technology. What metrics mean at the MVP stage, and how to report what you could not measure. Live demonstrations with structured peer-panel feedback. **Lab:** live presentations of the MVP demo. |
-| 11 | 11/11 | Developing Compelling Pitches | | Guest speaker: Marlow B. Hooper of Harvey. The anatomy of a successful pitch. Common questions investors ask startups. **Lab:** develop your pitch, and run user testing of the product. |
-| 12 | 11/18 | Product Iteration and Pitch Practice | | Acting on feedback: what to fix in the product, what to fix in the story, what to acknowledge out loud. Delivery mechanics: timing, who speaks, and answering questions under pressure. Murder-board rehearsal against investor, customer, and diligence personas. **Lab:** pitch practice. |
-| — | **11/25** | **Fall break, no in-person class** | Near-final deck by 11/29 for feedback | |
-| 13 | 12/2 | Pitch Day | **Pitch, graded live** | Final pitches to external judges. Debrief: what did the judges actually reward? |
-| 14 | 12/9 | Refine, no in-person class | **Venture Package, build log final, peer evaluations, all due 12/11** | Incorporate Pitch Day feedback. Optional team exit meetings by Zoom. |
+| 10 | 11/4 | MVP Demo Day | **MVP Demo** | Demoing well: narrating user value rather than technology. **Lab:** live presentations of the MVP with peer panel feedback. |
+| 11 | 11/11 | Developing Compelling Pitches | | Guest speaker: Marlow B. Hooper, Legal Engineer and Product Specialist, founding member of the Dallas office at Harvey. The anatomy of a successful pitch: narrating user value and the problem solved rather than the technology. Common questions investors ask startups. **Lab:** develop your pitch, and run user testing of the product. |
+| 12 | 11/18 | Product Iteration and Pitch Practice | | Acting on feedback: what to fix in the product, and what to fix in the story. Delivery mechanics: timing, who speaks, and answering questions under pressure. **Lab:** pitch practice. |
+| — | **11/25** | **Fall break, no in-person class** | | |
+| 13 | 12/2 | Pitch Day | **Final Venture Package and Pitch Presentation**, pitched live | Final pitches to external judges, followed by Q&A. |
+| — | **12/9** | **No in-person class** | **Final Venture Package and Pitch Presentation** package, plus **Individual Build Log** | Incorporate Pitch Day feedback and submit the final package. |
 
-**Readings.** Session 10: no assigned readings; submit the MVP Demo package. Session 11: Sequoia, *Writing a Business Plan*; Kawasaki, *The 10/20/30 Rule of PowerPoint* (2005). Session 12: no new readings; teams arrive with a draft deck.
+## Course Schedule (Undergraduate)
+
+### Module 1: Foundations of AI-Enabled Product Development
+
+| # | Date | Topic | Due | What we cover |
+|---|---|---|---|---|
+| 1 | 8/25 | Introduction | | Current state of AI in 2026: use cases, economic and societal impact, entrepreneurship, and labor markets. Why AI is helpful for new product development. Course grading and expectations. |
+| 2 | 9/1 | Installing and Understanding Tools, Part I | | English as a programming language. Conceptual frameworks for building with AI. Unpacking AI jargon: LLMs, prompts, agents, skills, human in the loop. **Lab:** install Claude Code and explore its key elements, then build your first working web application. |
+| 3 | 9/8 | Installing and Understanding Tools, Part II | Team composition, submitted before class | Understanding AI agents and their use cases. Verification as the differentiator. Writing a strong product requirements document. **Lab:** install git and create your first repository, then add one or two features to your first web application. |
+
+### Module 2: Building with Strategic Intent
+
+| # | Date | Topic | Due | What we cover |
+|---|---|---|---|---|
+| 4 | 9/15 | Finding Market Problems | **First App and Build Memo** | Complements, substitutes, and Jevons paradox. Vertical industry applications of AI. Assessing the viability of market opportunities. **Lab:** run an AI agent workflow to evaluate three candidate problem areas, then build a landing page for each. |
+| 5 | 9/22 | Understanding Customers | | The importance of customer discovery and validation. Using AI for customer research and assessing qualitative customer data. **Lab:** design interview questions and structure, conduct practice interviews, then write a product requirements document for your chosen idea and iterate on it with AI. |
+| 6 | 9/29 | Assessing Competition and Moats | **Product Proposal** | Differentiating from competitors. Building defensible AI-specific moats. **Lab:** run an AI agent workflow to evaluate competitors, then add two or three features to your working product. |
+| 7 | 10/6 | Progress Week | **Progress Week Meeting** | No lecture this week. **Lab:** individual team meetings of fifteen to twenty minutes to go over each component of your Discovery Report. Come with a rough plan of action. |
+| — | **10/13** | **Break, no in-person class** | | Optional office-hours clinic for Discovery Report questions. |
+
+### Module 3: Iterate and Extend
+
+| # | Date | Topic | Due | What we cover |
+|---|---|---|---|---|
+| 8 | 10/20 | Mapping Product Infrastructure: From Skeleton to Real Application | **Discovery Report** | The architecture of a software product, as a non-technical overview. Build versus buy at the component level. Adding a data layer to your product. **Lab:** integrate new components into your product, such as payment processing, a database, or a call to an LLM for AI features. |
+| 9 | 10/27 | Polishing Design | | Guest workshop: Jenny S. Le'Dang, Senior Product Designer at American Airlines. Usability and design judgment for non-designers. AI-assisted design critique and edge-case testing. **Lab:** build a design system for your product, then run design iterations. |
+
+### Module 4: Pitch
+
+| # | Date | Topic | Due | What we cover |
+|---|---|---|---|---|
+| 10 | 11/3 | MVP Demo Day | **MVP Demo** | Demoing well: narrating user value rather than technology. **Lab:** live presentations of the MVP with peer panel feedback. |
+| 11 | 11/10 | Developing Compelling Pitches | | The anatomy of a successful pitch: narrating user value and the problem solved rather than the technology. Common questions investors ask startups. **Lab:** develop your pitch, and run user testing of the product. |
+| 12 | 11/17 | Product Iteration and Pitch Practice | | Acting on feedback: what to fix in the product, and what to fix in the story. Delivery mechanics: timing, who speaks, and answering questions under pressure. **Lab:** pitch practice. |
+| — | **11/24** | **Fall break, no in-person class** | | |
+| 13 | 12/1 | Pitch Day | **Final Venture Package and Pitch Presentation**, pitched live | Final pitches, followed by Q&A. |
+| — | **12/8** | **No in-person class** | **Final Venture Package and Pitch Presentation** package, plus **Individual Build Log** | Incorporate Pitch Day feedback and submit the final package. |
 
 ---
 
 ## Other Class Policies
 
-**The Use of Generative AI Tools in the Classroom.** This class does not merely permit generative AI. It requires it. Using AI to build, research, draft, and critique is the subject of the course, and your AI usage is itself graded.
+**The Use of Generative AI Tools in the Classroom and Assignments.** This class requires the use of generative AI. However:
 
-Three rules are absolute:
+- **Every factual claim in submitted assignments needs to be manually verified.** AI generates confident, plausible, and often fabricated citations and claims. Whenever you submit an assignment, you are responsible for verifying the accuracy of the claims.
+- **Your AI-usage documentation must be truthful.** The build log and the AI-usage report are graded on insight, and not on how little AI you used. There is no advantage to understating usage. More thoughtful and creative use of AI is encouraged.
+- **No AI-slop.** By now you have likely realized that writing generated by AI is often difficult to read, or convoluted in its logic and evidence. For written assignments, I encourage you to plan and write without AI, and to use AI only for revising and iterating on arguments and flow. This tends to significantly improve the quality of your writing.
+- **UTD policy.** Please review the university policy on generative AI use in academic work.
 
-1. **All interview and user-test evidence must come from real humans.** AI-generated personas are useful for rehearsal and are never admissible as data.
-2. **Every factual claim in graded work needs a checkable source.** AI generates confident, plausible, and sometimes fabricated citations. You are graded on its errors exactly as if they were your own, because they are. Fabricated citations are an academic integrity matter.
-3. **Your AI-usage documentation must be truthful.** The build log and the prompt book are graded on insight, not on how little AI you used. There is no advantage to understating it.
-
-Oral defense is how these rules are enforced. Any team member may be asked any question about any part of a submission during demo or pitch questioning.
-
-**The Use of Smart Devices in the Classroom.** This course has two halves and two different rules.
-
-During the **concept and discussion portion**, devices are closed. Laptops down, phones away, except in a personal emergency. Discussion works when people are looking at each other, and a room full of open laptops is a room where nobody is arguing with anybody.
-
-During the **lab portion**, laptops are open and expected. That is the entire point of the lab.
-
-I will say clearly when we move from one to the other. Using devices during the concept portion will reduce your participation points.
+**The Use of Smart Devices in the Classroom.** Electronic devices can disrupt learning for everyone in the classroom, particularly in a discussion-based course where full engagement matters. For this reason, no devices (including phones, laptops, or tablets) are allowed in the classroom, except during lab sessions (the second half of class) and personal emergencies as defined next. A device may be used briefly for a personal emergency, such as a health, family, or childcare situation. Where possible, please notify me before class if you expect to need this. Students with an approved accommodation through the AccessAbility Resource Center (ARC) that requires device use, such as for note-taking, should contact me directly to arrange this. Printed or hand-written notes are permitted. Slides will be posted to Canvas within 24 hours of class. If a device is used outside of these exceptions, you will first receive a reminder. Repeated instances will result in a large reduction of participation points.
 
 **University Course Policies.** Information contained in the following link constitutes additional University policies and procedures. Please see the UT Dallas Syllabus Policies webpage: https://go.utdallas.edu/syllabus-policies.
 

@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { getSyllabus, type SessionRow, type BuildArc } from "@/lib/content/syllabus";
+import { getSyllabus, forTrack, DEFAULT_TRACK, type SessionRow, type BuildArc } from "@/lib/content/syllabus";
+import { getTrack, type Track } from "@/lib/track";
 import { getReadingLinks } from "@/lib/content/reading-links";
 import {
   getScheduleStatus,
@@ -12,24 +13,22 @@ import {
 } from "@/lib/schedule-status";
 import { renderInlineMarkdown, stripMarkdownBold } from "@/lib/content/inline-markdown";
 
-// "Current session" only changes week to week — hourly revalidation keeps
-// this page accurate without opting the whole site into per-request rendering.
-export const revalidate = 3600;
-
-export default function HomePage() {
+export default async function HomePage() {
   const syllabus = getSyllabus();
+  const track = await getTrack();
+  const sessions = forTrack(syllabus.sessions, track);
   const now = new Date();
-  const status = getScheduleStatus(syllabus.sessions, now);
-  const deadline = getNextDeadline(syllabus.sessions, now);
+  const status = getScheduleStatus(sessions, now);
+  const deadline = getNextDeadline(sessions, now);
   const readingLinks = getReadingLinks();
 
   return (
     <main className="mx-auto flex w-full max-w-4xl flex-1 flex-col gap-10 px-6 py-12">
-      <ThisWeekPanel status={status} readingLinks={readingLinks} />
+      <ThisWeekPanel status={status} readingLinks={readingLinks} lastDate={sessions[sessions.length - 1]?.date ?? ""} />
       {deadline && <NextDeadlineCallout deadline={deadline} />}
-      <BuildArcTimeline sessions={syllabus.sessions} arcs={syllabus.buildArcs} />
+      <BuildArcTimeline sessions={sessions} arcs={syllabus.buildArcs} />
       <QuickLinks />
-      <InstructorBlock syllabus={syllabus} />
+      <InstructorBlock syllabus={syllabus} track={track} />
     </main>
   );
 }
@@ -41,9 +40,11 @@ export default function HomePage() {
 function ThisWeekPanel({
   status,
   readingLinks,
+  lastDate,
 }: {
   status: ScheduleStatus;
   readingLinks: ReturnType<typeof getReadingLinks>;
+  lastDate: string;
 }) {
   if (status.phase === "before") {
     return (
@@ -75,8 +76,8 @@ function ThisWeekPanel({
           That&rsquo;s the semester
         </h2>
         <p className="mt-3 max-w-xl text-ink-soft">
-          Final Venture Packages, build logs, and peer evaluations were due 12/11. Thank you for
-          building something real this semester.
+          Final Venture Packages, build logs, and peer evaluations were due {lastDate}. Thank you
+          for building something real this semester.
         </p>
       </section>
     );
@@ -189,7 +190,8 @@ function BuildArcTimeline({ sessions, arcs }: { sessions: SessionRow[]; arcs: Bu
     <section>
       <h3 className="font-heading text-lg font-semibold text-green-900">The two build arcs</h3>
       <p className="mt-1 text-sm text-ink-soft">
-        Weeks 1–3 and 12–14 sit outside both arcs — foundations and the pitch.
+        The sessions before and after the shaded bands sit outside both arcs: foundations at the
+        start, and the pitch at the end.
       </p>
 
       <div className="mt-4 min-w-[560px] overflow-x-auto pb-2">
@@ -276,7 +278,15 @@ function QuickLinks() {
 
 const NAME_TITLES = /^(Professor|Prof\.?|Dr\.?|Mr\.?|Mrs\.?|Ms\.?)$/i;
 
-function InstructorBlock({ syllabus }: { syllabus: ReturnType<typeof getSyllabus> }) {
+function InstructorBlock({
+  syllabus,
+  track,
+}: {
+  syllabus: ReturnType<typeof getSyllabus>;
+  track: Track | null;
+}) {
+  const meeting = forTrack(syllabus.classMeeting, track);
+  const code = forTrack(syllabus.courseCode, track);
   const nameWords = syllabus.instructor.name.split(" ").filter((w) => !NAME_TITLES.test(w));
   const initials = [nameWords[0], nameWords[nameWords.length - 1]]
     .filter(Boolean)
@@ -294,9 +304,9 @@ function InstructorBlock({ syllabus }: { syllabus: ReturnType<typeof getSyllabus
         <p>
           Office: {syllabus.instructor.office} · Office hours: {syllabus.officeHoursSlot}
         </p>
-        {syllabus.classMeeting && (
+        {meeting && (
           <p>
-            Class: {syllabus.classMeeting.dayTime}, {syllabus.classMeeting.room}
+            Class ({code.label}): {meeting.dayTime}, {meeting.room}
           </p>
         )}
         <p>TA: {syllabus.ta}</p>

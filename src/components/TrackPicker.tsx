@@ -3,7 +3,13 @@
 import { useRouter } from "next/navigation";
 import { type Track, setTrackCookie } from "@/lib/track";
 
-export function TrackPicker() {
+export function TrackPicker({
+  gradLabel,
+  undergradLabel,
+}: {
+  gradLabel: string;
+  undergradLabel: string;
+}) {
   const router = useRouter();
 
   function choose(track: Track) {
@@ -20,7 +26,7 @@ export function TrackPicker() {
         <span className="block font-heading text-lg font-semibold">
           Graduate section
         </span>
-        <span className="block text-sm text-paper/80">MIS 6361</span>
+        <span className="block text-sm text-paper/80">{gradLabel}</span>
       </button>
       <button
         onClick={() => choose("undergrad")}
@@ -29,7 +35,7 @@ export function TrackPicker() {
         <span className="block font-heading text-lg font-semibold">
           Undergraduate section
         </span>
-        <span className="block text-sm text-paper/80">ENTP 4332 / ITSS 4332</span>
+        <span className="block text-sm text-paper/80">{undergradLabel}</span>
       </button>
     </div>
   );
