@@ -1,16 +1,15 @@
 import Link from "next/link";
-import { getSyllabus, forTrack, DEFAULT_TRACK, type SessionRow, type BuildArc } from "@/lib/content/syllabus";
+import { getSyllabus, forTrack, DEFAULT_TRACK, type SessionRow } from "@/lib/content/syllabus";
 import { getTrack, type Track } from "@/lib/track";
 import { getReadingLinks } from "@/lib/content/reading-links";
 import {
   getScheduleStatus,
   getNextDeadline,
   getTemporalStatus,
-  sessionArcIndex,
-  parseArcRange,
   type ScheduleStatus,
   type Deadline,
 } from "@/lib/schedule-status";
+import { syllabusPdf } from "@/lib/syllabus-pdf";
 import { renderInlineMarkdown, stripMarkdownBold } from "@/lib/content/inline-markdown";
 
 export default async function HomePage() {
@@ -21,12 +20,19 @@ export default async function HomePage() {
   const status = getScheduleStatus(sessions, now);
   const deadline = getNextDeadline(sessions, now);
   const readingLinks = getReadingLinks();
+  const pdf = syllabusPdf(track);
 
   return (
     <main className="mx-auto flex w-full max-w-4xl flex-1 flex-col gap-10 px-6 py-12">
-      <ThisWeekPanel status={status} readingLinks={readingLinks} lastDate={sessions[sessions.length - 1]?.date ?? ""} />
+      <ThisWeekPanel
+        status={status}
+        readingLinks={readingLinks}
+        lastDate={sessions[sessions.length - 1]?.date ?? ""}
+        pdf={pdf}
+      />
       {deadline && <NextDeadlineCallout deadline={deadline} />}
-      <BuildArcTimeline sessions={sessions} arcs={syllabus.buildArcs} />
+      <SyllabusCallout pdf={pdf} />
+      <ModuleTimeline sessions={sessions} />
       <QuickLinks />
       <InstructorBlock syllabus={syllabus} track={track} />
     </main>
@@ -41,38 +47,42 @@ function ThisWeekPanel({
   status,
   readingLinks,
   lastDate,
+  pdf,
 }: {
   status: ScheduleStatus;
   readingLinks: ReturnType<typeof getReadingLinks>;
   lastDate: string;
+  pdf: { href: string; label: string };
 }) {
   if (status.phase === "before") {
     return (
-      <section className="rounded-[var(--radius-site)] border-2 border-green-900 bg-paper-dim/60 p-8">
-        <p className="text-sm uppercase tracking-[0.15em] text-orange-700">
+      <section className="rounded-[var(--radius-site)] border border-line bg-surface p-8">
+        <p className="text-sm uppercase tracking-[0.15em] text-ink-soft">
           {status.daysUntil} day{status.daysUntil === 1 ? "" : "s"} until Session 1
         </p>
-        <h2 className="mt-2 font-heading text-2xl font-semibold text-green-900">
+        <h2 className="mt-2 font-heading text-2xl font-semibold text-ink">
           Before the semester starts
         </h2>
         <p className="mt-3 max-w-xl text-ink-soft">
-          Get your toolchain working before {status.firstSession.date}: Claude Code, VS Code, and
-          your GitHub, Vercel, and Supabase accounts.
+          There is nothing to install yet. Before {status.firstSession.date}, all you need to do is
+          read the syllabus.
         </p>
-        <Link
-          href="/resources/handbook#part-1-setup"
-          className="mt-4 inline-block rounded-[var(--radius-site)] border border-green-900 bg-green-900 px-4 py-2 text-sm text-paper transition-colors hover:bg-green-700"
+        <a
+          href={pdf.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-4 inline-block rounded-[var(--radius-site)] border border-ink bg-ink px-4 py-2 text-sm text-bg transition-colors hover:bg-ink-soft"
         >
-          Read the setup checklist (Handbook Part 1) →
-        </Link>
+          Read the syllabus ({pdf.label}) →
+        </a>
       </section>
     );
   }
 
   if (status.phase === "after") {
     return (
-      <section className="rounded-[var(--radius-site)] border-2 border-green-900 bg-paper-dim/60 p-8">
-        <h2 className="font-heading text-2xl font-semibold text-green-900">
+      <section className="rounded-[var(--radius-site)] border border-line bg-surface p-8">
+        <h2 className="font-heading text-2xl font-semibold text-ink">
           That&rsquo;s the semester
         </h2>
         <p className="mt-3 max-w-xl text-ink-soft">
@@ -87,17 +97,17 @@ function ThisWeekPanel({
   const readings = session.number !== null ? readingLinks.get(session.number) : undefined;
 
   return (
-    <section className="rounded-[var(--radius-site)] border-2 border-green-900 bg-paper-dim/60 p-8">
-      <p className="text-sm uppercase tracking-[0.15em] text-orange-700">
+    <section className="rounded-[var(--radius-site)] border border-line bg-surface p-8">
+      <p className="text-sm uppercase tracking-[0.15em] text-ink-soft">
         {session.moduleName} · {session.date}
       </p>
-      <h2 className="mt-2 font-heading text-2xl font-semibold text-green-900">
+      <h2 className="mt-2 font-heading text-2xl font-semibold text-ink">
         {session.number !== null ? `Session ${session.number} — ` : ""}
         {renderInlineMarkdown(session.topic)}
       </h2>
 
       {session.due && (
-        <p className="mt-3 text-sm font-medium text-orange-700">
+        <p className="mt-3 inline-flex items-center gap-2 rounded-full bg-ink px-3 py-1 text-sm font-medium text-bg">
           Due: {stripMarkdownBold(session.due)}
         </p>
       )}
@@ -132,7 +142,7 @@ function ThisWeekPanel({
       {session.number !== null && (
         <Link
           href={`/sessions/${session.number}`}
-          className="mt-5 inline-block text-sm text-green-900 underline"
+          className="mt-5 inline-block text-sm text-ink underline"
         >
           Full session details →
         </Link>
@@ -158,9 +168,9 @@ function NextDeadlineCallout({ deadline }: { deadline: Deadline }) {
     <section className="flex items-center justify-between rounded-[var(--radius-site)] border border-line bg-transparent px-6 py-4">
       <div>
         <p className="text-xs uppercase tracking-[0.15em] text-ink-soft">Next deadline</p>
-        <p className="font-heading text-lg text-green-900">{deadline.label}</p>
+        <p className="font-heading text-lg text-ink">{deadline.label}</p>
       </div>
-      <p className="whitespace-nowrap text-sm text-orange-700">
+      <p className="whitespace-nowrap text-sm text-ink-soft">
         {deadline.daysUntil <= 0
           ? "today"
           : `${deadline.daysUntil} day${deadline.daysUntil === 1 ? "" : "s"}`}
@@ -170,79 +180,155 @@ function NextDeadlineCallout({ deadline }: { deadline: Deadline }) {
 }
 
 // ---------------------------------------------------------------------------
-// Build arc timeline
+// Syllabus
 // ---------------------------------------------------------------------------
 
-const ARC_BAND_STYLES = ["bg-orange-500 text-paper", "bg-green-700 text-paper"];
-const ARC_TICK_STYLES = [
-  "border-orange-700 bg-orange-200/50 text-orange-700",
-  "border-green-700 bg-green-500/15 text-green-700",
-];
+function SyllabusCallout({ pdf }: { pdf: { href: string; label: string } }) {
+  return (
+    <a
+      href={pdf.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group flex items-center justify-between gap-4 rounded-[var(--radius-site)] border border-ink bg-ink px-6 py-5 text-bg transition-colors hover:bg-ink-soft"
+    >
+      <div>
+        <p className="text-xs uppercase tracking-[0.15em] text-bg/70">Start here</p>
+        <p className="mt-1 font-heading text-lg font-semibold">
+          Syllabus, {pdf.label} section
+        </p>
+        <p className="mt-0.5 text-sm text-bg/70">
+          The official PDF. Everything on this site is drawn from it.
+        </p>
+      </div>
+      <span className="shrink-0 text-sm underline underline-offset-4">Open PDF →</span>
+    </a>
+  );
+}
 
-function BuildArcTimeline({ sessions, arcs }: { sessions: SessionRow[]; arcs: BuildArc[] }) {
+// ---------------------------------------------------------------------------
+// Module timeline
+// ---------------------------------------------------------------------------
+
+/** Four steps of the neutral ramp, light to dark, one per module. */
+const MODULE_BAND = [
+  "bg-line text-ink",
+  "bg-line-strong text-ink",
+  "bg-ink-faint text-bg",
+  "bg-ink text-bg",
+];
+const MODULE_TICK = [
+  "border-line bg-line/40 text-ink-soft",
+  "border-line-strong bg-line-strong/40 text-ink",
+  "border-ink-faint bg-ink-faint/25 text-ink",
+  "border-ink bg-ink/10 text-ink",
+];
+const MODULE_SWATCH = ["bg-line", "bg-line-strong", "bg-ink-faint", "bg-ink"];
+
+type ModuleBand = { number: number; name: string; first: number; last: number };
+
+function moduleBands(sessions: SessionRow[]): ModuleBand[] {
+  const byNumber = new Map<number, ModuleBand>();
+  for (const s of sessions) {
+    if (s.number === null) continue;
+    const existing = byNumber.get(s.moduleNumber);
+    // "Module 2: Building with Strategic Intent" -> drop the redundant prefix.
+    const name = s.moduleName.replace(/^Module\s*\d+:\s*/, "");
+    if (!existing) {
+      byNumber.set(s.moduleNumber, {
+        number: s.moduleNumber,
+        name,
+        first: s.number,
+        last: s.number,
+      });
+    } else {
+      existing.first = Math.min(existing.first, s.number);
+      existing.last = Math.max(existing.last, s.number);
+    }
+  }
+  return [...byNumber.values()].sort((a, b) => a.first - b.first);
+}
+
+function ModuleTimeline({ sessions }: { sessions: SessionRow[] }) {
   const now = new Date();
   const realSessions = sessions
     .filter((s): s is SessionRow & { number: number } => s.number !== null)
     .sort((a, b) => a.number - b.number);
-  const totalSessions = realSessions.length;
+  const bands = moduleBands(sessions);
+  const total = realSessions.length;
+  const firstNumber = realSessions[0]?.number ?? 1;
+
+  // Grid columns are 1-indexed off the first session, so a course that ever
+  // starts numbering somewhere other than 1 still lines up.
+  const col = (n: number) => n - firstNumber + 1;
 
   return (
     <section>
-      <h3 className="font-heading text-lg font-semibold text-green-900">The two build arcs</h3>
+      <h3 className="font-heading text-lg font-semibold text-ink">The four modules</h3>
       <p className="mt-1 text-sm text-ink-soft">
-        The sessions before and after the shaded bands sit outside both arcs: foundations at the
-        start, and the pitch at the end.
+        Every session belongs to one module, and each module answers one question.
       </p>
 
-      <div className="mt-4 min-w-[560px] overflow-x-auto pb-2">
-        {/* Arc bands, spanning their session-number range */}
-        <div
-          className="grid h-7 gap-1"
-          style={{ gridTemplateColumns: `repeat(${totalSessions}, minmax(2.25rem, 1fr))` }}
-        >
-          {arcs.map((arc, i) => {
-            const range = parseArcRange(arc.label);
-            if (!range) return null;
-            const label = arc.label
-              .replace(/^Weeks?\s+\S+\s+(?:and|through)\s+\S+\s+are\s+/i, "")
-              .replace(/\.$/, "");
-            return (
+      <div className="mt-4 overflow-x-auto pb-2">
+        <div className="min-w-[560px]">
+          <div
+            className="grid h-7 gap-1"
+            style={{ gridTemplateColumns: `repeat(${total}, minmax(2.25rem, 1fr))` }}
+          >
+            {bands.map((b, i) => (
               <div
-                key={arc.label}
-                style={{ gridColumn: `${range[0]} / ${range[1] + 1}` }}
-                className={`flex items-center justify-center rounded-md text-[10px] font-semibold uppercase tracking-wide ${ARC_BAND_STYLES[i]}`}
+                key={b.number}
+                style={{ gridColumn: `${col(b.first)} / ${col(b.last) + 1}` }}
+                title={`Module ${b.number}: ${b.name}`}
+                className={`flex items-center justify-center overflow-hidden whitespace-nowrap rounded-md px-2 text-[10px] font-semibold uppercase tracking-wide ${MODULE_BAND[i % 4]}`}
               >
-                {label}
+                Module {b.number}
               </div>
-            );
-          })}
-        </div>
+            ))}
+          </div>
 
-        {/* Session ticks, aligned to the same grid columns */}
-        <div
-          className="mt-1 grid gap-1"
-          style={{ gridTemplateColumns: `repeat(${totalSessions}, minmax(2.25rem, 1fr))` }}
-        >
-          {realSessions.map((s) => {
-            const arcIdx = sessionArcIndex(arcs, s.number);
-            const temporal = getTemporalStatus(s.dateObj, now);
-            const style = arcIdx !== null ? ARC_TICK_STYLES[arcIdx] : "border-line bg-paper-dim text-ink-soft";
+          <div
+            className="mt-1 grid gap-1"
+            style={{ gridTemplateColumns: `repeat(${total}, minmax(2.25rem, 1fr))` }}
+          >
+            {realSessions.map((s) => {
+              const bandIdx = bands.findIndex((b) => b.number === s.moduleNumber);
+              const temporal = getTemporalStatus(s.dateObj, now);
+              const style = MODULE_TICK[(bandIdx < 0 ? 0 : bandIdx) % 4];
 
-            return (
-              <div
-                key={s.number}
-                title={`${s.date} — ${s.topic.replace(/\*\*/g, "")}`}
-                className={`flex flex-col items-center rounded-md border px-1 py-1.5 text-center text-[10px] ${style} ${
-                  temporal === "past" ? "opacity-40" : ""
-                } ${temporal === "current" ? "ring-2 ring-green-900" : ""}`}
-              >
-                <span className="font-semibold">{s.number}</span>
-                <span className="mt-0.5 whitespace-nowrap">{s.date}</span>
-              </div>
-            );
-          })}
+              return (
+                <Link
+                  key={s.number}
+                  href={`/sessions/${s.number}`}
+                  title={`${s.date} — ${s.topic.replace(/\*\*/g, "")}`}
+                  className={`flex flex-col items-center rounded-md border px-1 py-1.5 text-center text-[10px] transition-colors hover:border-ink ${style} ${
+                    temporal === "past" ? "opacity-40" : ""
+                  } ${temporal === "current" ? "ring-2 ring-ink" : ""}`}
+                >
+                  <span className="font-semibold">{s.number}</span>
+                  <span className="mt-0.5 whitespace-nowrap">{s.date}</span>
+                </Link>
+              );
+            })}
+          </div>
         </div>
       </div>
+
+      <ul className="mt-4 space-y-1.5 text-sm">
+        {bands.map((b, i) => (
+          <li key={b.number} className="flex items-baseline gap-2.5">
+            <span
+              className={`mt-1 h-2.5 w-2.5 shrink-0 rounded-sm ${MODULE_SWATCH[i % 4]}`}
+              aria-hidden="true"
+            />
+            <span className="text-ink">
+              Module {b.number}: {b.name}
+            </span>
+            <span className="text-ink-faint">
+              {b.first === b.last ? `Session ${b.first}` : `Sessions ${b.first}\u2013${b.last}`}
+            </span>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }
@@ -263,7 +349,7 @@ function QuickLinks() {
         <Link
           key={l.href}
           href={l.href}
-          className="font-heading text-lg text-green-900 underline decoration-line underline-offset-4 transition-colors hover:decoration-green-900"
+          className="font-heading text-lg text-ink underline decoration-line underline-offset-4 transition-colors hover:decoration-ink"
         >
           {l.label}
         </Link>
@@ -295,7 +381,7 @@ function InstructorBlock({
 
   return (
     <section className="flex flex-col gap-4 border-t border-line pt-8 sm:flex-row sm:items-center">
-      <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-green-900 font-heading text-xl text-paper">
+      <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-ink font-heading text-xl text-bg">
         {initials}
       </div>
       <div className="text-sm text-ink-soft">

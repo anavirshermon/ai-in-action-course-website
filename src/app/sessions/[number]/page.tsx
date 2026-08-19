@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import { getSyllabus, forTrack, DEFAULT_TRACK } from "@/lib/content/syllabus";
 import { getTrack } from "@/lib/track";
 import { getReadingLinks } from "@/lib/content/reading-links";
-import { sessionArcIndex } from "@/lib/schedule-status";
 import { splitSessionCover, matchAssignment } from "@/lib/content/session-detail";
 import { resolveHandbookMentions, isHandbookMention } from "@/lib/content/handbook-links";
 import { renderInlineMarkdown, stripMarkdownBold } from "@/lib/content/inline-markdown";
@@ -37,9 +36,6 @@ export default async function SessionDetailPage({
   const prev = idx > 0 ? realSessions[idx - 1] : null;
   const next = idx < realSessions.length - 1 ? realSessions[idx + 1] : null;
 
-  const arcIdx = sessionArcIndex(syllabus.buildArcs, session.number);
-  const arc = arcIdx !== null ? syllabus.buildArcs[arcIdx] : null;
-
   const { concept, buildTechnique, lab } = splitSessionCover(session.whatWeCover);
   const readings = getReadingLinks().get(sessionNumber);
   const assignment = session.due ? matchAssignment(session.due) : null;
@@ -50,17 +46,16 @@ export default async function SessionDetailPage({
         ← All sessions
       </Link>
 
-      <p className="mt-4 text-sm uppercase tracking-[0.15em] text-orange-700">
+      <p className="mt-4 text-sm uppercase tracking-[0.15em] text-ink-soft">
         {(track ?? DEFAULT_TRACK) === "grad" ? "Graduate" : "Undergraduate"} · {session.moduleName} ·{" "}
         {session.date}
-        {arc && ` · ${arc.label.replace(/\.$/, "")}`}
       </p>
-      <h1 className="mt-2 font-heading text-3xl font-semibold text-green-900">
+      <h1 className="mt-2 font-heading text-3xl font-semibold text-ink">
         Session {session.number} — {renderInlineMarkdown(session.topic)}
       </h1>
 
       {session.due && (
-        <p className="mt-4 rounded-[var(--radius-site)] border border-orange-500 bg-orange-200/30 px-4 py-2 text-sm font-medium text-orange-700">
+        <p className="mt-4 rounded-[var(--radius-site)] border-l-2 border-ink bg-surface px-4 py-2 text-sm font-medium text-ink">
           Due: {assignment ? (
             <Link href={`/resources/assignments#${assignment.slug}`} className="underline">
               {stripMarkdownBold(session.due)}

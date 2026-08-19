@@ -21,21 +21,21 @@ export function TrackPicker({
     <div className="flex flex-col gap-4 sm:flex-row">
       <button
         onClick={() => choose("grad")}
-        className="rounded-[var(--radius-site)] border border-green-900 bg-green-900 px-8 py-4 text-left text-paper transition-colors hover:bg-green-700"
+        className="rounded-[var(--radius-site)] border border-ink bg-ink px-8 py-4 text-left text-bg transition-colors hover:bg-ink-soft"
       >
         <span className="block font-heading text-lg font-semibold">
           Graduate section
         </span>
-        <span className="block text-sm text-paper/80">{gradLabel}</span>
+        <span className="block text-sm text-bg/70">{gradLabel}</span>
       </button>
       <button
         onClick={() => choose("undergrad")}
-        className="rounded-[var(--radius-site)] border border-orange-700 bg-orange-700 px-8 py-4 text-left text-paper transition-colors hover:bg-orange-500"
+        className="rounded-[var(--radius-site)] border border-ink bg-transparent px-8 py-4 text-left text-ink transition-colors hover:bg-surface"
       >
         <span className="block font-heading text-lg font-semibold">
           Undergraduate section
         </span>
-        <span className="block text-sm text-paper/80">{undergradLabel}</span>
+        <span className="block text-sm text-ink-faint">{undergradLabel}</span>
       </button>
     </div>
   );

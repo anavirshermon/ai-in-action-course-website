@@ -6,7 +6,7 @@ export default function PromptsPage() {
 
   return (
     <main className="mx-auto w-full max-w-3xl flex-1 px-6 py-12">
-      <h1 className="font-heading text-3xl font-semibold text-green-900">Prompt library</h1>
+      <h1 className="font-heading text-3xl font-semibold text-ink">Prompt library</h1>
       <p className="mt-2 text-ink-soft">
         Every copy-paste prompt from the Handbook, grouped by part. {handbook.prompts.length} total.
       </p>
@@ -20,7 +20,7 @@ export default function PromptsPage() {
 
           return (
             <div key={section.title}>
-              <p className="text-sm font-semibold uppercase tracking-wide text-orange-700">
+              <p className="text-sm font-semibold uppercase tracking-wide text-ink-soft">
                 {section.title}
               </p>
               {partsWithPrompts.map((part) => {

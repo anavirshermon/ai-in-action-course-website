@@ -1,63 +1,48 @@
 @import "tailwindcss";
 
+/* Monochrome. There is deliberately no accent hue anywhere in this palette:
+ * emphasis comes from weight, fill, and the neutral ramp, never from color. */
 :root {
-  /* Paper + ink */
-  --paper: #f6f2e8;
-  --paper-dim: #eee6d4;
-  --ink: #211d17;
-  --ink-soft: #5b5449;
+  --bg: #fafafa;
+  --surface: #f2f2f2;
 
-  /* UT Dallas green + orange, muted and desaturated */
-  --green-900: #1e3a2c;
-  --green-700: #33553f;
-  --green-500: #587361;
-  --orange-700: #a1531f;
-  --orange-500: #c67d43;
-  --orange-200: #e6c9a4;
+  --ink: #0a0a0a;
+  --ink-soft: #4a4a4a;
+  --ink-faint: #8e8e8e;
 
-  --line: #ddd0b8;
+  --line: #e2e2e2;
+  --line-strong: #c4c4c4;
+
   --radius: 8px;
 }
 
 @theme inline {
-  --color-paper: var(--paper);
-  --color-paper-dim: var(--paper-dim);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
-  --color-green-900: var(--green-900);
-  --color-green-700: var(--green-700);
-  --color-green-500: var(--green-500);
-  --color-orange-700: var(--orange-700);
-  --color-orange-500: var(--orange-500);
-  --color-orange-200: var(--orange-200);
+  --color-ink-faint: var(--ink-faint);
   --color-line: var(--line);
-  --font-heading: var(--font-fraunces);
-  --font-body: var(--font-public-sans);
+  --color-line-strong: var(--line-strong);
+  --font-heading: var(--font-instrument-sans);
+  --font-body: var(--font-instrument-sans);
   --radius-site: var(--radius);
 }
 
 body {
-  background: var(--paper);
-  color: var(--ink);
+  background: var(--bg);
+  color: var(--ink-soft);
   font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 h1,
 h2,
 h3,
 h4 {
-  font-family: var(--font-heading), Georgia, serif;
-  letter-spacing: -0.01em;
-}
-
-/* Subtle paper texture so the glass nav has something to blur against */
-.site-texture {
-  background-image: radial-gradient(
-      circle at 15% 10%,
-      rgba(30, 58, 44, 0.05),
-      transparent 40%
-    ),
-    radial-gradient(circle at 85% 0%, rgba(198, 125, 67, 0.06), transparent 45%);
+  font-family: var(--font-heading), ui-sans-serif, system-ui, sans-serif;
+  color: var(--ink);
+  letter-spacing: -0.021em;
 }
 
 /* Markdown-rendered prose (Handbook, Assignments, Reference) */
@@ -65,9 +50,10 @@ h4 {
 .prose-site h2,
 .prose-site h3,
 .prose-site h4 {
-  color: var(--green-900);
+  color: var(--ink);
   margin-top: 1.5em;
   margin-bottom: 0.5em;
+  letter-spacing: -0.021em;
 }
 .prose-site h1 {
   font-size: 1.75rem;
@@ -98,12 +84,19 @@ h4 {
 .prose-site li {
   margin-top: 0.25em;
 }
+/* Links are underlined ink rather than a colored accent. */
 .prose-site a {
-  color: var(--orange-700);
+  color: var(--ink);
   text-decoration: underline;
+  text-decoration-color: var(--line-strong);
+  text-underline-offset: 3px;
+}
+.prose-site a:hover {
+  text-decoration-color: var(--ink);
 }
 .prose-site strong {
   color: var(--ink);
+  font-weight: 600;
 }
 .prose-site table {
   width: 100%;
@@ -117,11 +110,14 @@ h4 {
   padding: 0.4em 0.6em;
   text-align: left;
 }
+.prose-site th {
+  color: var(--ink);
+  font-weight: 600;
+}
 .prose-site blockquote {
-  border-left: 3px solid var(--line);
+  border-left: 2px solid var(--line-strong);
   padding-left: 1em;
   color: var(--ink-soft);
-  font-style: italic;
 }
 .prose-site hr {
   border: none;

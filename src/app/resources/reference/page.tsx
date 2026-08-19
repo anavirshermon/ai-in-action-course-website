@@ -1,5 +1,6 @@
 import { getSyllabus, forTrack } from "@/lib/content/syllabus";
 import { getTrack } from "@/lib/track";
+import { syllabusPdf, allSyllabusPdfs } from "@/lib/syllabus-pdf";
 import { getReadingLinks } from "@/lib/content/reading-links";
 import { getHandbook } from "@/lib/content/handbook";
 import { Markdown } from "@/components/Markdown";
@@ -21,7 +22,7 @@ function EvaluationTable({ title, rows }: { title: string; rows: { assessment: s
           {rows.map((r) => (
             <tr key={r.assessment}>
               <td className="border-b border-line py-1.5 pr-2">{r.assessment}</td>
-              <td className="border-b border-line py-1.5 pr-2 text-orange-700">{r.weight}</td>
+              <td className="border-b border-line py-1.5 pr-2 text-ink-soft">{r.weight}</td>
               <td className="border-b border-line py-1.5 text-ink-soft">{r.due}</td>
             </tr>
           ))}
@@ -44,7 +45,7 @@ export default async function ReferencePage() {
 
   return (
     <main className="mx-auto w-full max-w-3xl flex-1 px-6 py-12">
-      <h1 className="font-heading text-3xl font-semibold text-green-900">Reference</h1>
+      <h1 className="font-heading text-3xl font-semibold text-ink">Reference</h1>
 
       <nav className="mt-4 flex flex-wrap gap-4 text-sm text-ink-soft">
         <a href="#syllabus" className="underline hover:text-ink">Syllabus</a>
@@ -56,6 +57,23 @@ export default async function ReferencePage() {
 
       <section id="syllabus" className="mt-10 scroll-mt-24 border-t border-line pt-8">
         <h2 className="font-heading text-2xl font-semibold text-ink">Syllabus</h2>
+
+        <div className="mt-3 flex flex-wrap gap-2">
+          {(track ? [syllabusPdf(track)] : allSyllabusPdfs()).map((pdf) => (
+            <a
+              key={pdf.href}
+              href={pdf.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block rounded-[var(--radius-site)] border border-ink bg-ink px-4 py-2 text-sm text-bg transition-colors hover:bg-ink-soft"
+            >
+              Official PDF, {pdf.label} section →
+            </a>
+          ))}
+        </div>
+        <p className="mt-2 text-sm text-ink-faint">
+          The PDF is the authoritative version. Everything else on this site is drawn from it.
+        </p>
         {(track ? [track] : (["grad", "undergrad"] as const)).map((t) => (
           <p key={t} className="mt-1 text-sm text-ink-soft">
             {syllabus.courseCode[t].label} · {syllabus.classMeeting[t]?.dayTime},{" "}

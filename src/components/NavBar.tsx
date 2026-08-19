@@ -10,6 +10,7 @@ const links = [
   { href: "/sessions", label: "Sessions" },
   { href: "/resources", label: "Resources" },
   { href: "/announcements", label: "Announcements" },
+  { href: "/resources/reference#syllabus", label: "Syllabus" },
 ];
 
 type Listener = () => void;
@@ -32,11 +33,11 @@ function getServerSnapshot(): Track | null {
 
 function TrackToggle({ track, choose }: { track: Track; choose: (t: Track) => void }) {
   return (
-    <div className="flex items-center gap-1 rounded-full border border-line/70 bg-paper-dim/60 p-0.5 text-xs">
+    <div className="flex items-center gap-1 rounded-full border border-line/70 bg-surface p-0.5 text-xs">
       <button
         onClick={() => choose("grad")}
         className={`rounded-full px-2.5 py-1 transition-colors ${
-          track === "grad" ? "bg-green-900 text-paper" : "text-ink-soft hover:text-ink"
+          track === "grad" ? "bg-ink text-bg" : "text-ink-soft hover:text-ink"
         }`}
       >
         Grad
@@ -44,7 +45,7 @@ function TrackToggle({ track, choose }: { track: Track; choose: (t: Track) => vo
       <button
         onClick={() => choose("undergrad")}
         className={`rounded-full px-2.5 py-1 transition-colors ${
-          track === "undergrad" ? "bg-green-900 text-paper" : "text-ink-soft hover:text-ink"
+          track === "undergrad" ? "bg-ink text-bg" : "text-ink-soft hover:text-ink"
         }`}
       >
         UG
@@ -89,10 +90,10 @@ export function NavBar() {
   return (
     <div className="sticky top-4 z-50 flex justify-center px-4">
       <div className="w-full max-w-4xl">
-        <nav className="flex items-center justify-between gap-6 rounded-[var(--radius-site)] border border-line/70 bg-paper/70 px-5 py-3 shadow-[0_1px_0_rgba(0,0,0,0.02)] backdrop-blur-md">
+        <nav className="flex items-center justify-between gap-6 rounded-[var(--radius-site)] border border-line/70 bg-bg/80 px-5 py-3 shadow-[0_1px_0_rgba(0,0,0,0.02)] backdrop-blur-md">
           <Link
             href="/"
-            className="font-heading text-sm font-semibold tracking-tight text-green-900"
+            className="font-heading text-sm font-semibold tracking-tight text-ink"
           >
             AI in Action
           </Link>
@@ -123,13 +124,13 @@ export function NavBar() {
         </nav>
 
         {mobileOpen && (
-          <div className="mt-2 flex flex-col gap-1 rounded-[var(--radius-site)] border border-line/70 bg-paper/95 p-3 text-sm shadow-sm backdrop-blur-md sm:hidden">
+          <div className="mt-2 flex flex-col gap-1 rounded-[var(--radius-site)] border border-line/70 bg-bg/95 p-3 text-sm shadow-sm backdrop-blur-md sm:hidden">
             {links.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="rounded-md px-3 py-2 text-ink-soft transition-colors hover:bg-paper-dim/60 hover:text-ink"
+                className="rounded-md px-3 py-2 text-ink-soft transition-colors hover:bg-surface hover:text-ink"
               >
                 {link.label}
               </Link>

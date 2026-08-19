@@ -23,7 +23,7 @@ export default async function AssignmentsPage() {
 
   return (
     <main className="mx-auto w-full max-w-3xl flex-1 px-6 py-12">
-      <h1 className="font-heading text-3xl font-semibold text-green-900">Assignments</h1>
+      <h1 className="font-heading text-3xl font-semibold text-ink">Assignments</h1>
       {intro["Read this first"] && (
         <Markdown source={filterTrackProse(intro["Read this first"], track)} />
       )}
@@ -31,7 +31,7 @@ export default async function AssignmentsPage() {
       {!track && (
         <Link
           href="/?pick=1"
-          className="mt-4 block rounded-[var(--radius-site)] border border-orange-500 bg-orange-200/30 px-4 py-2 text-sm text-orange-700 underline transition-colors hover:bg-orange-200/50"
+          className="mt-4 block rounded-[var(--radius-site)] border border-line bg-surface px-4 py-2 text-sm text-ink-soft underline transition-colors hover:border-line-strong"
         >
           Pick your track to see weights for your section →
         </Link>
@@ -51,11 +51,11 @@ export default async function AssignmentsPage() {
               <h2 className="font-heading text-2xl font-semibold text-ink">{a.title}</h2>
 
               {relevantRow ? (
-                <p className="mt-1 text-sm text-orange-700">
+                <p className="mt-1 text-sm text-ink-soft">
                   {relevantRow.weight} · {relevantRow.ownership} · Due {relevantRow.due}
                 </p>
               ) : (
-                <div className="mt-1 flex flex-wrap gap-x-4 text-sm text-orange-700">
+                <div className="mt-1 flex flex-wrap gap-x-4 text-sm text-ink-soft">
                   {gradRow && <span>Grad: {gradRow.weight}, due {gradRow.due}</span>}
                   {ugRow && <span>UG: {ugRow.weight}, due {ugRow.due}</span>}
                 </div>

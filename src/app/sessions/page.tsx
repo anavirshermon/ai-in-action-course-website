@@ -8,11 +8,12 @@ import { resolveHandbookMentions, isHandbookMention } from "@/lib/content/handbo
 import { renderInlineMarkdown, stripMarkdownBold } from "@/lib/content/inline-markdown";
 import { SessionAccordionRow, type ReadingView } from "@/components/SessionAccordionRow";
 
+/** Four steps of the neutral ramp, light to dark, matching the home timeline. */
 const MODULE_BORDERS: Record<number, string> = {
-  1: "border-l-green-500",
-  2: "border-l-orange-500",
-  3: "border-l-green-700",
-  4: "border-l-orange-700",
+  1: "border-l-line",
+  2: "border-l-line-strong",
+  3: "border-l-ink-faint",
+  4: "border-l-ink",
 };
 
 export default async function SessionsIndexPage() {
@@ -26,7 +27,7 @@ export default async function SessionsIndexPage() {
 
   return (
     <main className="mx-auto w-full max-w-3xl flex-1 px-6 py-12">
-      <h1 className="font-heading text-3xl font-semibold text-green-900">Sessions</h1>
+      <h1 className="font-heading text-3xl font-semibold text-ink">Sessions</h1>
       <p className="mt-2 text-ink-soft">
         All {numbered} sessions plus the {noClass} no-class dates, in order, for the{" "}
         {(track ?? DEFAULT_TRACK) === "grad" ? "graduate" : "undergraduate"} section. Click a row to
@@ -36,7 +37,7 @@ export default async function SessionsIndexPage() {
       {!track && (
         <Link
           href="/?pick=1"
-          className="mt-4 block rounded-[var(--radius-site)] border border-orange-500 bg-orange-200/30 px-4 py-2 text-sm text-orange-700 underline transition-colors hover:bg-orange-200/50"
+          className="mt-4 block rounded-[var(--radius-site)] border border-line bg-surface px-4 py-2 text-sm text-ink-soft underline transition-colors hover:border-line-strong"
         >
           Showing the graduate schedule. Pick your track to see your own dates →
         </Link>
@@ -53,11 +54,11 @@ export default async function SessionsIndexPage() {
               <li key={`${s.moduleNumber}-${s.date}`}>
                 <div className={`flex items-center gap-4 border-l-4 px-4 py-4 ${border} ${dim ? "opacity-50" : ""}`}>
                   <span className="w-14 shrink-0 text-sm text-ink-soft">{s.date}</span>
-                  <span className="w-16 shrink-0 font-heading text-lg text-green-900">—</span>
+                  <span className="w-16 shrink-0 font-heading text-lg text-ink">—</span>
                   <div className="min-w-0 flex-1">
                     <p className="font-heading text-base text-ink">{renderInlineMarkdown(s.topic)}</p>
                     {s.due && (
-                      <p className="mt-0.5 text-sm font-medium text-orange-700">
+                      <p className="mt-1 inline-block rounded-full bg-ink px-2.5 py-0.5 text-xs font-medium text-bg">
                         Due: {stripMarkdownBold(s.due)}
                       </p>
                     )}

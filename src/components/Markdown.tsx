@@ -14,10 +14,10 @@ export function PromptBlock({ text }: { text: string }) {
   }
 
   return (
-    <div className="relative my-4 rounded-[var(--radius-site)] border border-green-700 bg-green-900/5">
+    <div className="relative my-4 rounded-[var(--radius-site)] border border-line-strong bg-ink/5">
       <button
         onClick={copy}
-        className="absolute right-2 top-2 rounded-md border border-green-700 bg-paper px-2 py-1 text-xs text-green-900 transition-colors hover:bg-green-900 hover:text-paper"
+        className="absolute right-2 top-2 rounded-md border border-line-strong bg-bg px-2 py-1 text-xs text-ink transition-colors hover:bg-ink hover:text-bg"
       >
         {copied ? "Copied" : "Copy"}
       </button>
@@ -53,7 +53,7 @@ const components: Components = {
     const isBlock = /language-/.test(className ?? "");
     if (isBlock) {
       return (
-        <pre className="my-4 overflow-x-auto rounded-[var(--radius-site)] border border-line bg-paper-dim/60 p-4 text-sm">
+        <pre className="my-4 overflow-x-auto rounded-[var(--radius-site)] border border-line bg-surface p-4 text-sm">
           <code {...rest} className={className}>
             {children}
           </code>
@@ -62,7 +62,7 @@ const components: Components = {
     }
 
     return (
-      <code {...rest} className="rounded bg-paper-dim px-1 py-0.5 text-[0.9em]">
+      <code {...rest} className="rounded bg-surface px-1 py-0.5 text-[0.9em]">
         {children}
       </code>
     );

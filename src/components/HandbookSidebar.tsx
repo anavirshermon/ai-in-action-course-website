@@ -23,7 +23,7 @@ export function HandbookSidebar({ sections }: { sections: SidebarSection[] }) {
           onChange={(e) => {
             if (e.target.value) window.location.hash = e.target.value;
           }}
-          className="w-full rounded-[var(--radius-site)] border border-line bg-paper px-3 py-2 text-sm outline-none focus:border-green-700"
+          className="w-full rounded-[var(--radius-site)] border border-line bg-bg px-3 py-2 text-sm outline-none focus:border-line-strong"
         >
           <option value="" disabled>
             Jump to a part…
@@ -47,7 +47,7 @@ export function HandbookSidebar({ sections }: { sections: SidebarSection[] }) {
           placeholder="Find a part…"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          className="w-full rounded-[var(--radius-site)] border border-line bg-paper px-3 py-1.5 text-sm outline-none focus:border-green-700"
+          className="w-full rounded-[var(--radius-site)] border border-line bg-bg px-3 py-1.5 text-sm outline-none focus:border-line-strong"
         />
         <div className="mt-4 max-h-[70vh] overflow-y-auto pr-2">
           {sections.map((section) => {
@@ -66,7 +66,7 @@ export function HandbookSidebar({ sections }: { sections: SidebarSection[] }) {
                     <li key={p.slug}>
                       <a
                         href={`#${p.slug}`}
-                        className="block rounded px-1.5 py-0.5 text-sm text-ink hover:bg-paper-dim/60"
+                        className="block rounded px-1.5 py-0.5 text-sm text-ink hover:bg-surface"
                       >
                         {p.number}. {p.title}
                       </a>

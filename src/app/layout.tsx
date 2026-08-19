@@ -1,22 +1,16 @@
 import type { Metadata } from "next";
-import { Fraunces, Public_Sans } from "next/font/google";
+import { Instrument_Sans } from "next/font/google";
 import { NavBar } from "@/components/NavBar";
 import { SiteFooter } from "@/components/SiteFooter";
 import "./globals.css";
 
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
-  subsets: ["latin"],
-  axes: ["opsz", "SOFT", "WONK"],
-});
-
-const publicSans = Public_Sans({
-  variable: "--font-public-sans",
+const instrumentSans = Instrument_Sans({
+  variable: "--font-instrument-sans",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "ENTP 6314 — AI in Action",
+  title: "AI in Action — UT Dallas",
   description:
     "Building Products, Ventures, and Competitive Advantage. UT Dallas, Fall 2026.",
 };
@@ -29,9 +23,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fraunces.variable} ${publicSans.variable} h-full antialiased`}
+      className={`${instrumentSans.variable} h-full antialiased`}
     >
-      <body className="site-texture flex min-h-full flex-col">
+      <body className="flex min-h-full flex-col">
         <NavBar />
         {children}
         <SiteFooter />

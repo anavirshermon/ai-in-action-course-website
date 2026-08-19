@@ -15,14 +15,14 @@ export default function HandbookPage() {
       />
 
       <div className="min-w-0 flex-1">
-        <h1 className="font-heading text-3xl font-semibold text-green-900">
+        <h1 className="font-heading text-3xl font-semibold text-ink">
           Building with AI
         </h1>
         <p className="mt-2 text-ink-soft">The course handbook, all 18 parts.</p>
 
         {handbook.sections.map((section) => (
           <div key={section.title} className="mt-10">
-            <p className="text-sm font-semibold uppercase tracking-wide text-orange-700">
+            <p className="text-sm font-semibold uppercase tracking-wide text-ink-soft">
               {section.title}
             </p>
             {section.parts.map((part) => (

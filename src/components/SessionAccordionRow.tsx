@@ -35,23 +35,23 @@ export function SessionAccordionRow(props: SessionAccordionRowProps) {
         type="button"
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
-        className="flex w-full items-center gap-4 px-4 py-4 text-left transition-colors hover:bg-paper-dim/50"
+        className="flex w-full items-center gap-4 px-4 py-4 text-left transition-colors hover:bg-surface"
       >
         <span className="w-14 shrink-0 text-sm text-ink-soft">{props.date}</span>
-        <span className="w-16 shrink-0 font-heading text-lg text-green-900">
+        <span className="w-16 shrink-0 font-heading text-lg text-ink">
           S{props.number}
         </span>
         <div className="min-w-0 flex-1">
           <p className="font-heading text-base text-ink">
             {renderInlineMarkdown(props.topic)}
             {props.isCurrent && (
-              <span className="ml-2 text-xs font-normal uppercase tracking-wide text-orange-700">
+              <span className="ml-2 text-xs font-normal uppercase tracking-wide text-ink-soft">
                 this week
               </span>
             )}
           </p>
           {props.due && (
-            <p className="mt-0.5 text-sm font-medium text-orange-700">
+            <p className="mt-1 inline-block rounded-full bg-ink px-2.5 py-0.5 text-xs font-medium text-bg">
               Due: {stripMarkdownBold(props.due)}
             </p>
           )}
@@ -62,11 +62,11 @@ export function SessionAccordionRow(props: SessionAccordionRowProps) {
       </button>
 
       {open && (
-        <div className="border-t border-line/60 bg-paper-dim/30 px-4 py-5 pl-[4.5rem]">
+        <div className="border-t border-line/60 bg-surface/30 px-4 py-5 pl-[4.5rem]">
           {props.assignmentSlug && (
             <Link
               href={`/resources/assignments#${props.assignmentSlug}`}
-              className="mb-4 inline-block text-sm text-orange-700 underline"
+              className="mb-4 inline-block text-sm text-ink-soft underline"
             >
               View assignment details →
             </Link>
@@ -141,7 +141,7 @@ export function SessionAccordionRow(props: SessionAccordionRowProps) {
 
           <Link
             href={`/sessions/${props.number}`}
-            className="mt-5 inline-block text-sm text-green-900 underline"
+            className="mt-5 inline-block text-sm text-ink underline"
           >
             Full session details →
           </Link>
