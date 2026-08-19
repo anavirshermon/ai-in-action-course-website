@@ -63,7 +63,9 @@ The course has two building phases, and they have different purposes. Knowing wh
 2. The five rules
 3. The core loop
 4. Project memory and the one-page PRD
-5. Save points and putting it on the internet
+   - What belongs in CLAUDE.md, and what does not
+5. Save points, GitHub, and working as a team
+   - Working as a team: roles and handoffs
 6. Your build log
 
 **Section 2: Finding what to build**
@@ -74,8 +76,10 @@ The course has two building phases, and they have different purposes. Knowing wh
 **Section 3: Building the product**
 10. Scoping and the walking skeleton
 11. Making it a real application
+    - Steering Claude Code: skills and hooks
 12. Design and usability
 13. Testing what you built
+    - 13.4 Make Claude check its own work
 14. Shipping to real users
 
 **Section 4: Showing the work**
@@ -241,15 +245,13 @@ To leave Claude Code and go back to the plain terminal, type `/exit`.
 
 ### Rule 1: Small steps beat big asks
 
-"Build my whole app" produces a tangle you cannot debug. "Add a signup form to the homepage" produces progress you can see.
+If you ask for your whole app at once, what usually comes back is a tangle that you have no way to debug. If you ask for a signup form on the homepage, you get something small enough to look at and check. So try to ask for one feature at a time.
 
-One feature per request. Always.
-
-The reason is not that AI cannot handle a big request. It often can. The reason is that when a big request goes wrong, you have no idea which part broke, and neither does the AI. Small steps mean small failures.
+This is not really about what AI can handle, because it can often handle quite a lot. The difficulty shows up later, when something is wrong and neither you nor the AI can tell which part of a large request caused it. Working in small steps keeps your failures small enough to find.
 
 ### Rule 2: Always be able to go back
 
-Commit after every working feature. A commit is a save point, a snapshot of your whole project that you can return to later. Claude Code makes them for you when you ask.
+Try to commit after every feature that works. A commit is a save point, a snapshot of your whole project that you can come back to later, and Claude Code will make one for you whenever you ask.
 
 **PROMPT**, after every working feature:
 
@@ -264,13 +266,13 @@ The app was working thirty minutes ago and now it is broken. Show me the
 recent commits and revert to the last working one.
 ```
 
-That is the whole mechanism. Part 5 explains what is happening underneath and how to get a copy off your laptop, and it is your reading for Session 3.
+That is all you need for now. Part 5 explains what is happening underneath and how to get a copy off your laptop, and it is your reading for Session 3.
 
-The confidence that you can undo anything is what makes non-programmers brave. Students who commit often try bolder things, because the worst case is losing twenty minutes.
+Once you know you can undo anything, you will probably find yourself willing to try bolder things, since the worst case is that you lose twenty minutes. That confidence matters more than it sounds, especially if you have never written software before.
 
 ### Rule 3: Never trust, always run
 
-After every change, open the app and click the thing. "Claude said it works" is not evidence that it works.
+After every change, open the app and click on the thing you just changed. When Claude tells you that something works, treat that as a claim rather than as evidence.
 
 If you do not know how to open your app yet, that is the first thing to fix:
 
@@ -280,13 +282,13 @@ If you do not know how to open your app yet, that is the first thing to fix:
 How do I see this in my browser?
 ```
 
-This is the single most important skill in this course. AI models will tell you a feature is complete, that tests pass, that a bug is fixed. Sometimes they are right. When they are wrong, they are wrong confidently and in detail. The only defence is looking with your own eyes.
+If you take one habit away from this course, it should probably be this one. AI models will tell you that a feature is complete, that the tests pass, and that a bug is fixed. Sometimes they are right. When they are wrong, they tend to be wrong confidently and in convincing detail, so the only reliable way to know is to look for yourself.
 
-You will be graded on this. One of your build log entries has to describe a time AI was confidently wrong and you caught it.
+You will be graded on this too, since one of your build log entries has to describe a time when AI was confidently wrong and you caught it.
 
 ### Rule 4: Never paste secrets
 
-No passwords. No API keys in chat messages. Nothing sensitive in code that goes to GitHub.
+Please keep passwords and API keys out of your chat messages, and keep anything sensitive out of code that will end up on GitHub.
 
 If a service gives you something it calls a "secret key," tell Claude Code:
 
@@ -297,20 +299,20 @@ Store this in an environment variable, not in the code. Then show me how
 to confirm it is not going to end up on GitHub.
 ```
 
-An environment variable is a place to keep a secret outside your code. In practice it means two files do the work, and you should look at both with your own eyes rather than accept "done."
+An environment variable is simply a place to keep a secret outside your code. In practice two files do the work here, and it is worth opening both yourself rather than taking "done" for an answer.
 
 | File | What is in it | Who sees it |
 |---|---|---|
 | `.env.local` | Your actual key | Only your laptop |
 | `.gitignore` | A list of files to leave out of the project's history | Everyone, which is fine, it holds no secrets |
 
-**You'll know it worked when** `.gitignore` contains a line reading `.env.local`, and your key appears nowhere else when you search the project for it. Ask Claude Code to show you both files and to search for the key. Read the answer yourself. This is the one mistake in the handbook with consequences outside this course.
+**You'll know it worked when** `.gitignore` contains a line reading `.env.local`, and your key appears nowhere else when you search the project for it. Ask Claude Code to show you both files and to search the project for the key, then read the answer yourself. Of everything in this handbook, this is the mistake most likely to cause you trouble outside the course.
 
 ### Rule 5: When stuck for twenty minutes, change strategy, not volume
 
-Do not send the same prompt again, louder. Do not add "please" and "it is very important." If two attempts have failed, the approach is wrong, not the wording.
+When something will not work, try to resist sending the same prompt again with more emphasis. Adding "please" or "this is very important" does not help. If two attempts have already failed, the problem is usually your approach rather than your wording.
 
-Part 17 has the full troubleshooting playbook. The short version: stop patching, ask for a diagnosis from scratch.
+Part 17 has the full troubleshooting playbook. The short version is to stop patching and ask for a fresh diagnosis instead.
 
 ---
 
@@ -431,6 +433,7 @@ entp6314/
   probe-idea-2/            <- throwaway
   my-product/              <- your real product, from Session 6 on
     CLAUDE.md              <- project memory (Part 4)
+    .claude/               <- skills and hooks, added later (Part 11)
     prd.md                 <- your one-page PRD (Part 4)
     build-log.md           <- graded, weekly (Part 6)
     qa-report.md           <- required for the MVP demo (Part 13)
@@ -471,6 +474,28 @@ Create it by typing `/init` inside Claude Code. That is a slash command, an inst
 Update the "Current focus" line every week. It is thirty seconds of work and it stops Claude from wandering off into parts of the project you are not touching.
 
 **You'll know it worked when** you quit Claude Code, start it again from the same folder, and it mentions reading `CLAUDE.md`. If it never mentions the file, you are starting it from the wrong folder. Check with `pwd`.
+
+### What belongs in CLAUDE.md, and what does not
+
+The most common mistake with this file is putting too much in it.
+
+Everything in `CLAUDE.md` is read at the start of every session, whether it is relevant to today's work or not. It is also read by every one of your teammates, every time any of them opens Claude Code. A long file crowds out the actual conversation and makes Claude worse, not better. Keep it to one screen. If you cannot see the whole thing without scrolling, cut something.
+
+**What belongs:** what the project is, what it is built with, how you want to be talked to, and any convention your team has agreed on. Standing facts. Things that are true on every day of the semester.
+
+**What does not belong:**
+
+| You are tempted to write | Put it here instead |
+|---|---|
+| A list of steps you repeat, like "how we get ready for a demo" | A skill. See Part 11. |
+| "Never commit the API key" | A hook. See Part 11. |
+| Preferences only you have, on a team project | Your own notes, not the shared file |
+
+That middle row is worth pausing on. Writing "never do X" in `CLAUDE.md` is a request, and requests get forgotten in long sessions. When something genuinely must not happen, an instruction is the wrong tool. Part 11 shows you the right one.
+
+**Your CLAUDE.md is shared.** It gets committed along with your code, so when you edit it you are changing how Claude behaves for everyone on your team. That is the point, and it is also why you agree on a change before making it rather than after. Part 5 covers how to hand that change to your teammates.
+
+If you want the full version of this, Anthropic has written it up: [Steering Claude Code](https://claude.com/blog/steering-claude-code-skills-hooks-rules-subagents-and-more). It is optional reading and it is written for programmers, but the first section on `CLAUDE.md` is readable by anyone.
 
 ### When Claude starts going in circles
 
@@ -523,9 +548,9 @@ When you have a PRD, paste it into Claude Code in Plan mode, read the plan it pr
 
 ---
 
-## Part 5. Save points and putting it on the internet
+## Part 5. Save points, GitHub, and working as a team
 
-*Session 3, on 9/9.*
+*Session 3, on 9/9. The last section is for Session 6 onward.*
 
 ### Two words that sound like one thing
 
@@ -540,6 +565,8 @@ Staying with the restaurant analogy this handbook uses later: git is the noteboo
 You never need to learn git commands. Claude Code runs them for you. What you need is to know which of the two you just did.
 
 ### Commit, then push
+
+Everything in this section is written for working on your own, which is what you are doing at Session 3 on your practice project. Once your team shares one repository at Session 6, one rule changes. That is the last section of this Part, and you do not need it yet.
 
 These are two separate actions. Doing one is not doing the other.
 
@@ -636,6 +663,113 @@ After the first time, it is one command.
 
 This matters more than it sounds. A live URL turns your idea from something you describe into something a stranger can use. That is the difference between asking someone whether they would like your product and watching whether they sign up. The second one is evidence. The first one is conversation.
 
+### Working as a team
+
+*Teams form at the end of Session 3. This section becomes real at Session 6, when you start the product you keep.*
+
+Up to now you have been the only person in your project. From Session 6 there are three or four of you in one repository, and the failure mode changes completely. Nothing in this section is about writing better code. It is about not overwriting each other.
+
+**The one rule that changes.** On your own practice project, saving straight into the main version of the project is fine, and it is what you have been doing. On the shared product repository, nobody does that. `main` is the version that works, the one that is deployed, and the one you hand in. It is not a place to try things.
+
+Everything below is how you work without touching it.
+
+#### Decide who wears which hat
+
+You are all builders. These are not job titles and they do not divide the work. They answer the question "who decides" before the moment you need an answer, which is the only time it is cheap to decide.
+
+| Hat | Owns the file | The call they make |
+|---|---|---|
+| Product owner | `prd.md` | What gets built and what goes on the out-of-scope list |
+| Integrator | `main` | Reviews each teammate's work and merges it in |
+| Evidence owner | `research/` and `interviews/` | Says "we have no evidence for that" out loud |
+| Demo owner | `qa-report.md` and the demo script | What gets shown at Session 10 and Session 13 |
+
+Pick them in your first team meeting. It takes five minutes. Write them at the top of your shared `CLAUDE.md` so the file states them and Claude reads them too. Rotate them halfway through if you want to; teams that rotate usually learn more.
+
+The product owner hat matters most, and earliest. Every team in this course argues about which feature to build. The argument is not the problem. Not having agreed in advance who ends it is the problem. See the cut list in Part 10.
+
+#### Set the repository up once
+
+One person does this, at Session 6, and only once.
+
+**PROMPT**, from the product folder:
+
+```prompt
+Create a private GitHub repository for this project and push it. Then
+tell me how to add my teammates so they can push too, and what each of
+them should do to get a copy onto their own laptop. Walk us through it.
+```
+
+**You'll know it worked when** every person on the team can open the project folder on their own machine and see the same files.
+
+#### The handoff loop
+
+Do these six steps every time you sit down to work. All of them are prompts. You never type a git command yourself.
+
+**1. Pull before you start.** Always. This is the step people skip and it is the step that prevents the mess.
+
+**PROMPT**
+
+```prompt
+Pull the latest changes from GitHub before we start.
+```
+
+**2. Make a branch.** A branch is your own copy of the project to work in, so that whatever you break is broken only for you. Name it after the thing you are building.
+
+**PROMPT**
+
+```prompt
+Create a branch called signup-form and switch to it.
+```
+
+**3. Build, in the core loop from Part 3.** Commit after every step that works, exactly as before.
+
+**4. Push your branch and ask for it to be brought in.** A pull request is the polite version of "I think this is ready, will someone look."
+
+**PROMPT**
+
+```prompt
+Push this branch and open a pull request. Summarize what changed in
+plain English, so a teammate who did not write it can review it.
+```
+
+**5. The integrator reviews it, then merges.** Only that person, and they read before they merge.
+
+**PROMPT**, for the integrator:
+
+```prompt
+Show me what this pull request changes and explain it in plain English.
+Flag anything that could break the app.
+```
+
+If it looks right, merge it. If it does not, say so in the pull request on GitHub and the author fixes it on the same branch.
+
+**6. Everybody pulls again.** Back to step one.
+
+Any of these words you have not met before are in the glossary at Part 18.
+
+#### When two people change the same thing
+
+This is called a merge conflict, and it means exactly one thing: two of you edited the same lines, and git will not guess which version wins. It is not a disaster and it is not your fault.
+
+**PROMPT**
+
+```prompt
+We have a merge conflict. Explain in plain English what two changes are
+in conflict and which parts of the app each one affects. Do not pick for
+me. I will tell you which one to keep.
+```
+
+Then decide, out loud, with the person who wrote the other half. **Never** let Claude choose for you here, and never guess. Choosing wrong silently deletes a teammate's work.
+
+**Never** have two people building the same feature at the same time. Every conflict you will hit this semester is preventable with a two-minute message that says what you are about to touch.
+
+One thing to watch once you start using branches: Vercel will give every pull request its own preview URL, which is handy for showing a teammate what you did before it goes in. The real URL is the one that comes from `main`, and that is the one you should hand in, measure, and put in front of a user. If you user-test a preview URL, you are testing something that is about to change.
+
+**You'll know the whole thing worked when** a teammate opens your pull request on GitHub, reads your summary, merges it, pulls, and your feature is running on their laptop and on the live URL without either of you sitting next to the other.
+
+Everything above is about the repository, which you share. Your build log stays yours alone, and Part 6 explains why.
+
 ---
 
 ## Part 6. Your build log
@@ -653,6 +787,8 @@ At the final pass you mark your best entries and annotate each one. **Graduate s
 This course cannot grade your code, because AI wrote most of it. What it can grade is your judgment: what you tried, what broke, how you recovered, and whether you noticed when the AI was wrong.
 
 The build log is the evidence of that. A student who describes three failed approaches and a recovery is demonstrating more skill than a student who reports that everything worked.
+
+This is also why it stays individual while the repository is shared. Four people working in one repo have four different weeks. A handoff that went wrong, a merge conflict you had to think about, a feature you argued for and lost, are all exactly the kind of entry that scores well, and none of them would survive in a shared document.
 
 ### The format
 
@@ -1059,6 +1195,8 @@ Every team wants to build too much. Do this exercise in class:
 
 The features you cut are not gone. They are in the parking lot, where they belong until you have evidence anyone wants them.
 
+You will not all agree, and the exercise is not finished when you do. It is finished when a decision exists. When the team is split, the product owner from Part 5 decides, the losing feature goes on the out-of-scope list with today's date beside it, and the conversation ends there. Writing the date down is what stops the same argument happening again in three weeks. This is the entire reason that hat exists.
+
 ### MVP means minimum testable, not minimum
 
 An MVP is not a bad version of your product. It is the smallest thing that tests your central assumption.
@@ -1114,9 +1252,9 @@ Add Vercel Analytics to this app. Then tell me how to see how many
 people used it and which pages they visited.
 ```
 
-**You'll know it worked when** you open your deployed URL, click around, and see your own visit appear on the Vercel Analytics dashboard within a few minutes.
+**You'll know it worked when** you open your live URL, the one that comes from `main`, click around, and see your own visit appear on the Vercel Analytics dashboard within a few minutes. Preview URLs from a pull request are not the ones being counted.
 
-**A deployed version that matches what you built.** From this week on, deploy at the end of every work session, not only when something is due. A product that only runs on your laptop cannot be user-tested, and user testing starts in two weeks.
+**A deployed version that matches what you built.** From this week on, get your work merged into `main` and deployed at the end of every work session, not only when something is due. A product that only runs on your laptop cannot be user-tested, and user testing starts in two weeks.
 
 ---
 
@@ -1210,6 +1348,54 @@ Two things to watch.
 **Cost.** This is a second, separate charge. Your Claude Pro subscription pays for Claude Code, which is you talking to Claude. An API key is your app talking to Claude, and it is billed on its own, by usage. For an MVP at classroom scale, expect a few dollars a month, not hundreds. Ask Claude to estimate before you launch. If the estimate is large, your prompt is probably sending far more text than it needs to. Set a spending limit on the API account the day you create it.
 
 **Failure.** APIs go down and time out. If your app shows a spinner forever when that happens, your demo will be the time it happens. Always have a fallback message.
+
+### Steering Claude Code: skills and hooks
+
+By now you have told Claude the same things dozens of times. Explain it in plain English. Do not touch the payments code. Run through the demo checklist before we stop. Repeating yourself is not a discipline problem. It is a sign that the instruction belongs somewhere other than the conversation.
+
+There are three places you can put a standing instruction, and the useful part is knowing which one fits.
+
+| Where | What it is | When Claude sees it | Use it for |
+|---|---|---|---|
+| `CLAUDE.md` | A file of standing facts | Every session, automatically | Things that are always true: your stack, your team's norms |
+| A skill | A written procedure | Only when you call it | Steps you repeat: your pre-demo checklist |
+| A hook | An automatic check on an action | Every time that action happens | Things that must never happen: committing a secret key |
+
+The rule of thumb, in three lines:
+
+- A fact goes in `CLAUDE.md`.
+- A procedure becomes a skill.
+- A must-never becomes a hook.
+
+(There is a fourth option you have already used without the name. When you send Claude off to do a big piece of research on its own, as in Part 7, that is a subagent. You do not need to set anything up for it.)
+
+The difference between a skill and a hook is the one worth learning. A skill is instructions, and instructions can be forgotten in a long session. A hook is not an instruction. It runs whether Claude agrees with it or not. This is why "never commit the API key" in `CLAUDE.md` is weaker than it looks, and why Part 4 told you to put it here instead.
+
+**Try this** once your product is real, which is roughly now. You do not write these files by hand. You ask.
+
+**PROMPT**, to make a skill:
+
+```prompt
+Create a skill called demo-check that runs through these steps: confirm
+the app builds, confirm the live URL loads, confirm the signup flow works
+end to end, and confirm no error messages appear in the browser console.
+
+Explain what a skill is and where you are putting the file as you go.
+```
+
+**PROMPT**, to make a hook:
+
+```prompt
+Add a hook that blocks any commit containing a file called .env or
+.env.local. Explain exactly what it will do, and when it will fire,
+before you add it.
+```
+
+**You'll know the hook worked when** you deliberately try to commit a file called `.env.local` and the commit is refused. Test it once on purpose. An untested guardrail is a guess.
+
+Both of these live in a folder called `.claude/` inside your project, and both get committed along with your code. That is the point for a team: a hook one person adds protects everybody from the next day onward, without anyone having to remember it. If you are wearing the integrator hat from Part 5, this is the highest-leverage five minutes available to you.
+
+The full write-up is Anthropic's [Steering Claude Code](https://claude.com/blog/steering-claude-code-skills-hooks-rules-subagents-and-more). Optional, written for programmers, and the comparison table near the top is worth the visit on its own.
 
 ### Analytics
 
@@ -1385,6 +1571,68 @@ The hard part is the silence. Every instinct will tell you to help. Do not help.
 Five users will surface about eighty five percent of your usability problems. Three is the minimum here because your timeline is short.
 
 Their confusion outranks any AI opinion about your design.
+
+### 13.4 Make Claude check its own work
+
+The three tests above are things you do. This one is a check Claude runs on itself, every time, before it tells you it is finished. It is Rule 3 turned into something automatic instead of something you have to remember.
+
+The name for this is a verification loop, and it is built out of the skills you met in Part 11.
+
+**Try this** once the product is real. It is not required for the MVP demo, and it is the single thing on this page most likely to still be useful to you a year from now.
+
+Here is how you find yours. It is four steps and none of them are technical.
+
+**1. Notice what you correct every single time.** For most teams there are two or three. Claude says it is done and you find the error message is missing. Or the empty screen is blank. Or it committed something it should not have. Write them down for one week.
+
+**2. Write the check in plain English,** the way you would brief a new teammate on their first day. Not "validate the form state." Something a person could follow.
+
+**3. Ask Claude to turn it into a skill.**
+
+**PROMPT**
+
+```prompt
+I check the same four things by hand every time before we ship. Turn
+them into a skill called verify-ship:
+
+[paste your four things, in plain English]
+
+For each one, tell me how you would actually check it, and say so if
+there is one you cannot check without me looking.
+
+Then run it on what we just built and report what it finds.
+```
+
+That second clause is the one that keeps it honest. Some things cannot be checked automatically, and you want to know which ones those are rather than assume they are covered.
+
+Here is what a finished one looks like for this course. You do not type this in anywhere. It is what the file Claude creates should contain.
+
+**FILE: .claude/skills/verify-ship/SKILL.md**
+
+```
+Before saying this work is finished, check all of the following and
+report each one as pass or fail:
+
+1. No API keys or secrets appear in any committed file.
+2. Every form shows a visible error message when submission fails.
+3. Every screen a brand new user sees has something on it, not a blank
+   page or an empty list.
+4. The app builds without errors.
+5. The live URL loads and the core action can be completed.
+
+Report the failures first, and do not fix anything until I say so.
+```
+
+**Where you run it.** Two ways, and start with the first.
+
+**Standalone.** You call it yourself when it matters, usually before a merge or a demo. This is the version to build first, because you find out quickly whether it catches anything real.
+
+**Built in.** Once you trust it, ask Claude to run the check at the end of a task automatically, so it fires whether you remember or not. This is the version that earns its keep, and it is only worth doing after the standalone version has caught something.
+
+**Now the honest part.** A verification loop checks what you told it to check, and nothing else. Claude passing its own skill is Claude making a claim, which is the exact thing Rule 3 says is not evidence. This does not replace the hostile QA pass in 13.1, your fifteen minutes of clicking around by hand, or the three humans in 13.3. It replaces the part where you forget.
+
+A team that builds one of these, has it catch a real problem, and writes that up is describing exactly the judgment this course grades. That is a build log entry.
+
+Anthropic's write-up is [Building verification loops in Claude Code with skills](https://claude.com/blog/building-verification-loops-in-claude-code-with-skills). Optional.
 
 ---
 
@@ -1606,6 +1854,10 @@ AI polishes the story. The evidence must be real. Your deck is checked against y
 | Claude says it is done but it is not | "Walk me through how to verify this myself in the browser, step by step." Then actually do it. |
 | You do not understand what it changed | "Explain what you just changed as if to a smart non-programmer, in five sentences." Never let unexplained changes pile up. |
 | The app is slow or the AI call takes forever | "Show me what is slow here and why. What is the cheapest fix?" Often you are sending far more text to the API than you need to. |
+| Git says there is a merge conflict | Two of you edited the same lines. Use the prompt in Part 5, "When two people change the same thing," and decide with the other person. Never let Claude pick for you. |
+| A teammate's work is missing from your copy | You have not pulled. "Pull the latest changes from GitHub." Nothing is lost; it is on `main` or still on their branch. |
+| Your pull request has sat unmerged for days | Ask whoever has the integrator hat to review it. Anything you build on top of an unmerged branch gets harder to merge every day. |
+| A commit is being refused | If your team added a hook (Part 11), it is doing its job. Read what it says before you consider turning it off. |
 | You have been stuck 45 minutes | Post in the class channel: your goal, the error, and what you tried. Helping each other debug earns participation credit. |
 
 ### The one that catches everyone
@@ -1626,6 +1878,8 @@ The pattern where you send the same request eight times with more emphasis each 
 
 **Backend** The logic that does the work. The kitchen.
 
+**Branch** Your own copy of the project to work in, so what you break is broken only for you. You merge it back when it works.
+
 **Commit** A save point in your project's history, stored on your own machine until you push it.
 
 **Context window** The AI's short-term memory. It is why long sessions get worse and why `/compact` helps.
@@ -1644,9 +1898,17 @@ The pattern where you send the same request eight times with more emphasis each 
 
 **Hallucination** When AI confidently makes something up. The reason for every verification rule in this handbook.
 
+**Hook** An automatic check that fires when something happens, whether the AI agrees with it or not. What you use when an instruction is not strong enough.
+
 **LLM** Large language model. The AI itself.
 
 **localhost** Your app running only on your own machine. Nobody else can see it.
+
+**Main** The version of your team's project that works. It is what is deployed and what you hand in. Nobody edits it directly.
+
+**Merge** Adding an approved branch into `main`. On a team, one person does this.
+
+**Merge conflict** Two people changed the same lines and git will not guess which version wins. You decide, with the other person, out loud.
 
 **MVP** Minimum viable product. The smallest thing that tests whether your idea is right.
 
@@ -1656,11 +1918,21 @@ The pattern where you send the same request eight times with more emphasis each 
 
 **Prompt** What you tell the AI.
 
+**Pull** Bringing your teammates' merged work down onto your laptop. Do it before you start, every time.
+
+**Pull request** Asking for your branch to be added to `main`, so a teammate can look before it goes in.
+
 **Push** Sending your commits from your laptop up to GitHub. Committing is not pushing.
 
 **Repo** Short for repository. Your project folder stored on GitHub. When an assignment asks for a repo link, it wants the GitHub web address.
 
-**Slash command** An instruction to Claude Code itself rather than a request to build something. `/init` and `/compact` are the two you need.
+**Skill** A procedure you wrote down once so Claude can follow it on request instead of you explaining it again.
+
+**Slash command** An instruction to Claude Code itself rather than a request to build something. `/init` and `/compact` are the two you need. Any skill you make adds one of its own.
+
+**Subagent** A helper Claude sends off on a side job with its own workspace. It reports back a summary rather than every step.
+
+**Verification loop** A check Claude runs on its own work before claiming it is finished. Useful, and still a claim.
 
 **Version control** The general name for what git does: keeping a history you can move around in.
 
