@@ -29,6 +29,7 @@ export default async function HomePage() {
         readingLinks={readingLinks}
         lastDate={sessions[sessions.length - 1]?.date ?? ""}
         pdf={pdf}
+        track={track}
       />
       {deadline && <NextDeadlineCallout deadline={deadline} />}
       <SyllabusCallout pdf={pdf} />
@@ -48,13 +49,23 @@ function ThisWeekPanel({
   readingLinks,
   lastDate,
   pdf,
+  track,
 }: {
   status: ScheduleStatus;
   readingLinks: ReturnType<typeof getReadingLinks>;
   lastDate: string;
   pdf: { href: string; label: string };
+  track: Track | null;
 }) {
   if (status.phase === "before") {
+    const isGrad = (track ?? DEFAULT_TRACK) === "grad";
+    // The graduate section has an assigned reading for Session 1; the
+    // undergraduate section only needs the syllabus.
+    const firstReadings =
+      isGrad && status.firstSession.number !== null
+        ? readingLinks.get(status.firstSession.number)
+        : undefined;
+
     return (
       <section className="rounded-[var(--radius-site)] border border-line bg-surface p-8">
         <p className="text-sm uppercase tracking-[0.15em] text-ink-soft">
@@ -65,7 +76,10 @@ function ThisWeekPanel({
         </h2>
         <p className="mt-3 max-w-xl text-ink-soft">
           There is nothing to install yet. Before {status.firstSession.date}, all you need to do is
-          read the syllabus.
+          read the syllabus
+          {firstReadings && firstReadings.links.length > 0
+            ? " and the reading assigned for Session 1."
+            : "."}
         </p>
         <a
           href={pdf.href}
@@ -75,6 +89,30 @@ function ThisWeekPanel({
         >
           Read the syllabus ({pdf.label}) →
         </a>
+
+        {firstReadings && firstReadings.links.length > 0 && (
+          <div className="mt-5">
+            <p className="text-sm font-semibold text-ink">Assigned reading for Session 1</p>
+            <ul className="mt-1 list-inside list-disc text-sm text-ink-soft">
+              {firstReadings.links.map((link, i) => (
+                <li key={i}>
+                  {link.url ? (
+                    <a
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline hover:text-ink"
+                    >
+                      {renderInlineMarkdown(link.label)}
+                    </a>
+                  ) : (
+                    renderInlineMarkdown(link.label)
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </section>
     );
   }
@@ -128,10 +166,10 @@ function ThisWeekPanel({
                     rel="noopener noreferrer"
                     className="underline hover:text-ink"
                   >
-                    {link.label}
+                    {renderInlineMarkdown(link.label)}
                   </a>
                 ) : (
-                  link.label
+                  renderInlineMarkdown(link.label)
                 )}
               </li>
             ))}

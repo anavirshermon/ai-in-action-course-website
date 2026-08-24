@@ -21,7 +21,7 @@ Not assigned, worth your time.
 
 ## Session 1 — Introduction
 
-- Tedeschi, *The Decline of Travel Agents* (Stripe Economics, 2026; optional but highly recommended for the undergraduate section) — https://www.stripeeconomics.com/p/the-decline-of-travel-agents
+- Tedeschi, *The Decline of Travel Agents* (Stripe Economics, 2026; required for the graduate section) — https://www.stripeeconomics.com/p/the-decline-of-travel-agents
 
 ## Session 2 — Installing and Understanding Tools, Part I
 
