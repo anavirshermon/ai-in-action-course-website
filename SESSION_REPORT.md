@@ -88,3 +88,26 @@
 - Note: production URLs are behind Deployment Protection, so an unauthenticated fetch of the deployment URL returns 302. Verification was done against the local production build.
 - Open: the module timeline legend reads "Iterate and Extend", taken from the syllabus heading. The instructor wrote "Iterate & Extend"; not changed, since it would desync from the Course Structure table.
 - Open, carried over: Google Sheet announcements still unwired; no instructor photo; `01-` and `02-` in the course folder still carry the pre-Aug-19 schedule and weights.
+
+## 2026-08-31 11:20 — Home banner did not roll forward by date
+
+**Operations:**
+- `src/lib/schedule-status.ts`: added `courseToday()` and `getCurrentRow()`, rewrote `getScheduleStatus()`, `getTemporalStatus()`, `getNextDeadline()`, and `daysBetween()`.
+- `src/app/home/page.tsx`, `src/app/sessions/page.tsx`: highlight rows off the shared current row instead of a time window.
+
+**Decisions:**
+- "Current" now means the first calendar entry dated today or later, not the last one that already happened — the panel is about what to prepare for.
+- Today is resolved in `America/Chicago`. Vercel runs in UTC, so a UTC comparison would roll the banner forward at 7pm Central, mid-class.
+- No-class rows stay eligible for the banner, so the 12/9 final-package week still shows its due item.
+- `daysBetween` rounds instead of ceiling, so the November daylight-saving change does not shift the countdown by a day.
+
+**Results:**
+- Scratch script over ten dates (pre-semester, class day at 10am and 9pm Central, day after, break weeks, post-final) produced byte-identical output under `TZ=UTC`, `America/Chicago`, and `Asia/Tokyo`.
+- `tsc --noEmit`, `npm run lint`, `npm run build` clean. Production `/home` verified via `vercel curl`: grad banner reads Session 2, next 9/9.
+
+**Commits:**
+- `8c83509` Roll the home banner forward the day after each session
+
+**Status:**
+- Done: deployed to production, aliased to https://ai-in-action-course-website.vercel.app.
+- Note: the deploy still needs `--scope seaborne-toast` from the CLI; the GitHub integration does not auto-deploy this project.
