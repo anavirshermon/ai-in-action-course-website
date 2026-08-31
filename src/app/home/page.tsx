@@ -6,6 +6,7 @@ import {
   getScheduleStatus,
   getNextDeadline,
   getTemporalStatus,
+  getCurrentRow,
   type ScheduleStatus,
   type Deadline,
 } from "@/lib/schedule-status";
@@ -291,6 +292,7 @@ function ModuleTimeline({ sessions }: { sessions: SessionRow[] }) {
   const realSessions = sessions
     .filter((s): s is SessionRow & { number: number } => s.number !== null)
     .sort((a, b) => a.number - b.number);
+  const currentRow = getCurrentRow(realSessions, now);
   const bands = moduleBands(sessions);
   const total = realSessions.length;
   const firstNumber = realSessions[0]?.number ?? 1;
@@ -330,7 +332,7 @@ function ModuleTimeline({ sessions }: { sessions: SessionRow[] }) {
           >
             {realSessions.map((s) => {
               const bandIdx = bands.findIndex((b) => b.number === s.moduleNumber);
-              const temporal = getTemporalStatus(s.dateObj, now);
+              const temporal = getTemporalStatus(s.dateObj, currentRow);
               const style = MODULE_TICK[(bandIdx < 0 ? 0 : bandIdx) % 4];
 
               return (
