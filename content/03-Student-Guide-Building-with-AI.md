@@ -60,10 +60,12 @@ The course has two building phases, and they have different purposes. Knowing wh
 
 **Section 1: Getting started**
 1. Setup
+   - Two ways to run Claude Code: the terminal or the desktop app
 2. The five rules
 3. The core loop
 4. Project memory and the one-page PRD
    - What belongs in CLAUDE.md, and what does not
+   - The file Claude writes for itself
 5. Save points, GitHub, and working as a team
    - Working as a team: roles and handoffs
 6. Your build log
@@ -107,7 +109,18 @@ Set aside an hour. Most of it is waiting for things to install.
 
 **2. Install VS Code.** It is free, at code.visualstudio.com. VS Code is just a window that shows your files. Think of it as Finder or File Explorer with better lighting. You will type notes into it, never code. Claude writes the code. You write things like your build log and your project's instructions file.
 
-**3. Install Claude Code.** Open your terminal. On a Mac, press Cmd and Space, type "Terminal," and hit enter. On Windows, search for "PowerShell." Then paste the one line for your computer.
+**3. Install Claude Code.** There are two ways to run it, and you only need one. They are the same tool underneath, so everything in this handbook works either way.
+
+| | The terminal | The desktop app |
+|---|---|---|
+| What you see | A text window where you type | A normal application window with panels |
+| What this handbook assumes | This one | Works fine, with notes where it differs |
+| Easier to get help with | Yes, because most guides online are written for it | Fewer guides so far |
+| Easier to look at | No | Yes |
+
+**Pick the terminal if you have no strong feeling either way**, because it is what this handbook's instructions are written against and what the person next to you is most likely using. Pick the app if the terminal genuinely puts you off, because a tool you avoid is worse than one you find slightly ugly. You can change your mind later, and switching costs you nothing except an evening.
+
+**3a. If you chose the terminal.** Open it. On a Mac, press Cmd and Space, type "Terminal," and hit enter. On Windows, search for "PowerShell." Then paste the one line for your computer.
 
 **TERMINAL**, Mac or Linux:
 
@@ -123,7 +136,15 @@ irm https://claude.ai/install.ps1 | iex
 
 Copy only what is inside the box. **You'll know it worked when** the terminal stops scrolling and gives you back a normal blank prompt with no red text.
 
+**3b. If you chose the desktop app.** Download Claude for your computer from claude.ai, install it the way you would install any other application, and sign in with the same account from step 1. Then click the **Code** tab at the top.
+
+Claude Code is already inside the app, so there is nothing else to install and you can skip the terminal line above.
+
+**One thing to be careful about, and it is the only real trap in the app.** There are three tabs: **Chat**, **Cowork**, and **Code**. Only the **Code** tab can see the files in your project, and only the Code tab reads your project's instructions file from Part 4. Work in the Chat tab by accident and nothing looks broken, you just quietly get worse answers for reasons you cannot see. If you are unsure which tab you are in, look at the top of the window before you start typing.
+
 **4. Make a course folder and start Claude Code.**
+
+*If you are using the desktop app, read this step anyway. The folder still has to exist and you still have to point Claude at it. The app's version of this step comes after.*
 
 **TERMINAL**
 
@@ -153,6 +174,8 @@ That is the same folder you would see in Finder under your name. Open Finder and
 
 Saying no does not break anything. It just tells Claude to try something else.
 
+**In the desktop app** the same thing happens through a setting rather than a question. Next to the send button there is a selector with a few choices, and the two worth knowing now are **Manual**, where Claude asks before it changes anything, and **Plan**, where it writes out what it intends to do and waits. Start on Manual. Part 4 covers Plan mode, which you start using at Session 3.
+
 **5. Create your accounts.**
 
 | Account | What it is for | Needed by | Cost |
@@ -181,9 +204,11 @@ claude
 
 Replace `first-app` with whichever project you are working on that week. Part 4 shows the full layout, so you can see what lives where.
 
-**You'll know it worked when** Claude Code starts and tells you the folder it is working in, and that folder is your project. From Session 3 on, once your project has a `CLAUDE.md` instructions file, it will also mention reading that file. If it does not, you are standing one level too high. Type `ls` to see what is around you, `cd foldername` to go in, and `cd ..` to go back up.
+**You'll know it worked when** Claude Code starts and tells you the folder it is working in, and that folder is your project. If it does not, you are standing one level too high. Type `ls` to see what is around you, `cd foldername` to go in, and `cd ..` to go back up.
 
-This is the single most common way students lose an evening. Claude with no project loaded will answer your questions and build things in the wrong place, and it will do it confidently.
+**In the desktop app**, opening a project is the same idea with buttons instead of typing. Click the **Code** tab, choose **Local**, then click **Select folder** and pick the project you are working on. Selecting the folder is the app's version of `cd`, and it is worth being just as careful about it. The app remembers your recent projects in the sidebar, so after the first time it is one click.
+
+This is the single most common way students lose an evening, on both paths. Claude with no project loaded, or with the wrong one loaded, will answer your questions and build things in the wrong place, and it will do it confidently.
 
 ### If the install fails
 
@@ -228,14 +253,19 @@ The same black window does two different jobs, and telling them apart matters.
 | **The terminal** | A short prompt ending in `$` or `>` | The eight commands above |
 | **Claude Code** | It started after you typed `claude`, and it answers in sentences | Plain English, and slash commands |
 
-Slash commands are instructions to Claude Code itself rather than requests to build something. There are only two you need:
+Slash commands are instructions to Claude Code itself rather than requests to build something. There are only three you need:
 
-| Command | What it does |
-|---|---|
-| `/init` | Creates your project's `CLAUDE.md` instructions file. Part 4 |
-| `/compact` | Clears out the clutter when a long session starts going in circles. Part 4 |
+| Command | What it does | Works in |
+|---|---|---|
+| `/init` | Creates your project's `CLAUDE.md` instructions file. Part 4 | Both |
+| `/compact` | Clears out the clutter when a long session starts going in circles. Part 4 | Both |
+| `/context` | Shows you what Claude loaded at the start of the session, including your `CLAUDE.md`. Part 4 | Terminal |
 
 To leave Claude Code and go back to the plain terminal, type `/exit`.
+
+**If you are using the desktop app**, you type slash commands into the same prompt box, or you can click the **+** button and choose **Slash commands** to see the list. A few commands that open a panel in the terminal behave differently in the app, and `/context` is one of them, so Part 4 gives you a check that works either way.
+
+**A note for app users on this whole section.** You still meet the terminal eventually, because Part 5 uses it and the app has a terminal panel built in. None of the eight commands stop being useful. You just need them less often.
 
 ---
 
@@ -336,7 +366,7 @@ You are not the engineer. You are the person who knows what it should do. Descri
 
 ### Plan
 
-Press Shift and Tab together to switch Claude Code into Plan mode. **You'll know it worked when** a plan mode indicator appears on screen. It is a toggle, so pressing it again turns it back off. If nothing seems to happen, do not press it repeatedly. Just say it instead:
+In the terminal, press Shift and Tab together to switch Claude Code into Plan mode. In the desktop app, use the mode selector next to the send button and choose **Plan**. **You'll know it worked when** a plan mode indicator appears on screen. In the terminal it is a toggle, so pressing it again turns it back off. If nothing seems to happen, do not press it repeatedly. Just say it instead:
 
 **PROMPT**
 
@@ -419,6 +449,8 @@ cd entp6314/first-app
 claude
 ```
 
+**In the desktop app**, the same move is the **Code** tab, then **Local**, then **Select folder**, pointed at `first-app`. Check the tab before you start typing. Only the Code tab can see your files, and only the Code tab reads the instructions file this Part is about.
+
 ### Where everything lives
 
 From here on, the handbook keeps telling you to put things "in your project folder." This is what it means. `entp6314` is the course folder you made in Part 1, and each project gets its own folder inside it:
@@ -442,13 +474,15 @@ entp6314/
     interviews/            <- one file per interview (Part 9)
 ```
 
-Three things to notice. Each project folder has its own `CLAUDE.md`, which is why you have to start Claude Code from inside the right one. Your graded work lives in the real product folder, not in a probe folder, because the probes get thrown away. And you make none of these by hand. Ask Claude Code for them and it creates them where they belong.
+Three things to notice. Each project folder has its own `CLAUDE.md`, which is why you have to start Claude Code from inside the right one, or point the app at the right one. Your graded work lives in the real product folder, not in a probe folder, because the probes get thrown away. And you make none of these by hand. Ask Claude Code for them and it creates them where they belong.
 
 ### CLAUDE.md
 
 This is a file Claude Code reads automatically at the start of every session. It is your project's standing instructions.
 
-Create it by typing `/init` inside Claude Code. That is a slash command, an instruction to Claude Code itself rather than a request to build something. Then open the file in VS Code and edit it to look like this. Editing this file is notes, not code, so it is yours to write:
+Create it by typing `/init` inside Claude Code. That is a slash command, an instruction to Claude Code itself rather than a request to build something. It reads your project and writes a first draft, which is usually longer than you want.
+
+Then open the file and cut it down to look like this. In the terminal, open it in VS Code. In the desktop app, click the file path where it appears in the chat and it opens in a panel you can type into. Editing this file is notes, not code, so it is yours to write:
 
 **FILE: CLAUDE.md**
 
@@ -473,7 +507,23 @@ Create it by typing `/init` inside Claude Code. That is a slash command, an inst
 
 Update the "Current focus" line every week. It is thirty seconds of work and it stops Claude from wandering off into parts of the project you are not touching.
 
-**You'll know it worked when** you quit Claude Code, start it again from the same folder, and it mentions reading `CLAUDE.md`. If it never mentions the file, you are starting it from the wrong folder. Check with `pwd`.
+### Check that it actually loaded
+
+A project memory file you assume is working is exactly the problem Rule 3 exists for. So check, once, the first time you write it.
+
+**You'll know it worked when** you quit Claude Code, start it again on the same project, and ask it this:
+
+**PROMPT**
+
+```prompt
+What does my CLAUDE.md say about how I want changes explained?
+```
+
+If it answers with something from your file, it read your file. If it guesses, gives you a general answer about being clear, or asks you what you mean, it did not.
+
+**If you are in the terminal**, you have a second and sharper check. Type `/context` and look at the list under **Memory files**. Your `CLAUDE.md` should be on it. This one does not work the same way in the desktop app, so app users should stick with the question above.
+
+When the check fails, the reason is almost always that Claude is looking at the wrong folder. In the terminal, `pwd` tells you where you are standing. In the app, look at which project the Code tab has open.
 
 ### What belongs in CLAUDE.md, and what does not
 
@@ -489,7 +539,7 @@ Everything in `CLAUDE.md` is read at the start of every session, whether it is r
 |---|---|
 | A list of steps you repeat, like "how we get ready for a demo" | A skill. See Part 11. |
 | "Never commit the API key" | A hook. See Part 11. |
-| Preferences only you have, on a team project | Your own notes, not the shared file |
+| Preferences only you have, on a team project | A file called `CLAUDE.local.md`, in the same folder. Claude reads it, your teammates never see it, and it does not get committed |
 
 That middle row is worth pausing on. Writing "never do X" in `CLAUDE.md` is a request, and requests get forgotten in long sessions. When something genuinely must not happen, an instruction is the wrong tool. Part 11 shows you the right one.
 
@@ -502,6 +552,19 @@ If you want the full version of this, Anthropic has written it up: [Steering Cla
 Long sessions get worse, not better. Claude Code has a limited amount of short-term memory, and a session full of dead ends fills it with clutter. When answers start repeating or drifting, type `/compact` to clear it out, or quit and start fresh.
 
 Neither one loses your work. Your files are on disk and your commits are save points. And because `CLAUDE.md` is read automatically at the start of every session, a fresh session already knows what matters.
+
+### The file Claude writes for itself
+
+At some point you will see something like "Saved 2 memories" go past in the interface, and it is worth knowing what that was.
+
+Alongside the file you write, Claude keeps notes of its own. When you correct it, or tell it how you like to work, it can write that down so it does not have to be told again. This is on by default and it is genuinely useful. It is also completely separate from `CLAUDE.md`.
+
+Two differences matter for a team project:
+
+- Those notes live on your laptop, outside your project folder. They do not get committed and they do not travel to GitHub.
+- Your teammates never see them. Two people on the same project can have Claude behaving differently, and neither of them can tell why.
+
+So anything that has to be true for everyone goes in `CLAUDE.md`, which you wrote and which everyone shares. Treat the notes Claude keeps as a convenience rather than a place to put anything important. If you are curious what it has saved, type `/memory` in the terminal.
 
 ### The one-page PRD
 
@@ -1870,7 +1933,9 @@ The pattern where you send the same request eight times with more emphasis each 
 
 ## Part 18. Glossary
 
-**Agent** An AI model that can take actions in a loop, checking results and trying again. Claude Code is one.
+**Acceptance criteria** The "done means" line in your PRD. A description of what you would see with your own eyes if the feature worked.
+
+**Agent** An AI model that can take actions in a loop, checking results and trying again. Claude Code is one. What makes it an agent rather than a chat window is that it has tools.
 
 **API** How one piece of software talks to another.
 
@@ -1912,9 +1977,13 @@ The pattern where you send the same request eight times with more emphasis each 
 
 **MVP** Minimum viable product. The smallest thing that tests whether your idea is right.
 
+**Plan mode** A setting that makes Claude Code show you its plan and wait, instead of starting work straight away. Shift+Tab in the terminal, or the mode selector in the desktop app.
+
 **PRD** The one page describing what you are building, before you build it.
 
 **Probe** A deliberately disposable thing built to collect evidence, not to be a product.
+
+**Project memory** A file in your project that Claude reads automatically at the start of every session, so you stop re-explaining the same things. Yours is called `CLAUDE.md`.
 
 **Prompt** What you tell the AI.
 
@@ -1928,9 +1997,11 @@ The pattern where you send the same request eight times with more emphasis each 
 
 **Skill** A procedure you wrote down once so Claude can follow it on request instead of you explaining it again.
 
-**Slash command** An instruction to Claude Code itself rather than a request to build something. `/init` and `/compact` are the two you need. Any skill you make adds one of its own.
+**Slash command** An instruction to Claude Code itself rather than a request to build something. `/init`, `/compact`, and `/context` are the three you need. Any skill you make adds one of its own.
 
 **Subagent** A helper Claude sends off on a side job with its own workspace. It reports back a summary rather than every step.
+
+**Tool** Something the AI can actually do rather than talk about: read one of your files, write a new one, run your app, search the web. Tools are what turn a chat window into an agent.
 
 **Verification loop** A check Claude runs on its own work before claiming it is finished. Useful, and still a claim.
 
