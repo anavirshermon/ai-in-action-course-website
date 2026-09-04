@@ -111,3 +111,27 @@
 **Status:**
 - Done: deployed to production, aliased to https://ai-in-action-course-website.vercel.app.
 - Note: the deploy still needs `--scope seaborne-toast` from the CLI; the GitHub integration does not auto-deploy this project.
+
+## 2026-09-04 12:20 — Handbook sync: desktop-app path and project memory
+
+**Operations:**
+- `./scripts/sync-content.sh`: only `content/03-Student-Guide-Building-with-AI.md` changed. The syllabus, assignment guide, reading links, and both PDFs were byte-identical.
+- No site code touched. The upstream edits came from the Session 3 revision in the course folder.
+
+**Decisions:**
+- Handbook Part 1 now forks between the terminal and the desktop app rather than assuming the terminal, because several students are using the app and nothing in the student-facing docs acknowledged it.
+- `/context` and `/memory` are documented as terminal-only. Vercel is irrelevant here; the reason is that the desktop docs say panel-style commands behave differently in the Code tab, so the check taught to everyone is "ask Claude what your CLAUDE.md says."
+- The Session 3 row in the syllabus schedule table was left alone. It still describes the old lab (install git, add a feature). Changing it is a course-document edit, not a site edit, so it needs its own decision.
+
+**Results:**
+- `npm run build` clean: TypeScript passed, 25 static pages generated.
+- Leak check passed. The one REVIEW line matches "deduction" in the attendance policy and predates this change.
+- Live production verified with curl: the Part 1 install fork, "Check that it actually loaded", "The file Claude writes for itself", `CLAUDE.local.md`, and the four new Part 18 glossary entries all render on `/resources/handbook`. The new "What does my CLAUDE.md say" prompt block appears on `/resources/prompts` without any code change, since the parser picks up ```prompt fences automatically.
+
+**Commits:**
+- `598d707` Sync the handbook: desktop-app path and project-memory updates
+
+**Status:**
+- Done: pushed to `origin/main` and live at https://ai-in-action-course-website.vercel.app.
+- Correction to the 2026-08-31 note: the GitHub integration **does** auto-deploy this project. `git push origin main` produced `dpl_2Hd7LWnXbKYSYq4R8ACmbVuGocjC`, target production, Ready, aliased to the main domain, with no CLI deploy and no `--scope` flag.
+- Open: the Session 3 syllabus row still describes the pre-revision lab.
