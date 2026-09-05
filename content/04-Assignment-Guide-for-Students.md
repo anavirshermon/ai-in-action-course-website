@@ -76,7 +76,9 @@ Here the risk is the opposite one. Try not to abandon this because it is ugly in
 
 ### What this is
 
-Any small working web app that you built with AI and put on the internet, plus a memo about building it. It does not have to be related to your team's venture, and it does not have to be impressive. A tip calculator counts.
+Any small working web app that you built with AI and put on the internet, plus a memo about building it. It does not have to be related to your team's venture, and it does not have to be a groundbreaking idea.
+
+That said, this is a good moment to start thinking creatively. Look for something you have not already seen a hundred times, or a familiar tool built for a customer who is currently being ignored. Whatever you land on, the memo has to make the case for it: who it is for, why the problem is worth solving, and what would make someone choose your version over what they use today.
 
 ### Why you are doing it
 
@@ -102,9 +104,28 @@ Submit three things:
 
 **Undergraduate.** Your memo is one page single-spaced.
 
+### How to organize the memo
+
+You do not have to use these exact headers, but memos that use something close to them tend to be much easier to follow, and they make sure you cover everything that gets graded. A sentence or two under each heading is often enough at this length.
+
+**The app.** What it does, and what someone can actually do with it once they open the link. Keep this short. The live app is doing most of the talking here.
+
+**The problem and why it matters.** What is annoying, expensive, or slow about how this gets handled today. If you can point to anything outside your own head, such as a forum thread, a review, a news item, or a conversation you had, say so. You are trying to convince a skeptical reader that the problem is real.
+
+**The customer.** Who specifically you pictured while building, and what they currently do instead. "Students" is usually too broad to be useful. "First-year MBA students splitting group dinner costs" gives you something to design against.
+
+**The market.** Roughly how many of those people there are, whether anyone already sells them something similar, and what would make someone pick your version. A rough estimate with your reasoning shown beats a confident number you cannot source.
+
+**How you built it.** The tools and the prompting approach you used, and any decisions you made along the way that you would explain differently now.
+
+**Challenges.** *Graduate memos must include this section.* What broke, what the error actually said, how you got past it, and which prompting techniques worked well for you. Undergraduates are welcome to include it and it usually helps.
+
+**What you would do next.** One or two things you would build or fix if you had another week.
+
 ### What a strong version looks like
 
 - The app does one thing and that one thing works when I click it
+- The memo makes a real case for the app: a customer you can name, a problem you can point to, and a reason someone would use your version
 - The memo names specific failures. "I got an error saying the module was not found, and the fix was X"
 - The memo shows you understood what you were doing, rather than that you got lucky
 - **Weak version:** "I built a website. It was hard at first but then it worked." That tells me very little and scores near the bottom of the memo points.
