@@ -34,7 +34,7 @@ Three more conventions used throughout:
 
 The course has two building phases, and they have different purposes. Knowing which one you are in matters more than any technique in this handbook.
 
-**Sessions 4 and 5 are probes.** You build small, fast, throwaway things: a landing page, a signup form, a fake pricing page. The purpose is not to build a product. The purpose is to find out whether anyone cares. You will throw most of this away, and that is the plan. Do not get attached.
+**Sessions 4 and 5 are probes.** You build small, fast, throwaway things: a landing page for an idea your team is considering, and possibly a second one for the idea you are considering instead. The purpose is to find out whether the idea holds together, and to have something concrete to put in front of a person, before you spend six weeks building. You will throw most of this away, and that is the plan. Do not get attached.
 
 **Sessions 6 through 9 are the product.** After your idea is locked, you build one real thing and improve it every week. This is the work that becomes your MVP demo at Session 10.
 
@@ -42,8 +42,8 @@ The course has two building phases, and they have different purposes. Knowing wh
 |---|---|---|
 | 2 | 9/2 | Your first working app, whatever it is |
 | 3 | 9/9 | Same app, but with project memory, save points, and a live URL |
-| 4 | 9/16 | A landing page for each problem you are considering |
-| 5 | 9/23 | Signup capture on those pages. Idea lock at the end of class. |
+| 4 | 9/16 | A researched opportunity scan, and a landing page for your front-runner idea |
+| 5 | 9/23 | An interview guide and a list of real people to talk to. Idea lock at the end of class. |
 | 6 | 9/30 | The walking skeleton of your real product |
 | 7 | 10/7 | Your first real feature, plus analytics |
 | 8 | 10/21 | Your data layer and your AI feature |
@@ -72,7 +72,7 @@ The course has two building phases, and they have different purposes. Knowing wh
 
 **Section 2: Finding what to build**
 7. Research agents
-8. Probes: landing pages and smoke tests
+8. Probes: landing pages
 9. Talking to real people
 
 **Section 3: Building the product**
@@ -1026,81 +1026,97 @@ Budget fifteen minutes. It is the difference between research and fiction, and i
 
 ---
 
-## Part 8. Probes: landing pages and smoke tests
+## Part 8. Probes: landing pages
 
 *Sessions 4 and 5, on 9/16 and 9/23.*
 
 ### What a probe is
 
-A probe is a small, fast, public thing you build to find out whether anyone cares. It is not a product. It is an instrument for collecting evidence.
+A probe is a small, fast thing you build to find out whether an idea holds together, and to give other people something concrete to react to. It is a disposable instrument rather than a product.
 
-You will build two or three of them, one per problem you are considering. Most of them will fail, which is the point. Failing in week 4 costs you an evening. Failing in week 11 costs you the semester.
+You will build one in the Session 4 lab, and a second one afterwards if you have two candidate ideas worth comparing. Some of them will not survive the evening, which is the point. Finding out in week 4 costs you an evening. Finding out in week 11 costs you the semester.
 
-**These are meant to be thrown away.** Do not spend a weekend on visual polish. Do not add a database. Do not build features. Build the smallest credible page that could make someone give you their email address.
+**These are meant to be thrown away.** Do not spend a weekend on visual polish. Do not add a database, a login, or a signup form. Do not build features. One page, one idea, about twenty minutes.
 
-### Why this works
+### Why this is worth your time
 
-Your own evidence hierarchy, from weakest to strongest:
+A landing page seems like a strange thing to build for an idea you have not validated. Here is what it actually does for you.
+
+**It forces the idea into concrete language.** You cannot write a headline without deciding who the page is talking to and what you are promising them. Teams argue about an idea in the abstract for weeks. Writing the page usually settles the argument in twenty minutes, because the disagreement becomes visible on a screen instead of staying in four people's heads.
+
+**It makes two ideas comparable.** Two ideas described out loud both sound fine, because talking is cheap and your teammates are being generous. Two pages side by side usually do not. The idea you struggle to write a headline for is telling you something about the idea rather than about your writing.
+
+**It gives a person something to react to.** In Session 5 you start interviewing real people. Handing somebody a page and asking what they think it does will get you further than describing the idea out loud, partly because a spoken pitch invites the listener to be encouraging and a page does not.
+
+**It is rehearsal.** This is the same build loop you will point at your real product from Session 6 onward, run on something you are allowed to throw away. If it goes badly, it cost you an evening.
+
+One more thing you get almost for free: the headline and bullets you write here are the first draft of your positioning, and you will reuse them when you build the pitch in Part 16.
+
+### 8.1 Build the page
+
+**PROMPT**
+
+```prompt
+Build a one-page landing site for [product idea], for [the specific kind
+of person it is for].
+
+Include: a headline that states the problem, three benefit bullets, and
+one placeholder box where a screenshot would go.
+
+Do not add a database, a login, a signup form, or any other features.
+This is a throwaway page for thinking about an idea, not a product.
+
+Make it look credible rather than fancy. Then show me how to open it on
+my own machine.
+```
+
+Build it in its own folder, separate from the project you have been working on since Session 2. Handbook Part 5 has the folder layout, and the reason for keeping them apart is that this one gets deleted later and your graded work does not.
+
+**You'll know it worked when** the page opens in your browser and the headline names a specific kind of person rather than "businesses" or "users."
+
+### 8.2 Put your pages side by side
+
+If your team is choosing between two candidate ideas, build a page for each and open them next to each other. Then ask three questions:
+
+- Which headline took longer to write? The one that fought you is usually the idea you understand least well, and that is worth knowing before you commit six weeks to it.
+- Do the two pages describe different people? If both pages are aimed at roughly the same person, you may be looking at one idea rather than two.
+- If you had to delete one page right now, which would you miss? Ask everyone on the team separately, then compare. Teams are often less agreed than they think.
+
+### 8.3 Show it to someone
+
+**The comprehension test.** Show the page to somebody outside your team for thirty seconds. Take it away. Then ask them to tell you, in their own words, what it does and who it is for.
+
+Write down what they said, not what you wished they had said. If they cannot describe it, you have learned something about the idea, and it is more useful than a compliment would have been.
+
+Good follow-up questions, once the page is back in front of them:
+
+- What would you expect to happen when you clicked this?
+- Who do you know who has this problem? (Much better than asking whether *they* have it.)
+- What do you think this would cost?
+
+### 8.4 Read the result honestly
+
+Your evidence hierarchy, from weakest to strongest:
 
 1. Opinions ("that sounds useful")
 2. Interview quotes ("I spend two hours a week on this")
-3. Observed behavior (they actually clicked)
+3. Observed behavior (they actually did something)
 4. Time or money already spent on a workaround
-5. Pre-orders, letters of intent, waitlist signups
+5. Pre-orders and letters of intent
 
-A conversation gets you level one or two. A landing page gets you level three and sometimes level five. That is why you build before you finish interviewing, not after.
+A page you showed to somebody gets you level one, and level two if you asked good questions afterwards. That is genuinely useful and it is nowhere near proof, which is exactly why Part 9 and the Session 5 interviews carry most of the weight in this course. Somebody saying "that sounds useful" is the weakest evidence there is, and you will hear it constantly.
 
-### 8.1 Build the landing page
+What the page is good for is clarity, comparison, and having something in your hand when you go and talk to people.
 
-**PROMPT**
+**Never** claim the product exists when it does not. Say it is an idea you are exploring, which is true, and which people are perfectly happy to talk about. Never invent testimonials, borrow customer logos, or put made-up statistics in the copy. A fabricated number on a landing page is the same integrity problem as a fabricated citation in a report, and it is treated the same way.
 
-```prompt
-Build a one-page landing site for [product idea].
+Putting the page online is not part of this assignment and is not graded. If you want to do it anyway, the rules in this section still apply.
 
-Include: a headline that states the problem, three benefit bullets, one
-screenshot placeholder, and an email signup form.
+### 8.5 A probe that dies is a finding
 
-Store the emails using Formspree, which needs no database. Do not set up
-a database for this.
+Sometimes you will sit down to write the headline and discover that you cannot say who the page is for, or that every version of it describes a product nobody asked for. That is a result, and it arrived cheaply.
 
-Add Vercel Analytics so I can see visits.
-
-Make it look credible, not fancy. Then deploy it to Vercel and give me
-the URL.
-```
-
-Formspree is deliberate. You do not learn databases until Session 8, and a probe does not need one. If you find yourself wanting a database in week 4, you are building a product instead of a probe.
-
-### 8.2 Get people to it
-
-A landing page nobody visits tells you nothing. You need somewhere between fifty and a few hundred visitors to learn anything.
-
-Where to put it:
-
-- The two or three online communities where your users actually spend time. Read each community's self-promotion rules first and follow them. Getting banned is not evidence.
-- Relevant subreddits, where you should participate honestly rather than drop a link.
-- People you already know who fit the profile. Ask them to share it, not to sign up.
-- A small paid test if you have twenty dollars and want faster data.
-
-**Never** buy email lists, use fake testimonials, or claim the product exists when it does not. Say it is coming. A waitlist is honest. A fake product is not, and in this course it is an integrity issue.
-
-### 8.3 Read the result honestly
-
-**PROMPT**
-
-```prompt
-Here is the traffic and signup data from my landing page: [paste].
-
-Calculate the conversion rate. Then tell me honestly what this does and
-does not prove. What would I need to see before concluding that this
-problem is worth building for?
-
-Argue the pessimistic interpretation first.
-```
-
-Rough guidance for a landing page from a cold audience: under two percent signup is weak, two to five percent is worth a second look, above five percent is a real signal. These are rough. What matters more is comparing your two or three probes against each other, since they share the same traffic sources.
-
-**A probe with zero signups is a finding, not a failure.** Report it. The Discovery Report rubric explicitly credits what did not work. Teams that hide a dead probe and pretend they were always committed to the surviving idea score worse than teams that show the graveyard.
+Report it. The Discovery Report rubric explicitly credits what did not work, and teams that hide an idea they abandoned and pretend they were always committed to the surviving one score worse than teams that show the graveyard.
 
 ---
 
@@ -1306,7 +1322,7 @@ Work in the core loop from Part 3, and commit after each step that works.
 
 Two things belong in this week and not later.
 
-**Analytics, before you have users.** You put analytics on your landing pages back at Session 4, but that was a different project. This is your real product, and it needs its own. You cannot measure what you did not instrument, and there is no way to recover last week's usage data after the fact. Install it now, while the app is quiet and a mistake costs nothing.
+**Analytics, before you have users.** This is the first project in the course that needs analytics, because it is the first one real people will use. You cannot measure what you did not instrument, and there is no way to recover last week's usage data after the fact. Install it now, while the app is quiet and a mistake costs nothing.
 
 **PROMPT**
 
@@ -1943,9 +1959,13 @@ The pattern where you send the same request eight times with more emphasis each 
 
 **Backend** The logic that does the work. The kitchen.
 
+**Bottom-up market sizing** Working out how big a market is by counting real customers and multiplying by a price you could defend. The opposite of "one percent of a fifty-billion-dollar market," which is a sentence rather than a number.
+
 **Branch** Your own copy of the project to work in, so what you break is broken only for you. You merge it back when it works.
 
 **Commit** A save point in your project's history, stored on your own machine until you push it.
+
+**Complement** Something that gets more valuable when a related thing gets cheaper, because the two get used together. Cheap flights made hotels more valuable. As intelligence gets cheap, the question worth asking is what its complements are.
 
 **Context window** The AI's short-term memory. It is why long sessions get worse and why `/compact` helps.
 
@@ -1955,15 +1975,23 @@ The pattern where you send the same request eight times with more emphasis each 
 
 **Environment variable** The safe place to keep API keys, outside your code.
 
+**Founder–market fit** Whether you personally have access, experience, or credibility in the market you picked. Usually decided by whether you can get five of these people on the phone this week.
+
 **Frontend** What users see and click. The dining room.
 
 **Git** The save-point system that runs on your own laptop. Keeps the history, lets you go back.
 
 **GitHub** The website that holds a copy of that history. Where your repo link comes from. Not the same thing as git.
 
+**Hair-on-fire problem** A problem somebody is already actively trying to solve, badly, right now. The clearest sign of one is a workaround.
+
 **Hallucination** When AI confidently makes something up. The reason for every verification rule in this handbook.
 
 **Hook** An automatic check that fires when something happens, whether the AI agrees with it or not. What you use when an instruction is not strong enough.
+
+**Horizontal product** One tool sold to everybody, whatever industry they are in. A spreadsheet or a general chatbot. Compare vertical product.
+
+**Jevons paradox** When something gets cheaper to use, total use of it often goes up rather than down, because it becomes worth using for things nobody would have bothered with before. Named after William Stanley Jevons, who noticed it about coal in 1865.
 
 **LLM** Large language model. The AI itself.
 
@@ -1981,7 +2009,7 @@ The pattern where you send the same request eight times with more emphasis each 
 
 **PRD** The one page describing what you are building, before you build it.
 
-**Probe** A deliberately disposable thing built to collect evidence, not to be a product.
+**Probe** A deliberately disposable thing you build to think an idea through and to give other people something concrete to react to. Not a product, and not meant to survive.
 
 **Project memory** A file in your project that Claude reads automatically at the start of every session, so you stop re-explaining the same things. Yours is called `CLAUDE.md`.
 
@@ -2001,13 +2029,23 @@ The pattern where you send the same request eight times with more emphasis each 
 
 **Subagent** A helper Claude sends off on a side job with its own workspace. It reports back a summary rather than every step.
 
+**Substitute** Something people buy instead of another thing. Tea is a substitute for coffee. When one gets cheaper, the other sells less.
+
 **Tool** Something the AI can actually do rather than talk about: read one of your files, write a new one, run your app, search the web. Tools are what turn a chat window into an agent.
 
 **Verification loop** A check Claude runs on its own work before claiming it is finished. Useful, and still a claim.
 
 **Version control** The general name for what git does: keeping a history you can move around in.
 
+**Vertical product** One industry's workflow handled all the way down, and nobody else's. Software for personal-injury law firms, or for dental practices. Compare horizontal product.
+
 **Walking skeleton** The thinnest end-to-end version of your product where the core action works, badly.
+
+**"Why now"** The specific reason your idea could not have been built three years ago. For an AI venture it has to name a capability that crossed a threshold and roughly when. "AI is big" is not a why-now.
+
+**Willingness to pay** What somebody would actually hand money over for, which is usually a much shorter list than what they say is a good idea.
+
+**Workaround** The spreadsheet plus email plus group chat rig people build when no product exists. Nobody builds one for a problem they do not have, which is why it is the clearest signal in customer research.
 
 Anything not on this list, ask Claude. "Explain [term] to someone who has never written code" works every time.
 
