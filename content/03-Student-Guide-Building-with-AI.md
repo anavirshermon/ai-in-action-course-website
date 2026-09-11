@@ -42,8 +42,8 @@ The course has two building phases, and they have different purposes. Knowing wh
 |---|---|---|
 | 2 | 9/2 | Your first working app, whatever it is |
 | 3 | 9/9 | Same app, but with project memory, save points, and a live URL |
-| 4 | 9/16 | A researched opportunity scan, and a landing page for your front-runner idea |
-| 5 | 9/23 | An interview guide and a list of real people to talk to. Idea lock at the end of class. |
+| 4 | 9/16 | A checked research report, a front-runner chosen on evidence, and your kill criteria |
+| 5 | 9/23 | A one-page site to show people, an interview guide, and a list of real people. Idea lock at the end of class. |
 | 6 | 9/30 | The walking skeleton of your real product |
 | 7 | 10/7 | Your first real feature, plus analytics |
 | 8 | 10/21 | Your data layer and your AI feature |
@@ -72,7 +72,7 @@ The course has two building phases, and they have different purposes. Knowing wh
 
 **Section 2: Finding what to build**
 7. Research agents
-8. Probes: landing pages
+8. Deciding which idea to keep
 9. Talking to real people
 
 **Section 3: Building the product**
@@ -1026,97 +1026,132 @@ Budget fifteen minutes. It is the difference between research and fiction, and i
 
 ---
 
-## Part 8. Probes: landing pages
+## Part 8. Deciding which idea to keep
 
-*Sessions 4 and 5, on 9/16 and 9/23.*
+*Session 4, on 9/16.*
 
-### What a probe is
+Part 7 gathered information. This part is about judging it, and about judging the idea it was gathered for.
 
-A probe is a small, fast thing you build to find out whether an idea holds together, and to give other people something concrete to react to. It is a disposable instrument rather than a product.
+These are two different skills and the second one is harder. A research report always reads as though it found something. Your job is to work out whether it did, and then whether the problem behind it is worth six weeks of your life.
 
-You will build one in the Session 4 lab, and a second one afterwards if you have two candidate ideas worth comparing. Some of them will not survive the evening, which is the point. Finding out in week 4 costs you an evening. Finding out in week 11 costs you the semester.
+An AI assistant is genuinely useful here, for one reason: it has nothing invested in your idea. It will happily write the case against you, which is the case you are least able to write yourself. It is also happy to agree with you, so the prompts below are built to stop it doing that.
 
-**These are meant to be thrown away.** Do not spend a weekend on visual polish. Do not add a database, a login, or a signup form. Do not build features. One page, one idea, about twenty minutes.
+### Make the answers readable
 
-### Why this is worth your time
+By default you will get long, padded, repetitive answers with a summary at the end that repeats the middle. Paste these lines at the end of any prompt in this part:
 
-A landing page seems like a strange thing to build for an idea you have not validated. Here is what it actually does for you.
+```prompt
+Keep it short. No introduction and no summary at the end. Do not repeat
+my question back to me. Plain English. If you are not sure about
+something, say so in one line rather than hedging all the way through.
+```
 
-**It forces the idea into concrete language.** You cannot write a headline without deciding who the page is talking to and what you are promising them. Teams argue about an idea in the abstract for weeks. Writing the page usually settles the argument in twenty minutes, because the disagreement becomes visible on a screen instead of staying in four people's heads.
+You will use this constantly for the rest of the semester. It is worth putting in your `CLAUDE.md` so you stop typing it.
 
-**It makes two ideas comparable.** Two ideas described out loud both sound fine, because talking is cheap and your teammates are being generous. Two pages side by side usually do not. The idea you struggle to write a headline for is telling you something about the idea rather than about your writing.
+### 8.1 Score your candidates side by side
 
-**It gives a person something to react to.** In Session 5 you start interviewing real people. Handing somebody a page and asking what they think it does will get you further than describing the idea out loud, partly because a spoken pitch invites the listener to be encouraging and a page does not.
-
-**It is rehearsal.** This is the same build loop you will point at your real product from Session 6 onward, run on something you are allowed to throw away. If it goes badly, it cost you an evening.
-
-One more thing you get almost for free: the headline and bullets you write here are the first draft of your positioning, and you will reuse them when you build the pitch in Part 16.
-
-### 8.1 Build the page
+You have two or three problem areas and you have to choose one. Judging them one at a time does not work, because whichever you read last feels freshest.
 
 **PROMPT**
 
 ```prompt
-Build a one-page landing site for [product idea], for [the specific kind
-of person it is for].
+Read the reports in research/.
 
-Include: a headline that states the problem, three benefit bullets, and
-one placeholder box where a screenshot would go.
+I am choosing between these problem areas:
+1. [area one]
+2. [area two]
 
-Do not add a database, a login, a signup form, or any other features.
-This is a throwaway page for thinking about an idea, not a product.
+Score each from 1 to 5 on four things: how often the problem happens to
+them, what it costs them today, whether anyone already pays to solve it,
+and whether we have any way to reach these people.
 
-Make it look credible rather than fancy. Then show me how to open it on
-my own machine.
+Quote the line of research behind every score. Where the research does
+not support a score, write "not established" rather than guessing.
+
+Put it in one table.
 ```
 
-Build it in its own folder, separate from the project you have been working on since Session 2. Handbook Part 5 has the folder layout, and the reason for keeping them apart is that this one gets deleted later and your graded work does not.
+**The scores are not the point.** The "not established" cells are. If nobody can tell whether these people already pay for anything, you have found the hole in your research, and it is a better result than a confident number would have been.
 
-**You'll know it worked when** the page opens in your browser and the headline names a specific kind of person rather than "businesses" or "users."
+**You'll know it worked when** at least one cell says "not established." If every cell has a score, it is guessing and you should ask it which ones it inferred.
 
-### 8.2 Put your pages side by side
+### 8.2 What would have to be true
 
-If your team is choosing between two candidate ideas, build a page for each and open them next to each other. Then ask three questions:
+You now believe something. This turns that belief into a list you can actually check.
 
-- Which headline took longer to write? The one that fought you is usually the idea you understand least well, and that is worth knowing before you commit six weeks to it.
-- Do the two pages describe different people? If both pages are aimed at roughly the same person, you may be looking at one idea rather than two.
-- If you had to delete one page right now, which would you miss? Ask everyone on the team separately, then compare. Teams are often less agreed than they think.
+**PROMPT**
 
-### 8.3 Show it to someone
+```prompt
+We believe [the thing you believe, for example: an independent dog
+walker would pay $40 a month for this].
 
-**The comprehension test.** Show the page to somebody outside your team for thirty seconds. Take it away. Then ask them to tell you, in their own words, what it does and who it is for.
+List everything that would have to be true for that to hold, including
+things about how these people work that we may not have thought of.
 
-Write down what they said, not what you wished they had said. If they cannot describe it, you have learned something about the idea, and it is more useful than a compliment would have been.
+Then sort your list into three groups:
+- things our research already established
+- things we could find out by talking to five of these people next week
+- things we cannot know yet
+```
 
-Good follow-up questions, once the page is back in front of them:
+The middle group is your interview guide for Part 9. You did not have to invent it, and it came out of evidence rather than out of your imagination.
 
-- What would you expect to happen when you clicked this?
-- Who do you know who has this problem? (Much better than asking whether *they* have it.)
-- What do you think this would cost?
+### 8.3 Write your kill criteria
 
-### 8.4 Read the result honestly
+The Discovery Report asks what would make you abandon the idea. Write it now, tonight, while you are not attached to it yet. In four weeks you will not be able to answer this honestly.
 
-Your evidence hierarchy, from weakest to strongest:
+**PROMPT**
 
-1. Opinions ("that sounds useful")
-2. Interview quotes ("I spend two hours a week on this")
-3. Observed behavior (they actually did something)
-4. Time or money already spent on a workaround
-5. Pre-orders and letters of intent
+```prompt
+Based on the research in research/ and the gaps we just found, write
+three things we could learn in the next two weeks that would mean we
+should stop working on this idea.
 
-A page you showed to somebody gets you level one, and level two if you asked good questions afterwards. That is genuinely useful and it is nowhere near proof, which is exactly why Part 9 and the Session 5 interviews carry most of the weight in this course. Somebody saying "that sounds useful" is the weakest evidence there is, and you will hear it constantly.
+Make each one specific enough that we would recognise it if it happened.
+"People are not interested" is too vague to be useful.
+```
 
-What the page is good for is clarity, comparison, and having something in your hand when you go and talk to people.
+Keep the answer. It goes in the Discovery Report, and it is one of the things that separates a team that is doing research from a team that is collecting reasons.
 
-**Never** claim the product exists when it does not. Say it is an idea you are exploring, which is true, and which people are perfectly happy to talk about. Never invent testimonials, borrow customer logos, or put made-up statistics in the copy. A fabricated number on a landing page is the same integrity problem as a fabricated citation in a report, and it is treated the same way.
+### 8.4 Two ways to get a real second opinion
 
-Putting the page online is not part of this assignment and is not graded. If you want to do it anyway, the rules in this section still apply.
+The three moves above still happen inside a conversation that has spent the last hour helping you. Two ways out of that.
 
-### 8.5 A probe that dies is a finding
+**Ask it to argue against you.**
 
-Sometimes you will sit down to write the headline and discover that you cannot say who the page is for, or that every version of it describes a product nobody asked for. That is a result, and it arrived cheaply.
+```prompt
+Argue against this idea. I am not asking for a balanced view.
 
-Report it. The Discovery Report rubric explicitly credits what did not work, and teams that hide an idea they abandoned and pretend they were always committed to the surviving one score worse than teams that show the graveyard.
+Give me the four strongest reasons [idea] fails, using only what is in
+research/ and not what you assume.
+
+For each reason, tell me what we could see or hear in the next two weeks
+that would show it is happening.
+
+Do not offer solutions and do not soften anything.
+```
+
+**Send a helper that has not been listening.** Claude Code can hand a job to a **subagent**, which is a fresh helper with its own workspace that has not seen your conversation. It has not spent an hour agreeing with you, which is the whole value of it.
+
+```prompt
+Use a subagent to review our decision.
+
+Give it the research folder and tell it which problem area we chose. Ask
+it one question: would somebody reading only this evidence have chosen
+the same one?
+
+Report back what it said, including anything it disagreed with.
+```
+
+If it comes back agreeing, that is mildly reassuring. If it comes back with a different pick, you have something worth arguing about at the table, which is more useful.
+
+### 8.5 What none of this proves
+
+Everything in this part is a machine producing arguments about a report produced by a machine. You can generate a beautiful case against your idea and learn nothing at all.
+
+What these moves actually do is narrow down what you need to go and find out. They tell you which questions matter. They cannot tell you the answers, because the answers are held by people who have the problem, and none of those people are in your terminal.
+
+That is Part 9, and it is where the evidence in this course comes from.
 
 ---
 
@@ -1136,6 +1171,36 @@ Minimums, all due 10/14 with the Discovery Report:
 | Undergraduate team | 5 |
 | Graduate working alone | 6 |
 | Undergraduate working alone | 4 |
+
+### Bring something for them to react to
+
+Before the interviews, build a one-page site describing your idea. A headline, a few bullets saying what it does and who it is for, and a box where a screenshot would go. About twenty minutes.
+
+You are not putting it online, not collecting email addresses, and not taking money. It exists so that the person across the table has something concrete in front of them.
+
+**PROMPT**
+
+```prompt
+Build a one-page landing site for [idea], for [the specific kind of
+person it is for].
+
+Include a headline that states the problem, three benefit bullets, and
+one placeholder box where a screenshot would go.
+
+Do not add a database, a login, a signup form, or any other features.
+This is a page for showing to someone, not a product.
+
+Make it look credible rather than fancy, then show me how to open it on
+my own machine.
+```
+
+Two things it does for you. Writing the headline forces you to decide who this is for, and a team that cannot agree on the headline has not agreed on the idea. Then, in the interview, handing someone a page gets you a more honest reaction than describing the idea out loud, because a spoken pitch quietly invites the listener to be encouraging.
+
+**The comprehension test.** Show it for thirty seconds, take it away, and ask them to tell you what it does and who it is for. Write down what they said rather than what you hoped they would say. If they cannot describe it, you have learned something about the idea.
+
+**Never** claim the product exists. Say it is an idea you are exploring, which is true, and which people are perfectly happy to talk about. No invented testimonials, no borrowed customer logos, no made-up statistics in the copy.
+
+Be clear with yourself about what this is worth. Somebody saying "that sounds useful" is close to the weakest evidence there is, and you will hear it a lot. The page is a prop that makes the conversation better. The conversation is the evidence.
 
 ### 9.1 Draft the interview guide
 
