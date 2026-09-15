@@ -25,9 +25,9 @@ done
 # The official syllabus PDFs are served directly from the site.
 PDF_DIR="$SITE_DIR/public/syllabus"
 mkdir -p "$PDF_DIR"
-cp "$COURSE_DIR/Syllabus/ENTP6314-Fall2026-Syllabus-Graduate-Aug19.pdf" \
+cp "$COURSE_DIR/Syllabus/ENTP6314-Fall2026-Syllabus-Graduate-Aug24.pdf" \
    "$PDF_DIR/ENTP6314-Fall2026-Syllabus-Graduate.pdf"
-cp "$COURSE_DIR/Syllabus/ENTP4332-Fall2026-Syllabus-Undergraduate-Aug19.pdf" \
+cp "$COURSE_DIR/Syllabus/ENTP4332-Fall2026-Syllabus-Undergraduate-Aug24.pdf" \
    "$PDF_DIR/ENTP4332-Fall2026-Syllabus-Undergraduate.pdf"
 echo "synced: syllabus PDFs (graduate + undergraduate)"
 
