@@ -4,7 +4,7 @@ Companion to the Course Schedule in `00-Syllabus-ENTP6314-Fall2026.md`, which ci
 
 Both sections read the same material. Where the undergraduate section treats a reading as optional rather than required, the bullet says so.
 
-Source of record: `Syllabus/ENTP6314-Fall2026-Syllabus-Graduate-Aug19.pdf` and `Syllabus/ENTP4332-Fall2026-Syllabus-Undergraduate-Aug19.pdf`.
+Source of record: `Syllabus/ENTP6314-Fall2026-Syllabus-Graduate-Aug24.pdf` and `Syllabus/ENTP4332-Fall2026-Syllabus-Undergraduate-Aug24.pdf`.
 
 For Handbook parts referenced below, see `03-Student-Guide-Building-with-AI.md`.
 
@@ -79,8 +79,6 @@ Guest workshop: Jenny S. Le'Dang, Senior Product Designer at American Airlines.
 - Submit the "MVP Demo" assignment package
 
 ## Session 11 — Developing Compelling Pitches
-
-Guest speaker (graduate section): Marlow B. Hooper, Legal Engineer, Product Specialist and founding member of the Dallas office at Harvey — https://www.harvey.ai
 
 - Handbook Part 16
 - Sequoia, *Writing a Business Plan* (optional for the undergraduate section) — https://sequoiacap.com/article/writing-a-business-plan/

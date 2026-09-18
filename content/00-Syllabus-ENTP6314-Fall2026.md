@@ -233,7 +233,7 @@ Final grades will be assigned based on the following scale: 93 to 100% (A), 90 t
 | # | Date | Topic | Due | What we cover |
 |---|---|---|---|---|
 | 10 | 11/4 | MVP Demo Day | **MVP Demo** | Demoing well: narrating user value rather than technology. **Lab:** live presentations of the MVP with peer panel feedback. |
-| 11 | 11/11 | Developing Compelling Pitches | | Guest speaker: Marlow B. Hooper, Legal Engineer and Product Specialist, founding member of the Dallas office at Harvey. The anatomy of a successful pitch: narrating user value and the problem solved rather than the technology. Common questions investors ask startups. **Lab:** develop your pitch, and run user testing of the product. |
+| 11 | 11/11 | Developing Compelling Pitches | | The anatomy of a successful pitch: narrating user value and the problem solved rather than the technology. Common questions investors ask startups. **Lab:** develop your pitch, and run user testing of the product. |
 | 12 | 11/18 | Product Iteration and Pitch Practice | | Acting on feedback: what to fix in the product, and what to fix in the story. Delivery mechanics: timing, who speaks, and answering questions under pressure. **Lab:** pitch practice. |
 | — | **11/25** | **Fall break, no in-person class** | | |
 | 13 | 12/2 | Pitch Day | **Final Venture Package and Pitch Presentation**, pitched live | Final pitches to external judges, followed by Q&A. |
