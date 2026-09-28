@@ -217,8 +217,8 @@ Final grades will be assigned based on the following scale: 93 to 100% (A), 90 t
 |---|---|---|---|---|
 | 4 | 9/16 | Finding Market Problems | **First App and Build Memo** | Complements, substitutes, and Jevons paradox. Vertical industry applications of AI. Assessing the viability of market opportunities. **Lab:** run an AI agent workflow to evaluate three candidate problem areas, then build a landing page for each. |
 | 5 | 9/23 | Understanding Customers | | The importance of customer discovery and validation. Using AI for customer research and assessing qualitative customer data. **Lab:** design interview questions and structure, conduct practice interviews, then write a product requirements document for your chosen idea and iterate on it with AI. |
-| 6 | 9/30 | Assessing Competition and Moats | **Product Proposal** | Understanding the layers of the AI value chain. Building defensible AI-specific moats. **Lab:** run an AI agent workflow to evaluate competitors and the value chain of your target market, then add two or three features to your working product. |
-| 7 | 10/7 | Business Model and Unit Economics | | AI business models, pricing, and unit economics. Identifying the core value proposition. Building a positioning statement. **Lab:** draft your positioning statement, value proposition, business model choice, and pricing hypothesis, then identify which features are core and which are peripheral and adjust the application accordingly. |
+| 6 | 9/30 | Determining Pricing and Business Model | **Product Proposal** | Guest workshop: Garvit Patel, Applied Scientist at Uber. Understanding pricing strategies. Managing pricing with AI inference. **Lab:** draft your business model choice and pricing hypothesis. |
+| 7 | 10/7 | Building a Moat | | Building defensible AI-specific moats. **Lab:** draft your positioning statement and value proposition, then identify which features of your product are core and which are peripheral, and adjust the product accordingly. |
 | — | **10/14** | **Break, no in-person class** | | Optional office-hours clinic for Discovery Report questions. |
 
 ### Module 3: Iterate and Extend
@@ -255,7 +255,7 @@ Final grades will be assigned based on the following scale: 93 to 100% (A), 90 t
 |---|---|---|---|---|
 | 4 | 9/15 | Finding Market Problems | **First App and Build Memo** | Complements, substitutes, and Jevons paradox. Vertical industry applications of AI. Assessing the viability of market opportunities. **Lab:** run an AI agent workflow to evaluate three candidate problem areas, then build a landing page for each. |
 | 5 | 9/22 | Understanding Customers | | The importance of customer discovery and validation. Using AI for customer research and assessing qualitative customer data. **Lab:** design interview questions and structure, conduct practice interviews, then write a product requirements document for your chosen idea and iterate on it with AI. |
-| 6 | 9/29 | Assessing Competition and Moats | **Product Proposal** | Differentiating from competitors. Building defensible AI-specific moats. **Lab:** run an AI agent workflow to evaluate competitors, then add two or three features to your working product. |
+| 6 | 9/29 | Pricing and Business Models | **Product Proposal** | Guest workshop: Garvit Patel, Applied Scientist at Uber. Understanding pricing strategies. Managing pricing with AI inference. **Lab:** draft your business model choice and pricing hypothesis. |
 | 7 | 10/6 | Progress Week | **Progress Week Meeting** | No lecture this week. **Lab:** individual team meetings of fifteen to twenty minutes to go over each component of your Discovery Report. Come with a rough plan of action. |
 | — | **10/13** | **Break, no in-person class** | | Optional office-hours clinic for Discovery Report questions. |
 

@@ -23,6 +23,12 @@ const DESTINATIONS = [
     border: "border-l-ink-faint",
   },
   {
+    href: "/resources/exercises",
+    label: "Exercises",
+    detail: "Small tools you build with Claude Code, with the files to start each one.",
+    border: "border-l-ink-soft",
+  },
+  {
     href: "/resources/reference",
     label: "Reference",
     detail: "Syllabus, full reading list, setup checklist, glossary.",

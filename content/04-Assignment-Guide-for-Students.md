@@ -152,9 +152,9 @@ It also gives me a chance to push back before you spend six weeks building the w
 
 ### What to submit and when
 
-**Graduate.** Due **9/30**, before the Assessing Competition and Moats session.
+**Graduate.** Due **9/30**, before the Determining Pricing and Business Model session.
 
-**Undergraduate.** Due **9/29**, before the Assessing Competition and Moats session.
+**Undergraduate.** Due **9/29**, before the Pricing and Business Models session.
 
 One document per team, briefly covering, for each idea:
 

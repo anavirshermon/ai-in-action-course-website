@@ -4,7 +4,7 @@ Companion to the Course Schedule in `00-Syllabus-ENTP6314-Fall2026.md`, which ci
 
 Both sections read the same material. Where the undergraduate section treats a reading as optional rather than required, the bullet says so.
 
-Source of record: `Syllabus/ENTP6314-Fall2026-Syllabus-Graduate-Aug24.pdf` and `Syllabus/ENTP4332-Fall2026-Syllabus-Undergraduate-Aug24.pdf`.
+Source of record: `Syllabus/ENTP6314-Fall2026-Syllabus-Graduate-Sept25.pdf` and `Syllabus/ENTP4332-Fall2026-Syllabus-Undergraduate-Sept25.pdf`.
 
 For Handbook parts referenced below, see `03-Student-Guide-Building-with-AI.md`.
 
@@ -51,15 +51,16 @@ Not assigned, worth your time.
 - Handbook Part 9
 - Torres, *Customer Interviews: How to Recruit, What to Ask, and How to Synthesize What You Learn* (2022; optional for the undergraduate section) — https://www.producttalk.org/customer-interviews/
 
-## Session 6 — Assessing Competition and Moats
+## Session 6 — Pricing and Business Models
 
-- Handbook Part 10
-- *How A.I. Helped One Man (and His Brother) Build a $1.8 Billion Company* (New York Times, 2026) — https://www.nytimes.com/2026/04/02/technology/ai-billion-dollar-company-medvi.html
 - Submit "Product Proposal" on Canvas
 
-## Session 7 — Business Model and Unit Economics, or Progress Week
+Guest workshop: Garvit Patel, Applied Scientist at Uber.
 
-*Graduate: no assigned readings. Undergraduate: prepare a rough plan of action for your Discovery Report and bring it to your team meeting.*
+## Session 7 — Building a Moat, or Progress Week
+
+- *How A.I. Helped One Man (and His Brother) Build a $1.8 Billion Company* (New York Times, 2026; graduate section) — http://web.archive.org/web/20260403045812/https://www.nytimes.com/2026/04/02/technology/ai-billion-dollar-company-medvi.html
+- Undergraduate section: prepare a rough plan of action for your Discovery Report and bring it to your team meeting
 
 ## Session 8 — Mapping Product Infrastructure
 

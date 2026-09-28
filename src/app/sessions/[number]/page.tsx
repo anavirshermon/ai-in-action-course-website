@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { getSyllabus, forTrack, DEFAULT_TRACK } from "@/lib/content/syllabus";
 import { getTrack } from "@/lib/track";
 import { getReadingLinks } from "@/lib/content/reading-links";
+import { getExercises } from "@/lib/content/exercises";
 import { splitSessionCover, matchAssignment } from "@/lib/content/session-detail";
 import { resolveHandbookMentions, isHandbookMention } from "@/lib/content/handbook-links";
 import { renderInlineMarkdown, stripMarkdownBold } from "@/lib/content/inline-markdown";
@@ -39,6 +40,7 @@ export default async function SessionDetailPage({
   const { concept, buildTechnique, lab } = splitSessionCover(session.whatWeCover);
   const readings = getReadingLinks().get(sessionNumber);
   const assignment = session.due ? matchAssignment(session.due) : null;
+  const exercises = getExercises().filter((e) => e.sessionNumber === sessionNumber);
 
   return (
     <main className="mx-auto w-full max-w-2xl flex-1 px-6 py-12">
@@ -84,6 +86,20 @@ export default async function SessionDetailPage({
           <p className="mt-2 text-ink-soft">{renderInlineMarkdown(lab)}</p>
         </section>
       )}
+
+      {exercises.map((e) => (
+        <Link
+          key={e.slug}
+          href={`/resources/exercises#${e.slug}`}
+          className="mt-4 flex items-center justify-between gap-4 rounded-[var(--radius-site)] border border-line-strong px-4 py-3 transition-colors hover:border-ink hover:bg-surface"
+        >
+          <div>
+            <p className="text-sm text-ink-soft">Exercise {e.number}</p>
+            <p className="font-heading text-base text-ink">{e.title}</p>
+          </div>
+          <span className="shrink-0 text-sm text-ink">Open →</span>
+        </Link>
+      ))}
 
       {readings && readings.links.length > 0 && (
         <section className="mt-8 border-t border-line pt-6">
