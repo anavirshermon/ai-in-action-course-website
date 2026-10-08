@@ -45,8 +45,8 @@ The course has two building phases, and they have different purposes. Knowing wh
 | 4 | 9/16 | A checked research report, a front-runner chosen on evidence, and your kill criteria |
 | 5 | 9/23 | A one-page site to show people, an interview guide, and a list of real people. Idea lock at the end of class. |
 | 6 | 9/30 | The walking skeleton of your real product |
-| 7 | 10/7 | Your first real feature, plus analytics |
-| 8 | 10/21 | Your data layer and your AI feature |
+| 7 | 10/7 | Your first real feature |
+| 8 | 10/21 | Analytics, plus one new component of your choice (e.g., a database, an AI feature or a checkout) |
 | 9 | 10/28 | Fixes from user testing, then launch to real users |
 | 10 | 11/4 | MVP Demo Day |
 | 11 | 11/11 | Your pitch deck |
@@ -78,6 +78,7 @@ The course has two building phases, and they have different purposes. Knowing wh
 **Section 3: Building the product**
 10. Scoping and the walking skeleton
 11. Making it a real application
+    - 11a to 11h: analytics and seven components, step by step
     - Steering Claude Code: skills and hooks
 12. Design and usability
 13. Testing what you built
@@ -186,7 +187,7 @@ Saying no does not break anything. It just tells Claude to try something else.
 | **formspree.io** | Collects email signups on your landing pages | Session 4, 9/16 | Free tier |
 | **supabase.com** | Your database, once you need one | Session 8, 10/21 | Free tier |
 
-Sign up for all of them now, even the later ones. It is ten minutes and it is done.
+Sign up for all of them now, even the later ones. It is ten minutes and it is done. (At Session 8 your team may also want a Google AI Studio, Stripe or Resend account, depending on which component you choose to add. You do not need those yet, and Part 11 walks you through each one when you get there.)
 
 GitHub is worth one extra sentence, because you will hear the name all semester: it is a website that keeps a copy of your project, and it is where the "repo link" that assignments ask for comes from. You will barely visit the site. Claude Code talks to it for you. Part 5 explains what is actually happening.
 
@@ -1377,7 +1378,7 @@ each step.
 
 **Do this** before you leave the Session 6 lab: get the skeleton running and commit it. If it is not running, that is what office hours are for, and it is much cheaper to fix at Session 6 than at Session 10.
 
-### Your first real feature, and analytics
+### Your first real feature
 
 *Session 7, on 10/7.*
 
@@ -1385,20 +1386,11 @@ The skeleton walks. Now give it one feature that a user would actually notice, c
 
 Work in the core loop from Part 3, and commit after each step that works.
 
-Two things belong in this week and not later.
-
-**Analytics, before you have users.** This is the first project in the course that needs analytics, because it is the first one real people will use. You cannot measure what you did not instrument, and there is no way to recover last week's usage data after the fact. Install it now, while the app is quiet and a mistake costs nothing.
-
-**PROMPT**
-
-```prompt
-Add Vercel Analytics to this app. Then tell me how to see how many
-people used it and which pages they visited.
-```
-
-**You'll know it worked when** you open your live URL, the one that comes from `main`, click around, and see your own visit appear on the Vercel Analytics dashboard within a few minutes. Preview URLs from a pull request are not the ones being counted.
+One habit belongs in this week and not later.
 
 **A deployed version that matches what you built.** From this week on, get your work merged into `main` and deployed at the end of every work session, not only when something is due. A product that only runs on your laptop cannot be user-tested, and user testing starts in two weeks.
+
+(Analytics, which counts how many people visit your live site, is installed at Session 8. The walkthrough is 11a in Part 11.)
 
 ---
 
@@ -1407,6 +1399,36 @@ people used it and which pages they visited.
 *Session 8, on 10/21.*
 
 You have something that runs. Now you make it an application people could actually use.
+
+### What you can add, and when you would need it
+
+*This is the map for the Session 8 lab. The step-by-step instructions are further down this Part, under the headings 11a to 11h.*
+
+Your product runs, and at the moment it probably does one thing. This Part is about extending it. Each row in the table below is a ready-made service that you connect to your product so that it can do something new, such as remember things, take a payment or send an email. (The handbook calls these components.) You do not build any of them yourself. You create an account with the service, and Claude Code does the connecting.
+
+| | Component | What it is | Why it is useful | You would need it when... | Account you create | Difficulty |
+|---|---|---|---|---|---|---|
+| **11a** | Analytics (Vercel Analytics) | A counter that records how many people visit your live site and which pages they open | It tells you whether anybody is using what you built, which is evidence you can bring to the demo | you are about to put the product in front of real people, which every team is | None. It is part of your Vercel account | Easy |
+| **11b** | Database (Supabase) | A place where your product keeps things | It remembers what a user did between visits | your product forgets everything when the page is refreshed | Supabase | Medium |
+| **11c** | AI feature (Google Gemini) | A way for your product to send text to an AI model and get text back | It can summarize, draft, classify or answer | an AI step sits at the center of what your product does | Google AI Studio | Easy |
+| **11d** | Payments (Stripe) | A checkout page that Stripe hosts for you, using fake cards | You can find out whether anybody presses "pay" without touching real money | you are testing whether people would pay | Stripe | Medium to hard |
+| **11e** | Sign-in (Supabase) | User accounts | Each person has an account and sees only their own things | your product needs to know who the user is | Supabase (do 11b first) | Medium |
+| **11f** | Email (Resend) | A service that sends email on your product's behalf | It can send a welcome or notification email | your product should tell the user something after they have left | Resend | Easy to medium |
+| **11g** | File upload (Supabase) | Storage for files that users give you | Users can hand it a PDF or a photo | your product starts with the user's own document or photo | Supabase (do 11b first) | Medium |
+| **11h** | Live outside data (Open-Meteo) | A free source of real, current information (the weather, in this example) | It shows facts from the outside world | your product needs information it does not hold itself | None | Easy |
+
+**How the lab runs.** Every team does 11a first. Analytics can only count visits that happen after it is switched on, and there is no way to recover earlier usage afterwards, so it goes in before anything else. It is also the shortest walkthrough here. After that, please pick one of 11b to 11h, whichever your product needs most, and work through it from the top. Nothing from 11b onward is required for a grade. The aim is that your team can add a component when you need one, having done it once with help in the room.
+
+If you are not sure which to choose, 11h and 11c are the gentlest, and either is a good first one if this is all new to you. 11e and 11g build on 11b, so please do the database first if you want either of them.
+
+**What you need before you start.** Every walkthrough assumes you already have these four things, which you set up in earlier sessions:
+
+- your project folder, with Claude Code running inside it (Part 1, "Every time you sit down to work")
+- a `CLAUDE.md` file and a `prd.md` file in that folder (Part 4)
+- your project on GitHub (Part 5)
+- a live URL on Vercel (Part 5)
+
+If one of these is missing, please tell your instructor or TA before you begin, because the steps will not make much sense without it. The walkthroughs assume nothing beyond this list, so each one starts from creating the account.
 
 ### The course stack
 
@@ -1418,7 +1440,7 @@ Do not deviate without a reason you can explain.
 | **Next.js** | The app framework. Claude chooses and manages it. |
 | **Supabase** | Database and user accounts. Free tier. |
 | **Vercel** | Hosting. Free tier. |
-| **Stripe** | Only if you actually charge money during the course. Most teams should not. |
+| **Stripe** | Payments, if your team chooses to add a checkout. In this course you use only its practice mode, where no real money moves. |
 
 ### The plain English map
 
@@ -1493,6 +1515,524 @@ Two things to watch.
 
 **Failure.** APIs go down and time out. If your app shows a spinner forever when that happens, your demo will be the time it happens. Always have a fallback message.
 
+### How the walkthroughs work
+
+*This is the Session 8 lab. The map at the top of this Part tells you which walkthrough to choose.*
+
+There are eight walkthroughs below, 11a to 11h, and they all have the same shape. Each one tells you what it adds and when you would need it, and then gives you numbered steps with one action in each. Please do the steps in order and finish one before you start the next, because most of them depend on the one before.
+
+Two things are true of every walkthrough. The websites involved rename their buttons fairly often, so if what you see on screen does not match a step, please do not guess. Tell Claude Code what you are looking at (e.g., "I am on the Supabase dashboard and I cannot find the API keys") and ask where to click. And the main prompt in each walkthrough asks Claude to explain what it is doing, because you will need to explain it at the demo.
+
+The main prompt also begins by asking Claude to read `CLAUDE.md` and `prd.md`, so that it knows what your product is before it changes anything. It ends by asking Claude to write the new service into the Stack section of `CLAUDE.md`, so that your next session (and your teammates' sessions) will know it is there.
+
+Most walkthroughs finish with a step that says to check it on the live site. That means getting the change into `main` the way your team normally does (Part 5), waiting for Vercel to finish deploying, and then repeating the test at your live URL. A component that only works on your laptop is not finished yet.
+
+If you are working as a team, two things are worth knowing before you begin. Several steps happen on vercel.com, inside your project. The Vercel project usually sits in the account of whichever teammate deployed it, so please do those steps on that person's laptop, or with them sitting next to you. And `.env.local` is never committed, which means it does not travel through GitHub. Each teammate who runs the app on their own laptop needs their own copy of the file, with the keys pasted in by hand (and passed along in person or through a password manager, not in a chat message).
+
+### How keys work
+
+Most of the walkthroughs give you a key. (11a and 11h do not, so you can skip this section if those are the only two you are doing.) A key is a password that lets your app use somebody else's service, and Rule 4 in Part 2 already told you how to treat one. Here is the part that is new.
+
+**A key has to be in two places.** Your app runs on your laptop while you build it, and on Vercel once it is live, and each of those needs its own copy of the key.
+
+- On your laptop, the key goes in a file called `.env.local` in your project folder. Each line is a name, an equals sign and the key, with no spaces and no quote marks.
+- On your live site, the key goes into Vercel. Open vercel.com, click your project, then **Settings**, then **Environment Variables**. Type the same name and paste the same key, and save. Vercel only picks up a new key the next time it builds your site, so push a commit afterwards (or ask Claude Code to redeploy).
+
+**FILE: .env.local**
+
+```
+GEMINI_API_KEY=paste-your-key-here
+```
+
+The file is easy to miss, because your computer hides files whose names start with a dot, so you will not see it in Finder or File Explorer. The simplest way to get to it is to ask Claude Code to create `.env.local` with the names already in it and nothing after the equals signs, and then open it yourself with one command, typed in your second window while you are in your project folder.
+
+**TERMINAL** (Mac)
+
+```
+open -e .env.local
+```
+
+**TERMINAL** (Windows)
+
+```
+notepad .env.local
+```
+
+Paste your key after the equals sign, save, and close the file.
+
+When a component works on your laptop and fails on the live site, a key missing from Vercel is usually the reason.
+
+**Some keys are meant to be seen, and some are not.** Services that your app talks to straight from the browser, such as Supabase and Stripe, give you a *publishable* key, which is safe for visitors to see, and a *secret* key, which is not. The other two keys in this Part (the Gemini key and the Resend key) are secret. A secret key must only be used by code that runs on the server, which is the kitchen in the restaurant picture, and never by code that runs in the visitor's browser, where anybody can read it. You do not need to know how to arrange that. You do need to ask, and every prompt below does.
+
+**Never** paste a key into Claude Code, into a chat message, or into any file other than `.env.local`. Type or paste it into the file yourself, and let Claude refer to it by its name.
+
+**You'll know it worked when** you ask Claude Code to search the project for the first few characters of your key and it finds them nowhere, and `.gitignore` contains a line reading `.env.local`.
+
+### 11a. Analytics (Vercel Analytics)
+
+*Every team does this one, at the start of the Session 8 lab.*
+
+**What this adds.** Analytics is a counter on your live site. It records how many people visited and which pages they opened, and it shows you the totals on a page inside your Vercel account. Visitors do not see anything different. Vercel says that it identifies visitors without third-party cookies and records each page view anonymously, so what you get is totals, and no record of what a named person did (Vercel, *Privacy and Compliance*).
+
+**You would need it when** you are about to show your product to real people, which every team does over the next two weeks. Analytics can only count visits that happen after it is switched on, and there is no way to recover last week's usage afterwards. That is why it goes in today, while the site is quiet and a mistake costs nothing.
+
+**What it costs.** Nothing. Vercel's free plan (Vercel calls it Hobby) includes 50,000 page views a month, which should be far more than a class project sees. There is no new account to create and no key to copy.
+
+**Step 1. Open your project on Vercel.** Go to vercel.com, sign in, and click your project.
+
+**Step 2. Switch analytics on.** Click **Analytics** in the sidebar, and then click the **Enable** button. Please do this before the next step, because analytics that is added to the code before it is enabled tends to show no data.
+
+**Step 3. Ask Claude Code to add it to your app.** Go back to Claude Code in your project folder and paste this.
+
+**PROMPT**
+
+```prompt
+Read CLAUDE.md and prd.md first.
+
+Add Vercel Web Analytics to this app. I have already clicked Enable on
+the Analytics page for this project in the Vercel dashboard.
+
+If this is a Next.js app, install the @vercel/analytics package and add
+the Analytics component to the root layout. If it is a plain HTML site
+with no package manager, tell me so, and follow the HTML instructions in
+Vercel's Web Analytics quickstart instead.
+
+Explain in plain English what you added, which file it is in, and what
+it sends to Vercel when somebody opens a page.
+
+Then add Vercel Analytics to the Stack section of CLAUDE.md.
+```
+
+**Step 4. Put the change on your live site.** Get it into `main` the way your team normally does (Part 5), and wait for Vercel to finish deploying. Analytics only starts counting from the first deployment after you enabled it.
+
+**Step 5. Visit your own site.** Open your live URL, the one that comes from `main`, and click through two or three pages.
+
+**Step 6. Look at the count.** Go back to the **Analytics** page in Vercel and refresh it. It can take a minute or two for a visit to show up, so please refresh once more before you decide something is wrong.
+
+**You'll know it worked when** the Analytics page stops saying it is waiting for data and shows at least one visitor, which is you.
+
+Three things about reading the page, which will matter at Session 9:
+
+- It shows **Production** by default, which means your live URL from `main`. Visits to a preview URL from a pull request are kept separately, under the environments dropdown at the top right. Visits to the copy running on your laptop are not counted.
+- On the free plan it counts visitors and page views, and it does not count button clicks. (Vercel calls those custom events, and they need a paid plan.)
+- The free plan only promises to keep one month of data, so please take a screenshot of the page the day before your demo.
+
+**Try this** if you want to know whether people finish the core action in your PRD: ask Claude Code to give that moment a page of its own (e.g., a "done" or "thank you" page). Finishing then shows up as a page view, which the free plan does count.
+
+**Never** put anything private in a page address (e.g., somebody's email address or name in the URL). The page address is what analytics records.
+
+**If you still see no data after ten minutes,** the usual cause is that the code went live before analytics was enabled. Check that the Analytics page says it is enabled, then push one more commit (or ask Claude Code to redeploy) and visit the live site again. If that does not help, check that you visited the live URL and not a preview or your laptop. Some ad blockers also stop analytics from loading, so it is worth trying once in a browser that does not have one.
+
+### 11b. A database (Supabase)
+
+**What this adds.** Right now your product probably forgets everything when the page is refreshed. A database is where it keeps things, so that what a user typed yesterday is still there today.
+
+**You would need it when** your product has to remember anything between visits (e.g., saved notes, a list of orders or a user's settings).
+
+**Step 1. Create the Supabase account.** Go to supabase.com and click **Start your project**. Choose **Continue with GitHub**, which saves you making another password.
+
+**Step 2. Create a project.** Click **New project** and give it your product's name. It will ask you for a database password. Let it generate one, and save it in your password manager. (You will rarely need it, and it is tedious to reset.) Pick the region nearest to you and click **Create new project**. It takes a minute or two to get ready.
+
+**Step 3. Find your two values.** In the project, open **Project Settings** and then **API Keys**. You need two things from here: the **Project URL**, and the **publishable** key, which starts with `sb_publishable_`. (Older guides call this the `anon` key. It is the same idea.) Leave the **secret** key alone for now, and keep this browser tab open.
+
+**Step 4. Make a place for them on your laptop.** The names of the two variables depend on how your project is built, so ask Claude Code to set them up. Paste this into Claude Code.
+
+**PROMPT**
+
+```prompt
+I am about to add a Supabase database. Create a file called .env.local
+in this project if it does not exist. Add the names of the two variables
+you will need, one for the Supabase project URL and one for the
+publishable key, with nothing after the equals signs.
+
+Check that .gitignore lists .env.local. Then tell me the two names.
+```
+
+**Step 5. Paste the two values in yourself.** Open `.env.local` with the command from "How keys work" above (`open -e .env.local` on a Mac, `notepad .env.local` on Windows). Paste the Project URL after the first equals sign and the publishable key after the second, then save and close the file.
+
+**Step 6. Give Vercel the same two values.** Open vercel.com, click your project, then **Settings**, then **Environment Variables**. Add each one under exactly the same name that Claude gave you, and save.
+
+**Step 7. Write down what you store.** Use the plain English data model from "Your data model" above. One or two sentences is enough, and you will paste them into the next prompt.
+
+**Step 8. Ask Claude Code to build it.**
+
+**PROMPT**
+
+```prompt
+Read CLAUDE.md and prd.md first.
+
+Add a Supabase database to this project. I have created the Supabase
+project and put the project URL and the publishable key in .env.local.
+Tell me what you expect those two variables to be named, and stop if
+they do not match.
+
+Here is what the app needs to store, in plain English:
+[for example: "Notes. Each note has a title, some text, and the date it
+was written."]
+
+Explain each table in plain English before you build anything. Give me
+any SQL to run as one block I can paste into the Supabase SQL Editor,
+and tell me exactly where to paste it.
+
+Turn on row level security for every table, and explain in plain English
+who can read and who can change each table.
+
+Then connect the app so that it saves to and reads from the database.
+
+When it works, add Supabase to the Stack section of CLAUDE.md.
+```
+
+**Step 9. Run the SQL that Claude gives you.** Claude will probably hand you a block of SQL, which is the language databases are set up in. In Supabase, open **SQL Editor** in the left-hand menu, paste the block in, and click **Run**. You do not need to understand the SQL, but please do read Claude's plain English explanation of it.
+
+**Step 10. Try it on your laptop.** Add something in your app, and then refresh the page.
+
+**Step 11. Check it on the live site.** Get the change into `main`, wait for Vercel to deploy, and do the same thing at your live URL.
+
+**You'll know it worked when** you add something in your app, refresh the page, and it is still there, and when you open **Table Editor** in Supabase you can see the same thing sitting in a row.
+
+**Never** put real people's private information in the database while you are testing. Use made-up names and entries.
+
+**If it works on your laptop and not on the live site,** check that both variables are in Vercel under the same names.
+
+One more check, which matters as soon as you add sign-in: row level security is the set of rules saying who may read which rows. A database without those rules will usually let any visitor read everything. 11e has the test for it.
+
+### 11c. An AI feature (Google Gemini, free)
+
+**What this adds.** Your product sends some text to an AI model and gets text back, so it can summarize a document, draft a reply or sort an entry into a category. "Calling an AI model from inside your app" above shows the same thing with the Claude API, which is billed by usage. Gemini is the free option for this course, because Google offers a free tier that is enough for a class project.
+
+**You would need it when** an AI step sits at the center of what your product does, and you want it working without paying for each call.
+
+**Step 1. Open Google AI Studio.** Go to aistudio.google.com/apikey and sign in with a Google account. (If your university account is refused, a personal Gmail account usually works.)
+
+**Step 2. Get your key.** Accept the terms. For a new user, Google AI Studio creates a first key for you. If you do not see one, click **Create API key**. Copy the key, and keep this browser tab open.
+
+**Step 3. Make a place for the key on your laptop.** Paste this into Claude Code.
+
+**PROMPT**
+
+```prompt
+Create a file called .env.local in this project if it does not exist.
+Add a line that reads GEMINI_API_KEY= with nothing after the equals
+sign. Check that .gitignore lists .env.local.
+```
+
+**Step 4. Paste the key in yourself.** Open `.env.local` with the command from "How keys work" above (`open -e .env.local` on a Mac, `notepad .env.local` on Windows). Paste your key straight after `GEMINI_API_KEY=`, then save and close the file.
+
+**Step 5. Give Vercel the same key.** Open vercel.com, click your project, then **Settings**, then **Environment Variables**. Type `GEMINI_API_KEY` as the name, paste the same key, and save.
+
+**Step 6. Decide what the AI feature does, in one sentence.** For example, "summarize the note the user just wrote in two sentences." You will paste that sentence into the next prompt.
+
+**Step 7. Ask Claude Code to build it.**
+
+**PROMPT**
+
+```prompt
+Read CLAUDE.md and prd.md first.
+
+I want the app to [AI feature, for example: "summarize the note the user
+just wrote in two sentences"].
+
+Add a call to the Google Gemini API for this. Use the @google/genai
+package and the model gemini-3.5-flash. My key is in .env.local as
+GEMINI_API_KEY.
+
+The key is secret. Make the call from code that runs on the server, never
+from the browser, and explain to me in plain English where that code
+lives and why the browser cannot see the key.
+
+Add a sensible fallback message for when the API fails, is slow, or has
+hit its free usage limit.
+
+Explain each step as you go.
+
+When it works, add Google Gemini to the Stack section of CLAUDE.md.
+```
+
+**Step 8. Try it on your laptop.** Use the feature in your browser and read what comes back.
+
+**Step 9. Break it on purpose.** Change one character of the key in `.env.local`, restart the app, and try the feature again. You should see your fallback message and not a spinner that never stops. Please put the key back afterwards.
+
+**Step 10. Check it on the live site.** Get the change into `main`, wait for Vercel to deploy, and use the feature at your live URL.
+
+**You'll know it worked when** a sensible answer comes back on your laptop and on the live site, and the fallback message appeared when you broke the key in Step 9.
+
+**Never** send real personal or confidential information through the free tier. Google states that content sent on the free tier may be used to improve its products, so use made-up or public text while you build. If your product will handle sensitive text for real users, that is a reason to move to a paid tier later, and worth a sentence in your pitch.
+
+**If it works on your laptop and not on the live site,** the key is probably missing from Vercel. If it works for a while and then stops, you have probably reached the free tier's limit for the minute or the day, which is what the fallback message is for.
+
+### 11d. Payments (Stripe, practice mode only)
+
+**What this adds.** A real checkout page where somebody can press "pay." In this course you use Stripe's practice environment, where the cards are fake and no money moves. Stripe calls it a *sandbox*, and older screens and guides call it *test mode*. A checkout that works in the sandbox is built the same way as a real one, so it is enough to show at the demo and enough to learn whether people press the button.
+
+**You would need it when** you are testing whether people would pay, and you want to watch them press the button and not only hear them say they would.
+
+**Step 1. Create the Stripe account.** Go to stripe.com and create an account with your email address.
+
+**Step 2. Skip the activation.** Stripe will invite you to "activate" your account by entering business and bank details. You do not need to. Skip it and stay in the sandbox.
+
+**Step 3. Check that you are in practice mode.** The top of the dashboard should say **Sandbox** or **Test mode**.
+
+**Step 4. Find your two keys.** Open **Developers**, then **API keys**. You need the **publishable key**, which starts with `pk_test_`, and the **secret key**, which starts with `sk_test_`. If either key starts with `pk_live_` or `sk_live_`, you are in the wrong mode. Please stop and switch back. Keep this browser tab open.
+
+**Step 5. Make a place for them on your laptop.** Paste this into Claude Code.
+
+**PROMPT**
+
+```prompt
+I am about to add Stripe Checkout. Create a file called .env.local in
+this project if it does not exist. Add the names of the two variables
+you will need, one for the Stripe publishable key and one for the Stripe
+secret key, with nothing after the equals signs.
+
+Check that .gitignore lists .env.local. Then tell me the two names.
+```
+
+**Step 6. Paste the two keys in yourself.** Open `.env.local` with the command from "How keys work" above (`open -e .env.local` on a Mac, `notepad .env.local` on Windows). Paste each key after its own equals sign, then save and close the file.
+
+**Step 7. Give Vercel the same two keys.** Open vercel.com, click your project, then **Settings**, then **Environment Variables**. Add each one under exactly the same name that Claude gave you, and save.
+
+**Step 8. Ask Claude Code to build it.** Fill in your product's name and price first.
+
+**PROMPT**
+
+```prompt
+Read CLAUDE.md and prd.md first.
+
+Add a payment step to this app using Stripe Checkout, the page that
+Stripe hosts. I have put my Stripe sandbox publishable key and secret
+key in .env.local. Tell me what you expect them to be named.
+
+The product is [name] and it costs [price, for example $10, one time].
+
+Use test keys only. Refuse to continue if either key starts with pk_live
+or sk_live.
+
+The secret key must only be used by code that runs on the server. Explain
+in plain English what happens, step by step, from the moment the user
+clicks "pay" to the moment they land back on our site.
+
+Add a simple page for a successful payment and one for a cancelled
+payment.
+
+When it works, add Stripe (sandbox only) to the Stack section of
+CLAUDE.md.
+```
+
+**Step 9. Pay with the fake card.** Click your pay button. On the Stripe page, type the card number 4242 4242 4242 4242, any expiry date in the future, and any three digits for the security code.
+
+**Step 10. Check it on the live site.** Get the change into `main`, wait for Vercel to deploy, and pay with the fake card again at your live URL.
+
+**You'll know it worked when** you click your pay button, arrive on a Stripe page, pay with the fake card, and land on your success page, and the payment appears in your Stripe dashboard under **Payments**.
+
+**Never** type a real card number into your checkout, yours or anybody else's, and never switch the account to live mode during this course. Stripe's own terms prohibit testing with real card details.
+
+**If it works on your laptop and not on the live site,** check that both keys are in Vercel. If the payment goes through and you are then sent to a page that will not load, the success page address is probably still pointing at your laptop. Ask Claude Code to make it use the live site's address.
+
+### 11e. Sign-in (Supabase)
+
+**What this adds.** Each user gets an account, and the product can show each person only their own things.
+
+**You would need it when** your product needs to know who the user is, which is usually the moment two people's data would otherwise get mixed together.
+
+**Before you start,** please finish 11b. The accounts live in the same Supabase project as your database, so there is no new account to create and no new key. Sign-in uses the same Project URL and publishable key you already added.
+
+**Step 1. Check that email sign-in is switched on.** In your Supabase project, open **Authentication** and look for the list of sign-in methods (it is called **Providers** or **Sign In / Providers**). **Email** should already be switched on, and that is the one to start with.
+
+**Step 2. Ask Claude Code to build it.**
+
+**PROMPT**
+
+```prompt
+Read CLAUDE.md and prd.md first.
+
+Add sign-in to the app using Supabase Auth. Email and password only for
+now.
+
+Explain in plain English what happens to a password, where the session
+is stored, and what a user sees if they are not signed in.
+
+Then update the row level security rules so that each signed-in user can
+read and change only their own rows. Give me any SQL as one block for
+the Supabase SQL Editor, and explain each rule in plain English.
+
+When it works, add Supabase Auth to the Stack section of CLAUDE.md.
+```
+
+**Step 3. Run the SQL that Claude gives you.** In Supabase, open **SQL Editor**, paste the block in, and click **Run**, as you did in 11b.
+
+**Step 4. Make two accounts.** In your app, create two accounts with two different email addresses.
+
+**Step 5. Run the two-account test.** Sign in as the first account and add something. Sign out, sign in as the second, and look for it.
+
+**Step 6. Check it on the live site.** Get the change into `main`, wait for Vercel to deploy, and run the two-account test again at your live URL.
+
+**You'll know it worked when** the second account cannot see what the first account added. If it can, the rules are not doing their job, so tell Claude Code exactly what you saw and ask it to fix the rules and explain what was wrong.
+
+**Never** skip that test. A product in which any user can read every other user's data is the mistake Part 14 warns you about, and it is much easier to catch now than after real people have signed up.
+
+**If it works on your laptop and not on the live site,** the usual cause is that Supabase is still sending people back to your laptop after they confirm their email. In Supabase, open **Authentication**, then **URL Configuration**, and set the **Site URL** to your live Vercel address.
+
+**Try this** once email sign-in works: ask Claude Code to add "Sign in with Google." It needs some extra setup on Google's side, and Claude can walk you through it one screen at a time.
+
+### 11f. Email (Resend)
+
+**What this adds.** Your product can send an email, such as a welcome message when somebody signs up or a note when something is ready.
+
+**You would need it when** your product should tell the user something after they have left the page.
+
+There is a limit you should know about before you choose this one. Until you own a web domain (an address such as yourproduct.com) and connect it to Resend, Resend will only deliver to the email address you signed up with. That is enough to build the feature and show a welcome email arriving in your own inbox at the demo. It is not enough to email your users.
+
+**Step 1. Create the Resend account.** Go to resend.com and sign up. Use an email address you can open during class, because that is the only address your test emails will reach.
+
+**Step 2. Get your key.** Open **API Keys** and click **Create API Key**. Copy it straight away, since Resend shows it only once.
+
+**Step 3. Make a place for the key on your laptop.** Paste this into Claude Code.
+
+**PROMPT**
+
+```prompt
+Create a file called .env.local in this project if it does not exist.
+Add a line that reads RESEND_API_KEY= with nothing after the equals
+sign. Check that .gitignore lists .env.local.
+```
+
+**Step 4. Paste the key in yourself.** Open `.env.local` with the command from "How keys work" above (`open -e .env.local` on a Mac, `notepad .env.local` on Windows). Paste your key straight after `RESEND_API_KEY=`, then save and close the file.
+
+**Step 5. Give Vercel the same key.** Open vercel.com, click your project, then **Settings**, then **Environment Variables**. Type `RESEND_API_KEY` as the name, paste the same key, and save.
+
+**Step 6. Ask Claude Code to build it.** Fill in the three bracketed parts first: what triggers the email, what it says, and the address you signed up to Resend with.
+
+**PROMPT**
+
+```prompt
+Read CLAUDE.md and prd.md first.
+
+Add an email to this app using Resend. My key is in .env.local as
+RESEND_API_KEY.
+
+When [trigger, for example: "somebody submits the signup form"], send
+[what, for example: "a short welcome email"].
+
+I have not verified a domain, so send from onboarding@resend.dev and send
+only to [the email address I signed up to Resend with]. Explain what
+would need to change to email real users later.
+
+The key is secret. Send the email from code that runs on the server, and
+explain in plain English where that code lives.
+
+If sending fails, the app should carry on working and should not show
+the user an error.
+
+When it works, add Resend to the Stack section of CLAUDE.md.
+```
+
+**Step 7. Trigger the email on your laptop.** Do whatever is meant to send it (e.g., submit the signup form), and then look in your inbox. Please check the spam folder too.
+
+**Step 8. Check it on the live site.** Get the change into `main`, wait for Vercel to deploy, and trigger the email again at your live URL.
+
+**You'll know it worked when** the email arrives in your inbox, and the **Emails** page in Resend lists it as delivered.
+
+**Never** send email to people who have not asked for it. Unsolicited email annoys the people you most want to impress, and in many places it can break anti-spam laws.
+
+**If it works on your laptop and not on the live site,** check that the key is in Vercel.
+
+### 11g. File upload (Supabase)
+
+**What this adds.** A user can give your product a file, such as a PDF or a photo, and the product keeps it.
+
+**You would need it when** your product starts with something the user already has, such as their own document or photo.
+
+**Before you start,** please finish 11b, because the files live in the same Supabase project as your database. There is no new account and no new key. It is safer with 11e as well, so that each file belongs to somebody.
+
+**Step 1. Make a bucket.** In your Supabase project, open **Storage** and click **New bucket**. A bucket is a folder for uploaded files. Give it a plain name (e.g., `uploads`), and leave **Public bucket** switched off, so that files are private unless a rule says otherwise.
+
+**Step 2. Ask Claude Code to build it.** Fill in the bracketed parts first: the bucket name, what users may upload, which file types, and the largest size.
+
+**PROMPT**
+
+```prompt
+Read CLAUDE.md and prd.md first.
+
+Add file upload to this app using Supabase Storage. I have created a
+private bucket called [bucket name].
+
+Users should be able to upload [what, for example: "one PDF or image"].
+Accept only [file types] and refuse anything over [size, for example
+5 MB], with a clear message.
+
+Explain in plain English where the file goes, who is allowed to open it,
+and what rule enforces that. Give me any SQL as one block for the
+Supabase SQL Editor.
+
+Show the user a list of what they have uploaded.
+
+When it works, add Supabase Storage to the Stack section of CLAUDE.md.
+```
+
+**Step 3. Run any SQL that Claude gives you.** In Supabase, open **SQL Editor**, paste the block in, and click **Run**, as you did in 11b.
+
+**Step 4. Upload a harmless file.** Use your app to upload something you would not mind a stranger reading, and then open the bucket in Supabase to see whether it arrived.
+
+**Step 5. Run the two-account test, if you have sign-in.** This is the same test as in 11e. Upload a file as the first account, then sign in as the second and look for it.
+
+**Step 6. Check it on the live site.** Get the change into `main`, wait for Vercel to deploy, and upload a file at your live URL.
+
+**You'll know it worked when** you upload a file in your app and it appears in the bucket in Supabase. If you have sign-in, the second account should not be able to see or open the first account's file.
+
+**Never** upload real identity documents, medical records or anything else you would not want a stranger to read while you are testing. Use a harmless file.
+
+**If it works on your laptop and not on the live site,** check the two Supabase variables in Vercel, as in 11b.
+
+**Try this** if you also did 11c: ask Claude Code to send the text of an uploaded PDF to Gemini and show a summary. That combination is the core of a good many AI products.
+
+### 11h. Live outside data (Open-Meteo)
+
+**What this adds.** Your product shows real, current information from somewhere else. The example here is the weather, from a free service called Open-Meteo, because it needs no account and no key, which makes it the gentlest way to see how one piece of software asks another for information.
+
+**You would need it when** your product needs information it does not hold itself (e.g., the weather, a price or a map).
+
+**Step 1. See what your app will receive.** There is no account to create and no key. Paste this address into your browser:
+
+```
+https://api.open-meteo.com/v1/forecast?latitude=32.99&longitude=-96.75&current=temperature_2m
+```
+
+You will get back a small block of text containing the current temperature near campus. That text is what an API returns, and your app's job is to turn it into something a person would want to read.
+
+**Step 2. Decide what to show, and where.** For example, "today's temperature and chance of rain for Dallas, at the top of the home page." You will paste that into the next prompt.
+
+**Step 3. Ask Claude Code to build it.**
+
+**PROMPT**
+
+```prompt
+Read CLAUDE.md and prd.md first.
+
+Add live weather to this app using the Open-Meteo API, which needs no
+API key.
+
+Show [what, for example: "today's temperature and chance of rain"] for
+[place], in [where on the page].
+
+Explain in plain English what request the app sends, what comes back,
+and how often it asks.
+
+If the request fails or is slow, show a short, friendly message and keep
+the rest of the page working.
+
+When it works, add Open-Meteo to the Stack section of CLAUDE.md.
+```
+
+**Step 4. Compare it with your phone.** Open your app on your laptop and check the temperature against a weather app.
+
+**Step 5. Check it on the live site.** Get the change into `main`, wait for Vercel to deploy, and look at the same page at your live URL.
+
+**You'll know it worked when** your page shows a temperature that roughly matches a weather app on your phone, and it is still right when you check again tomorrow.
+
+**Never** assume a free data service is free for every use. Open-Meteo is free for non-commercial use, which covers a course project. If your product needs different data (e.g., maps, prices or news), ask Claude Code to suggest a free API for it, and read that service's terms before you build on it.
+
+**If it works on your laptop and not on the live site,** tell Claude Code what you see on the live page. With no key involved, the cause is usually something small in how the request is made.
+
 ### Steering Claude Code: skills and hooks
 
 By now you have told Claude the same things dozens of times. Explain it in plain English. Do not touch the payments code. Run through the demo checklist before we stop. Repeating yourself is not a discipline problem. It is a sign that the instruction belongs somewhere other than the conversation.
@@ -1540,12 +2080,6 @@ before you add it.
 Both of these live in a folder called `.claude/` inside your project, and both get committed along with your code. That is the point for a team: a hook one person adds protects everybody from the next day onward, without anyone having to remember it. If you are wearing the integrator hat from Part 5, this is the highest-leverage five minutes available to you.
 
 The full write-up is Anthropic's [Steering Claude Code](https://claude.com/blog/steering-claude-code-skills-hooks-rules-subagents-and-more). Optional, written for programmers, and the comparison table near the top is worth the visit on its own.
-
-### Analytics
-
-You installed analytics at Session 7, in Part 10. If you did not, go back and do it now, before you add anything else this week.
-
-You cannot measure what you did not instrument. There is no way to recover last week's usage data after the fact. This is why it goes in early.
 
 ---
 
@@ -2018,15 +2552,23 @@ The pattern where you send the same request eight times with more emphasis each 
 
 **Agent** An AI model that can take actions in a loop, checking results and trying again. Claude Code is one. What makes it an agent rather than a chat window is that it has tools.
 
+**Analytics** A counter on your live site that records how many people visited and which pages they opened. In this course it is Vercel Analytics, installed in 11a of Part 11.
+
 **API** How one piece of software talks to another.
 
 **API key** A password for an API. Treat it like a password, because it is one.
 
 **Backend** The logic that does the work. The kitchen.
 
+**Barrier** Whatever stops a competitor copying an advantage you have. Hamilton Helmer's test for a moat is a benefit plus a barrier, and the barrier is usually the harder half to find.
+
+**Beachhead** The small, specific group of customers you set out to win completely before trying to win anybody else. For an AI product it is usually a workflow rather than a demographic.
+
 **Bottom-up market sizing** Working out how big a market is by counting real customers and multiplying by a price you could defend. The opposite of "one percent of a fifty-billion-dollar market," which is a sentence rather than a number.
 
 **Branch** Your own copy of the project to work in, so what you break is broken only for you. You merge it back when it works.
+
+**Brand** Customers will pay more for your product than for an identical one, because of what they believe about you. It usually takes years to build.
 
 **Commit** A save point in your project's history, stored on your own machine until you push it.
 
@@ -2034,19 +2576,37 @@ The pattern where you send the same request eight times with more emphasis each 
 
 **Context window** The AI's short-term memory. It is why long sessions get worse and why `/compact` helps.
 
+**Cornered resource** Exclusive access, on good terms, to something valuable nobody else can get, such as a patent or a dataset. One of Helmer's seven powers.
+
+**Cost of goods sold (COGS)** What it costs you to deliver your product to one more customer. For an AI product that includes every request to the model, which is why a heavy user can cost more than they pay.
+
+**Cost-plus pricing** Working out what something costs you and adding a markup. Easy to calculate, and it tells you nothing about what the customer would actually pay.
+
+**Counter-positioning** A new way of doing business that a bigger competitor could copy but will not, because copying it would hurt their existing revenue. One of Helmer's seven powers.
+
+**Customer acquisition cost (CAC)** What you spend, on average, to win one new paying customer.
+
 **Database** Where information is stored between visits. The pantry.
 
 **Deploy** To put your app on the internet so other people can open it.
 
+**Distribution** How a product reaches its customers. A company that already sells to millions of people can put a new product in front of all of them cheaply, which a newcomer cannot.
+
+**Dynamic pricing** A price that changes with conditions, usually demand. Uber's surge pricing is the example most people have met.
+
 **Environment variable** The safe place to keep API keys, outside your code.
 
 **Founder–market fit** Whether you personally have access, experience, or credibility in the market you picked. Usually decided by whether you can get five of these people on the phone this week.
+
+**Freemium** A free version that is useful on its own, plus a paid version some free users upgrade to. For an AI product every free user still costs you inference, so be careful how generous the free tier is.
 
 **Frontend** What users see and click. The dining room.
 
 **Git** The save-point system that runs on your own laptop. Keeps the history, lets you go back.
 
 **GitHub** The website that holds a copy of that history. Where your repo link comes from. Not the same thing as git.
+
+**Gross margin** What is left of each dollar of revenue after the cost of delivering the product, as a percentage. Charge $50, spend $20 delivering it, and your gross margin is 60%.
 
 **Hair-on-fire problem** A problem somebody is already actively trying to solve, badly, right now. The clearest sign of one is a workaround.
 
@@ -2068,17 +2628,33 @@ The pattern where you send the same request eight times with more emphasis each 
 
 **Merge conflict** Two people changed the same lines and git will not guess which version wins. You decide, with the other person, out loud.
 
+**Moat** Whatever makes it hard for somebody else to copy you and take your customers.
+
 **MVP** Minimum viable product. The smallest thing that tests whether your idea is right.
+
+**Network effects** The product gets more valuable to each user as more people use it. One of Helmer's seven powers.
+
+**Outcome-based pricing** The customer pays only when the product achieves a defined result, such as a support ticket resolved without a human. How you define the result usually matters as much as the price.
+
+**Per-seat pricing** A fixed price for each person who uses the product, usually per month. Awkward for AI products, because if the AI does the work of three people the customer needs fewer seats.
 
 **Plan mode** A setting that makes Claude Code show you its plan and wait, instead of starting work straight away. Shift+Tab in the terminal, or the mode selector in the desktop app.
 
+**Positioning statement** One sentence saying who the product is for, what problem it solves, and why it beats what they use today. "For [segment] who [problem], [product] is a [category] that [benefit], unlike [alternative], because [proof]."
+
 **PRD** The one page describing what you are building, before you build it.
 
+**Price discrimination** Charging different customers different prices for much the same thing. Student discounts, business tiers and volume deals are all ordinary examples.
+
 **Probe** A deliberately disposable thing you build to think an idea through and to give other people something concrete to react to. Not a product, and not meant to survive.
+
+**Process power** A way of working, built up over years, that competitors cannot copy even when they can see it. One of Helmer's seven powers, and rare in young companies.
 
 **Project memory** A file in your project that Claude reads automatically at the start of every session, so you stop re-explaining the same things. Yours is called `CLAUDE.md`.
 
 **Prompt** What you tell the AI.
+
+**Publishable key** A key that is safe for visitors to see, because it can only do harmless things. Supabase and Stripe each give you one. Compare with a secret key.
 
 **Pull** Bringing your teammates' merged work down onto your laptop. Do it before you start, every time.
 
@@ -2088,15 +2664,41 @@ The pattern where you send the same request eight times with more emphasis each 
 
 **Repo** Short for repository. Your project folder stored on GitHub. When an assignment asks for a repo link, it wants the GitHub web address.
 
+**Row level security** The rules in a database saying who may read or change each row. Without them, a database will usually let any visitor read everything.
+
+**Sandbox** A practice version of a service in which nothing is real. In Stripe's sandbox (also called test mode) the cards are fake and no money moves.
+
+**Scale economies** Your cost per unit falls as you grow, so a smaller rival cannot match your price without losing money. One of Helmer's seven powers.
+
+**Secret key** A key that must never be seen by visitors. It is only used by code that runs on the server, and it lives in `.env.local` and in Vercel's settings.
+
+**Seven Powers** Hamilton Helmer's list of the advantages that can last: scale economies, network effects, counter-positioning, switching costs, brand, cornered resource, and process power. Each needs a benefit, which improves your cash flow, and a barrier, which stops competitors copying it.
+
+**Sherlocking** When the platform you build on adds your product as a built-in feature. The risk every AI wrapper runs.
+
 **Skill** A procedure you wrote down once so Claude can follow it on request instead of you explaining it again.
 
 **Slash command** An instruction to Claude Code itself rather than a request to build something. `/init`, `/compact`, and `/context` are the three you need. Any skill you make adds one of its own.
+
+**Storage bucket** A folder, kept by a service such as Supabase, for files that your users upload.
 
 **Subagent** A helper Claude sends off on a side job with its own workspace. It reports back a summary rather than every step.
 
 **Substitute** Something people buy instead of another thing. Tea is a substitute for coffee. When one gets cheaper, the other sells less.
 
+**Switching costs** What a customer would lose by moving to a competitor, such as their data, their setup, or the time it took to learn your product. One of Helmer's seven powers.
+
 **Tool** Something the AI can actually do rather than talk about: read one of your files, write a new one, run your app, search the web. Tools are what turn a chat window into an agent.
+
+**Two-sided marketplace** A business serving two groups who need each other, such as Uber's riders and drivers. The hard question is which side to charge and which to make it cheap for.
+
+**Unit economics** Whether you make or lose money on one customer, before counting the fixed costs of running the company. Price minus what that customer costs you to serve.
+
+**Usage-based pricing** The customer pays for how much they use, counted in something like requests, credits or tokens.
+
+**Value chain** Every company involved in getting a product to the customer, in order, and what each contributes. The useful question is who holds the scarce part.
+
+**Value-based pricing** Setting the price from what the product is worth to the customer, such as the hours or money it saves them. This is where the ceiling on your price comes from.
 
 **Verification loop** A check Claude runs on its own work before claiming it is finished. Useful, and still a claim.
 
@@ -2111,6 +2713,8 @@ The pattern where you send the same request eight times with more emphasis each 
 **Willingness to pay** What somebody would actually hand money over for, which is usually a much shorter list than what they say is a good idea.
 
 **Workaround** The spreadsheet plus email plus group chat rig people build when no product exists. Nobody builds one for a problem they do not have, which is why it is the clearest signal in customer research.
+
+**Wrapper** A product built on top of somebody else's AI model. The criticism is about how thin the layer on top is, rather than about using a model at all.
 
 Anything not on this list, ask Claude. "Explain [term] to someone who has never written code" works every time.
 
