@@ -1158,13 +1158,13 @@ That is Part 9, and it is where the evidence in this course comes from.
 
 ## Part 9. Talking to real people
 
-*Session 5, on 9/23. Interviews are due 10/14.*
+*Session 5, on 9/23. Interviews are due with the Discovery Report (10/28 for the graduate section, 10/27 for the undergraduate section).*
 
 AI prepares and synthesizes. Humans validate.
 
 **Synthetic interviews are inadmissible as evidence in this course.** You may use AI to rehearse against a fake customer. You may never count that as data. This is a hard rule and it is graded.
 
-Minimums, all due 10/14 with the Discovery Report:
+Minimums, all due with the Discovery Report on 10/28 (graduate) or 10/27 (undergraduate):
 
 | | Interviews required |
 |---|---|

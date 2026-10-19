@@ -142,7 +142,7 @@ Course grades are based on class participation and a set of assessments tied to 
 | Class Participation | Individual | 20% | Ongoing |
 | First App and Build Memo | Individual | 10% | 9/16 |
 | Product Proposal | Team | 5% | 9/30 |
-| Discovery Report | Team | 20% | 10/21 |
+| Discovery Report | Team | 20% | 10/28 |
 | MVP Demo | Team | 10% | In class 11/4 |
 | Individual Build Log | Individual | 15% | 12/9 |
 | Final Venture Package and Pitch Presentation | Team | 20% | Pitch 12/2, package 12/9 |
@@ -156,7 +156,7 @@ Course grades are based on class participation and a set of assessments tied to 
 | First App and Build Memo | Individual | 5% | 9/15 |
 | Product Proposal | Team | 5% | 9/29 |
 | Progress Week Meeting | Team | 5% | In class 10/6 |
-| Discovery Report | Team | 15% | 10/20 |
+| Discovery Report | Team | 15% | 10/27 |
 | MVP Demo | Team | 10% | In class 11/3 |
 | Individual Build Log | Individual | 15% | 12/8 |
 | Final Venture Package and Pitch Presentation | Team | 20% | Pitch 12/1, package 12/8 |
@@ -173,9 +173,9 @@ Detailed rubrics for every assessment are in the Assignment Guide on the course 
 
 **Discovery Report.** A team-written summary of the research your group conducts across the discovery sessions. You will identify and define the market problem you are solving and explain why now is the right time to target that market. You will also size the target market, present what you learned from customer research, analyze your competitors, argue for the defensibility of your product's proposed moat, and lay out a business model with planned unit economics. You will use AI throughout to conduct this research but must verify and validate its output. AI is not permitted for the writing of the report. Graduate teams submit up to twelve double-spaced pages plus figures, appendices, and references. Undergraduate teams submit up to eight double-spaced pages plus appendices and references.
 
-**MVP Demo.** A live, working demonstration of your product's core workflow in front of the class, eight minutes for graduate teams and six for undergraduate. Submit a live URL and a GitHub repository link through Canvas. This is graded on whether the product runs, whether and how evidence from the Discovery Report visibly shaped the product and its features, the quality of your testing and validation, and your responses to questions during the presentation.
+**MVP Demo.** A live, working demonstration of your product's core workflow in front of the class, eight minutes for graduate teams and six for undergraduate. Submit a live URL, a GitHub repository link, and your team's `CLAUDE.md` and `prd.md` files through Canvas. This is graded on whether the product runs, whether and how evidence from the Discovery Report visibly shaped the product and its features, the quality of your testing and validation, and your responses to questions during the presentation.
 
-**Individual Build Log.** From Session 4 onward, keep a weekly build log covering what you built that week, what you tried, what broke, how you fixed it, and what you learned. Graduate entries run about three pages, undergraduate about two. At the end of the semester you submit your four most interesting weekly logs in a combined document. That final submission must also describe a case where AI was confidently wrong, how you caught it, and what you learned from the incident. Undergraduate build logs are graded as "Poor," "Average," "Good," or "Excellent," which correspond to particular scores. More details are on Canvas.
+**Individual Build Log.** From Session 4 onward, keep a weekly build log covering what you built that week, what you tried, what broke, how you fixed it, and what you learned. In both sections, each entry should be no longer than one page. At the end of the semester you submit your four most interesting weekly logs in a combined document. That final submission must also describe a case where AI was confidently wrong, how you caught it, and what you learned from the incident. Undergraduate build logs are graded as "Poor," "Average," "Good," or "Excellent," which correspond to particular scores. More details are on Canvas.
 
 **Final Venture Package and Pitch Presentation.** Each team delivers a live pitch presentation followed by five minutes of Q&A. Graduate pitches run ten minutes and are judged live by external judges. Undergraduate pitches run eight minutes. Teams then submit a final package containing the final pitch deck with an appendix of supporting evidence, a live product URL, a GitHub repository, and a two-page double-spaced AI-usage report documenting the most impactful uses of AI over the semester, such as pivotal prompts and agent workflows. The package also includes the Discovery Report, revised and reframed as a Go-to-Market Strategy document. This is an update rather than a rewrite, so every substantive change must be visibly annotated with highlighting or a short change log, making it clear what shifted and why. A central addition to this deliverable is real customer evidence. Graduate teams must document a minimum of six real interviews and what they learned from each; undergraduate teams a minimum of four.
 
@@ -225,8 +225,8 @@ Final grades will be assigned based on the following scale: 93 to 100% (A), 90 t
 
 | # | Date | Topic | Due | What we cover |
 |---|---|---|---|---|
-| 8 | 10/21 | Mapping Product Infrastructure: From Skeleton to Real Application | **Discovery Report** | The architecture of a software product, as a non-technical overview. Build versus buy at the component level. Adding a data layer to your product. **Lab:** integrate new components into your product, such as payment processing, a database, or a call to an LLM for AI features. |
-| 9 | 10/28 | Polishing Design and Testing | | Guest workshop: Jenny S. Le'Dang, Senior Product Designer at American Airlines. Usability and design judgment for non-designers. AI-assisted design critique and edge-case testing. **Lab:** build a design system for your product, then run design iterations. |
+| 8 | 10/21 | Mapping Product Infrastructure: From Skeleton to Real Application | | The architecture of a software product, as a non-technical overview. Build versus buy at the component level. Adding a data layer to your product. **Lab:** integrate new components into your product, such as payment processing, a database, or a call to an LLM for AI features. |
+| 9 | 10/28 | Polishing Design and Testing | **Discovery Report** | Guest workshop: Jenny S. Le'Dang, Senior Product Designer at American Airlines. Usability and design judgment for non-designers. AI-assisted design critique and edge-case testing. **Lab:** build a design system for your product, then run design iterations. |
 
 ### Module 4: Pitch
 
@@ -263,8 +263,8 @@ Final grades will be assigned based on the following scale: 93 to 100% (A), 90 t
 
 | # | Date | Topic | Due | What we cover |
 |---|---|---|---|---|
-| 8 | 10/20 | Mapping Product Infrastructure: From Skeleton to Real Application | **Discovery Report** | The architecture of a software product, as a non-technical overview. Build versus buy at the component level. Adding a data layer to your product. **Lab:** integrate new components into your product, such as payment processing, a database, or a call to an LLM for AI features. |
-| 9 | 10/27 | Polishing Design | | Guest workshop: Jenny S. Le'Dang, Senior Product Designer at American Airlines. Usability and design judgment for non-designers. AI-assisted design critique and edge-case testing. **Lab:** build a design system for your product, then run design iterations. |
+| 8 | 10/20 | Mapping Product Infrastructure: From Skeleton to Real Application | | The architecture of a software product, as a non-technical overview. Build versus buy at the component level. Adding a data layer to your product. **Lab:** integrate new components into your product, such as payment processing, a database, or a call to an LLM for AI features. |
+| 9 | 10/27 | Polishing Design | **Discovery Report** | Guest workshop: Jenny S. Le'Dang, Senior Product Designer at American Airlines. Usability and design judgment for non-designers. AI-assisted design critique and edge-case testing. **Lab:** build a design system for your product, then run design iterations. |
 
 ### Module 4: Pitch
 

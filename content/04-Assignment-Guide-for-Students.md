@@ -32,7 +32,7 @@ Some words used throughout, defined once:
 | First App and Build Memo | Alone | 10% | 5% | 9/16 | 9/15 |
 | Product Proposal | Team | 5% | 5% | 9/30 | 9/29 |
 | Progress Week Meeting | Team | *not assigned* | 5% | — | In class 10/6 |
-| Discovery Report | Team | 20% | 15% | 10/21 | 10/20 |
+| Discovery Report | Team | 20% | 15% | 10/28 | 10/27 |
 | MVP Demo | Team | 10% | 10% | In class 11/4 | In class 11/3 |
 | Individual Build Log | Alone | 15% | 15% | 12/9 | 12/8 |
 | Final Venture Package and Pitch Presentation | Team | 20% | 20% | Pitch 12/2, package 12/9 | Pitch 12/1, package 12/8 |
@@ -203,7 +203,7 @@ Your progress is graded as "Poor Progress," "Marginal Progress," "Good Progress,
 
 ## Discovery Report
 
-**Graduate: 20%, due 10/21. Undergraduate: 15%, due 10/20. Team assignment.**
+**Graduate: 20%, due 10/28. Undergraduate: 15%, due 10/27. Team assignment.**
 
 ### What this is
 
@@ -223,9 +223,9 @@ Writing it forces you to notice what you do not actually know yet. Many teams di
 
 ### What to submit and when
 
-**Graduate.** Due **10/21**, with the Mapping Product Infrastructure session.
+**Graduate.** Due **10/28**, with the Polishing Design and Testing session.
 
-**Undergraduate.** Due **10/20**, with the Mapping Product Infrastructure session.
+**Undergraduate.** Due **10/27**, with the Polishing Design session.
 
 One report covering:
 
@@ -278,6 +278,7 @@ Submit through Canvas the same day:
 
 - Your live product web address
 - Your GitHub repository link
+- Your team's `CLAUDE.md` and `prd.md` files, which you can upload to Canvas directly
 
 Grading covers whether the product runs, whether and how evidence presented in the Discovery Report visibly shaped the product and its features, the quality of your testing and validation, and your responses to questions during the presentation.
 
@@ -302,9 +303,7 @@ Start scheduling any user testing early. Other people's calendars are usually th
 
 Your own weekly record of what you personally did on the project, kept from Session 4 onward.
 
-**Graduate.** Entries run about three pages each.
-
-**Undergraduate.** Entries run about two pages each.
+In both sections, each entry should be no longer than one page.
 
 This is yours. It is not shared with your team, and your teammates do not write it.
 

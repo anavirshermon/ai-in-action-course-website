@@ -65,11 +65,11 @@ Guest workshop: Garvit Patel, Applied Scientist at Uber.
 ## Session 8 — Mapping Product Infrastructure
 
 - Handbook Part 11
-- Submit "Discovery Report" on Canvas
 
 ## Session 9 — Polishing Design and Testing
 
 - Handbook Parts 12–14
+- Submit "Discovery Report" on Canvas
 - Nielsen, *Ten Usability Heuristics for User Interface Design* (Nielsen Norman Group, 2024; optional for the undergraduate section) — https://www.nngroup.com/articles/ten-usability-heuristics/
 
 Guest workshop: Jenny S. Le'Dang, Senior Product Designer at American Airlines.
