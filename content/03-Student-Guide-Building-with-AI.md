@@ -1158,20 +1158,20 @@ That is Part 9, and it is where the evidence in this course comes from.
 
 ## Part 9. Talking to real people
 
-*Session 5, on 9/23. Interviews are due with the Discovery Report (10/28 for the graduate section, 10/27 for the undergraduate section).*
+*Session 5, on 9/23. Synthetic interviews are due with the Discovery Report (10/28 for the graduate section, 10/27 for the undergraduate section). Real interviews are due with the Go-to-Market Strategy document in your Final Venture Package.*
 
 AI prepares and synthesizes. Humans validate.
 
-**Synthetic interviews are inadmissible as evidence in this course.** You may use AI to rehearse against a fake customer. You may never count that as data. This is a hard rule and it is graded.
+**The Discovery Report uses synthetic interviews, and the Go-to-Market document uses real ones.** For the Discovery Report, you interview AI personas of your target customer (9.2 shows how to set one up). There is no minimum number. Please label each one as synthetic, keep the persona prompt and the transcript for your appendix, and write up what you learned as hypotheses rather than findings, because a persona can only tell you what a model guesses your customer would say. Real interviews are required for the Go-to-Market Strategy document, and that is where you test those hypotheses. If you have already run real interviews, you can include them in the Discovery Report as well, labelled as real, and they also count toward the Go-to-Market minimum.
 
-Minimums, all due with the Discovery Report on 10/28 (graduate) or 10/27 (undergraduate):
+**Never** present something a synthetic persona said as something a real person said. That is an integrity violation, and it is graded.
 
-| | Interviews required |
+Real-interview minimums, due with the Go-to-Market Strategy document:
+
+| | Real interviews required |
 |---|---|
-| Graduate team | 8 |
-| Undergraduate team | 5 |
-| Graduate working alone | 6 |
-| Undergraduate working alone | 4 |
+| Graduate team | 6 |
+| Undergraduate team | 4 |
 
 ### Bring something for them to react to
 
@@ -1225,7 +1225,7 @@ That last line matters. AI writes leading questions by default, because it is tr
 
 ### 9.2 Rehearse against an AI customer
 
-This is practice. It is not data.
+You will probably use this two ways. It is practice for your real interviews, and it is also how you run the synthetic interviews for the Discovery Report. Please save each transcript to a file so it can go in your appendix. Either way, what the persona tells you is a hypothesis to test with real people, not data about them.
 
 **PROMPT**
 

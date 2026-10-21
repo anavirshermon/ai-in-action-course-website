@@ -231,20 +231,23 @@ One report covering:
 
 - The market problem you are solving, defined explicitly, and why now is the right time to target it
 - The size of the target market, with the assumptions behind your estimate stated
-- What you learned from customer research
+- What you learned from your synthetic customer interviews, written as hypotheses you plan to test with real people
 - An analysis of your competitors
 - Your defensibility argument: what makes your product's proposed moat hold up
 - A business model with planned unit economics
 
-You will use AI throughout to conduct this research, and you must verify and validate what it gives you. **AI is not permitted for the writing of the report.** AI-generated interviews are not evidence and will not be counted.
+You will use AI throughout to conduct this research, and you must verify and validate what it gives you. **AI is not permitted for the writing of the report.**
+
+**The customer interviews for this report are synthetic.** You run them with AI personas of your target customer (Handbook 9.2 shows how to set one up). There is no minimum number, so run as many as you find useful. Please label every one of them as synthetic, and put the persona prompt and the transcript for each in an appendix so a reader can see how the persona was built. Those transcripts are the one place AI-written text belongs in this report. Everything else is still written by your team. A persona can only tell you what a model guesses your customer would say, so write up what you learned as hypotheses rather than findings. Real interviews with actual people are not required until the Go-to-Market Strategy document in your Final Venture Package, and that is where these hypotheses get tested. If your team has already run real interviews, you are welcome to include them here too, labelled as real, and they will also count toward your Go-to-Market minimum.
 
 ### What a strong version looks like
 
-- Quotes are specific and sometimes inconvenient. A report where every quote supports your idea reads as cherry-picked, because it usually is
+- Your personas are built to push back. If every synthetic customer loves your idea, the prompt was probably too friendly, and the interviews have told you very little
+- Each hypothesis from the synthetic interviews comes with a note on how you plan to test it with real people
 - What your landing-page probes actually showed is reported plainly, including the ones that did not work
 - The strategy visibly follows from the evidence rather than sitting next to it
 - Every market number has a source you could hand to someone else
-- **Weak version:** interviews that all say "yeah that sounds useful," no probe data, and a strategy section that could have been written before you talked to anyone.
+- **Weak version:** synthetic interviews that all say "yeah that sounds useful," persona answers written up as if real people said them, no probe data, and a strategy section that could have been written before you did any research.
 
 ---
 
@@ -366,7 +369,7 @@ The Venture Package contains:
 - A live product web address and a GitHub repository link
 - A two-page double-spaced **AI-usage report** documenting the most impactful uses of AI over the semester, such as pivotal prompts and agent workflows
 - The **Discovery Report, revised and reframed as a Go-to-Market Strategy document**. This is an update rather than a rewrite, so every substantive change must be visibly annotated with highlighting or a short change log, making it clear what shifted and why
-- **Real customer evidence**, meaning documented interviews with actual people and what you learned from each
+- **Real customer evidence**, meaning documented interviews with actual people and what you learned from each. This is the first assignment where real interviews are required. A good use of them is to test the hypotheses your synthetic interviews produced in the Discovery Report, and to note in your change log which ones held up
 
 **Graduate.** A minimum of six real interviews.
 
@@ -391,10 +394,10 @@ Using AI is the course. You are expected to use it constantly, for building, res
 
 **1. Every factual claim in submitted assignments needs to be manually verified.** AI generates confident, plausible, and often fabricated citations and claims. You are graded on its errors exactly as if they were yours, because they are. Fabricated citations are referred as academic integrity matters.
 
-**2. All interview and user-test evidence must come from real humans.** AI characters are useful for practice and are never data. Submitting synthetic responses as evidence is an integrity violation.
+**2. Be honest about which interviews are synthetic.** The Discovery Report uses synthetic interviews with AI personas, labelled as synthetic and written up as hypotheses. The interviews in your Go-to-Market Strategy document and the user tests before the MVP Demo must come from real humans. Presenting something an AI persona said as something a real person said is an integrity violation.
 
 **3. Your AI-usage documentation must be truthful.** The build log and the AI-usage report are graded on insight, not on how little AI you used. There is no advantage in understating it, and there is a real cost to misrepresenting it.
 
-**4. No AI-slop.** Writing generated by AI is often difficult to read, or convoluted in its logic and evidence. For written assignments, please plan and write without AI, and use AI only for revising and iterating on arguments and flow. This tends to improve the quality of your writing considerably. AI is not permitted for the writing of the Discovery Report at all.
+**4. No AI-slop.** Writing generated by AI is often difficult to read, or convoluted in its logic and evidence. For written assignments, please plan and write without AI, and use AI only for revising and iterating on arguments and flow. This tends to improve the quality of your writing considerably. AI is not permitted for the writing of the Discovery Report at all, apart from the synthetic interview transcripts in its appendix.
 
 **How this is enforced:** any team member can be asked any question about any part of a submission during the demo or the pitch. If you did not do the work, that is usually where it shows.
