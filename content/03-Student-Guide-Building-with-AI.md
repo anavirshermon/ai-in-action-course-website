@@ -1398,13 +1398,9 @@ One habit belongs in this week and not later.
 
 *Session 8, on 10/21.*
 
-You have something that runs. Now you make it an application people could actually use.
-
 ### What you can add, and when you would need it
 
-*This is the map for the Session 8 lab. The step-by-step instructions are further down this Part, under the headings 11a to 11h.*
-
-Your product runs, and at the moment it probably does one thing. This Part is about extending it. Each row in the table below is a ready-made service that you connect to your product so that it can do something new, such as remember things, take a payment or send an email. (The handbook calls these components.) You do not build any of them yourself. You create an account with the service, and Claude Code does the connecting.
+Your product runs, and at the moment it probably does one thing. This Part is about extending it. Each row in the table below is a ready-made service that you connect to your product so that it can do something new, such as remember things, take a payment or send an email. (The handbook calls these components.) You do not build any of them yourself. You create an account with the service, and Claude Code does the connecting. The step-by-step instructions are further down this Part, under the headings 11a to 11h.
 
 | | Component | What it is | Why it is useful | You would need it when... | Account you create | Difficulty |
 |---|---|---|---|---|---|---|
@@ -1415,11 +1411,13 @@ Your product runs, and at the moment it probably does one thing. This Part is ab
 | **11e** | Sign-in (Supabase) | User accounts | Each person has an account and sees only their own things | your product needs to know who the user is | Supabase (do 11b first) | Medium |
 | **11f** | Email (Resend) | A service that sends email on your product's behalf | It can send a welcome or notification email | your product should tell the user something after they have left | Resend | Easy to medium |
 | **11g** | File upload (Supabase) | Storage for files that users give you | Users can hand it a PDF or a photo | your product starts with the user's own document or photo | Supabase (do 11b first) | Medium |
-| **11h** | Live outside data (Open-Meteo) | A free source of real, current information (the weather, in this example) | It shows facts from the outside world | your product needs information it does not hold itself | None | Easy |
+| **11h** | Outside data (public APIs and databases) | Real information from somebody else's database, such as the weather, economic figures or company filings | It shows facts from the outside world | your product needs information it does not hold itself | None for the weather example. Some other sources need a free account | Easy to medium |
 
-**How the lab runs.** Every team does 11a first. Analytics can only count visits that happen after it is switched on, and there is no way to recover earlier usage afterwards, so it goes in before anything else. It is also the shortest walkthrough here. After that, please pick one of 11b to 11h, whichever your product needs most, and work through it from the top. Nothing from 11b onward is required for a grade. The aim is that your team can add a component when you need one, having done it once with help in the room.
+**How the lab runs.** Every team does 11a first, for the reason given at the top of 11a, and it is also the shortest walkthrough here. After that, please pick one of 11b to 11h, whichever your product needs most, and work through it from the top. Nothing from 11b onward is required for a grade. The aim is that your team can add a component when you need one, having done it once with help in the room.
 
 If you are not sure which to choose, 11h and 11c are the gentlest, and either is a good first one if this is all new to you. 11e and 11g build on 11b, so please do the database first if you want either of them.
+
+**The course stack.** Every walkthrough assumes the stack this course uses: Claude Code as your engineer, Next.js as the app framework (Claude chooses and manages it), Supabase for the database and user accounts, and Vercel for hosting, all on their free tiers. Please do not swap a piece for something else unless you can explain why.
 
 **What you need before you start.** Every walkthrough assumes you already have these four things, which you set up in earlier sessions:
 
@@ -1430,17 +1428,17 @@ If you are not sure which to choose, 11h and 11c are the gentlest, and either is
 
 If one of these is missing, please tell your instructor or TA before you begin, because the steps will not make much sense without it. The walkthroughs assume nothing beyond this list, so each one starts from creating the account.
 
-### The course stack
+### How the walkthroughs work
 
-Do not deviate without a reason you can explain.
+Every walkthrough below has the same shape. Each one tells you what it adds and when you would need it, and then gives you numbered steps with one action in each. Please do the steps in order and finish one before you start the next, because most of them depend on the one before.
 
-| Piece | What it does |
-|---|---|
-| **Claude Code** | Your engineer |
-| **Next.js** | The app framework. Claude chooses and manages it. |
-| **Supabase** | Database and user accounts. Free tier. |
-| **Vercel** | Hosting. Free tier. |
-| **Stripe** | Payments, if your team chooses to add a checkout. In this course you use only its practice mode, where no real money moves. |
+Two things are true of every walkthrough. The websites involved rename their buttons fairly often, so if what you see on screen does not match a step, please do not guess. Tell Claude Code what you are looking at (e.g., "I am on the Supabase dashboard and I cannot find the API keys") and ask where to click. And the main prompt in each walkthrough asks Claude to explain what it is doing, because you will need to explain it at the demo.
+
+The main prompt also begins by asking Claude to read `CLAUDE.md` and `prd.md`, so that it knows what your product is before it changes anything. It ends by asking Claude to write the new service into the Stack section of `CLAUDE.md`, so that your next session (and your teammates' sessions) will know it is there.
+
+Most walkthroughs finish with a step that says to check it on the live site. That means getting the change into `main` the way your team normally does (Part 5), waiting for Vercel to finish deploying, and then repeating the test at your live URL. A component that only works on your laptop is not finished yet.
+
+If you are working as a team, two things are worth knowing before you begin. Several steps happen on vercel.com, inside your project. The Vercel project usually sits in the account of whichever teammate deployed it, so please do those steps on that person's laptop, or with them sitting next to you. And `.env.local` is never committed, which means it does not travel through GitHub. Each teammate who runs the app on their own laptop needs their own copy of the file, with the keys pasted in by hand (and passed along in person or through a password manager, not in a chat message).
 
 ### The plain English map
 
@@ -1453,85 +1451,9 @@ When Claude uses these words, this is all they mean:
 
 That analogy will get you through every architecture conversation in this course.
 
-### What you never build yourself
-
-Authentication, payments, and email. Three things that look simple and are not. Getting them wrong has real consequences, and solved versions are free.
-
-- **Sign in** uses Supabase Auth, or "Sign in with Google."
-- **Payments** use Stripe.
-- **Email** uses a service, never code you wrote.
-
-**PROMPT**
-
-```prompt
-Add sign-in to the app using Supabase Auth. Support email and Google.
-
-Explain in plain English what happens to a password, where the session
-is stored, and what a user sees if they are not signed in.
-```
-
-The general rule for build versus buy: if it is not the thing that makes your product different, buy it. Your competitive advantage is not your login page.
-
-### Your data model
-
-A data model is a plain English description of what you store and how the pieces relate.
-
-**PROMPT**
-
-```prompt
-Here is what our app needs to store, in plain English:
-
-[for example: "Users. Each user has projects. Each project has documents
-and a status. Each document has an AI-generated summary."]
-
-Design the database tables for this in Supabase. Explain each table and
-each relationship in plain English before you build anything.
-
-Then tell me: what happens if a user deletes a project? What happens to
-its documents?
-```
-
-That last question catches a category of problem early. Most data model bugs are about what happens when something is removed.
-
-### Calling an AI model from inside your app
-
-Many products in this course call an AI model as part of what they do. Summarizing a document, drafting a reply, categorizing an entry.
-
-**PROMPT**
-
-```prompt
-I want the app to [AI feature].
-
-Add a call to the Claude API for this. Explain where to get an API key,
-how to store it safely as an environment variable, and roughly what each
-call costs.
-
-Add a sensible fallback message for when the API fails or is slow.
-```
-
-Two things to watch.
-
-**Cost.** This is a second, separate charge. Your Claude Pro subscription pays for Claude Code, which is you talking to Claude. An API key is your app talking to Claude, and it is billed on its own, by usage. For an MVP at classroom scale, expect a few dollars a month, not hundreds. Ask Claude to estimate before you launch. If the estimate is large, your prompt is probably sending far more text than it needs to. Set a spending limit on the API account the day you create it.
-
-**Failure.** APIs go down and time out. If your app shows a spinner forever when that happens, your demo will be the time it happens. Always have a fallback message.
-
-### How the walkthroughs work
-
-*This is the Session 8 lab. The map at the top of this Part tells you which walkthrough to choose.*
-
-There are eight walkthroughs below, 11a to 11h, and they all have the same shape. Each one tells you what it adds and when you would need it, and then gives you numbered steps with one action in each. Please do the steps in order and finish one before you start the next, because most of them depend on the one before.
-
-Two things are true of every walkthrough. The websites involved rename their buttons fairly often, so if what you see on screen does not match a step, please do not guess. Tell Claude Code what you are looking at (e.g., "I am on the Supabase dashboard and I cannot find the API keys") and ask where to click. And the main prompt in each walkthrough asks Claude to explain what it is doing, because you will need to explain it at the demo.
-
-The main prompt also begins by asking Claude to read `CLAUDE.md` and `prd.md`, so that it knows what your product is before it changes anything. It ends by asking Claude to write the new service into the Stack section of `CLAUDE.md`, so that your next session (and your teammates' sessions) will know it is there.
-
-Most walkthroughs finish with a step that says to check it on the live site. That means getting the change into `main` the way your team normally does (Part 5), waiting for Vercel to finish deploying, and then repeating the test at your live URL. A component that only works on your laptop is not finished yet.
-
-If you are working as a team, two things are worth knowing before you begin. Several steps happen on vercel.com, inside your project. The Vercel project usually sits in the account of whichever teammate deployed it, so please do those steps on that person's laptop, or with them sitting next to you. And `.env.local` is never committed, which means it does not travel through GitHub. Each teammate who runs the app on their own laptop needs their own copy of the file, with the keys pasted in by hand (and passed along in person or through a password manager, not in a chat message).
-
 ### How keys work
 
-Most of the walkthroughs give you a key. (11a and 11h do not, so you can skip this section if those are the only two you are doing.) A key is a password that lets your app use somebody else's service, and Rule 4 in Part 2 already told you how to treat one. Here is the part that is new.
+Most of the walkthroughs give you a key. (11a does not, and neither does the weather example in 11h, so you can skip this section if those are all you are doing.) A key is a password that lets your app use somebody else's service, and Rule 4 in Part 2 already told you how to treat one. Here is the part that is new.
 
 **A key has to be in two places.** Your app runs on your laptop while you build it, and on Vercel once it is live, and each of those needs its own copy of the key.
 
@@ -1562,7 +1484,7 @@ Paste your key after the equals sign, save, and close the file.
 
 When a component works on your laptop and fails on the live site, a key missing from Vercel is usually the reason.
 
-**Some keys are meant to be seen, and some are not.** Services that your app talks to straight from the browser, such as Supabase and Stripe, give you a *publishable* key, which is safe for visitors to see, and a *secret* key, which is not. The other two keys in this Part (the Gemini key and the Resend key) are secret. A secret key must only be used by code that runs on the server, which is the kitchen in the restaurant picture, and never by code that runs in the visitor's browser, where anybody can read it. You do not need to know how to arrange that. You do need to ask, and every prompt below does.
+**Some keys are meant to be seen, and some are not.** Services that your app talks to straight from the browser, such as Supabase and Stripe, give you a *publishable* key, which is safe for visitors to see, and a *secret* key, which is not. The other keys in this Part (the Gemini key, the Resend key and any data key from 11h) are secret. A secret key must only be used by code that runs on the server, which is the kitchen in the restaurant picture, and never by code that runs in the visitor's browser, where anybody can read it. You do not need to know how to arrange that. You do need to ask, and every prompt below does.
 
 **Never** paste a key into Claude Code, into a chat message, or into any file other than `.env.local`. Type or paste it into the file yourself, and let Claude refer to it by its name.
 
@@ -1652,7 +1574,7 @@ Check that .gitignore lists .env.local. Then tell me the two names.
 
 **Step 6. Give Vercel the same two values.** Open vercel.com, click your project, then **Settings**, then **Environment Variables**. Add each one under exactly the same name that Claude gave you, and save.
 
-**Step 7. Write down what you store.** Use the plain English data model from "Your data model" above. One or two sentences is enough, and you will paste them into the next prompt.
+**Step 7. Write down what you store, in plain English.** One or two sentences is enough (e.g., "Users. Each user has projects. Each project has documents and a status."). This is your data model, and you will paste it into the next prompt. The prompt also asks what happens to linked items when something is deleted, because many data model bugs turn out to be about what happens when something is removed.
 
 **Step 8. Ask Claude Code to build it.**
 
@@ -1670,9 +1592,12 @@ Here is what the app needs to store, in plain English:
 [for example: "Notes. Each note has a title, some text, and the date it
 was written."]
 
-Explain each table in plain English before you build anything. Give me
-any SQL to run as one block I can paste into the Supabase SQL Editor,
-and tell me exactly where to paste it.
+Explain each table in plain English before you build anything. Then
+tell me what happens to the linked items when something is deleted (for
+example, a project's documents when the project is deleted).
+
+Give me any SQL to run as one block I can paste into the Supabase SQL
+Editor, and tell me exactly where to paste it.
 
 Turn on row level security for every table, and explain in plain English
 who can read and who can change each table.
@@ -1698,7 +1623,7 @@ One more check, which matters as soon as you add sign-in: row level security is 
 
 ### 11c. An AI feature (Google Gemini, free)
 
-**What this adds.** Your product sends some text to an AI model and gets text back, so it can summarize a document, draft a reply or sort an entry into a category. "Calling an AI model from inside your app" above shows the same thing with the Claude API, which is billed by usage. Gemini is the free option for this course, because Google offers a free tier that is enough for a class project.
+**What this adds.** Your product sends some text to an AI model and gets text back, so it can summarize a document, draft a reply or sort an entry into a category. This walkthrough uses Google Gemini, because Google offers a free tier that is enough for a class project.
 
 **You would need it when** an AI step sits at the center of what your product does, and you want it working without paying for each call.
 
@@ -1985,11 +1910,11 @@ When it works, add Supabase Storage to the Stack section of CLAUDE.md.
 
 **Try this** if you also did 11c: ask Claude Code to send the text of an uploaded PDF to Gemini and show a summary. That combination is the core of a good many AI products.
 
-### 11h. Live outside data (Open-Meteo)
+### 11h. Outside data (public APIs and databases)
 
-**What this adds.** Your product shows real, current information from somewhere else. The example here is the weather, from a free service called Open-Meteo, because it needs no account and no key, which makes it the gentlest way to see how one piece of software asks another for information.
+**What this adds.** Your product shows real information that it does not hold itself, taken from somebody else's database through an API (the waiter in the restaurant picture). Steps 1 to 5 use the weather from a free service called Open-Meteo, because it needs no account and no key, which makes it the gentlest way to see how one piece of software asks another for information. Steps 6 to 10 then show you how to swap in the source your product actually needs, and the tables after Step 5 list some popular ones, free and paid.
 
-**You would need it when** your product needs information it does not hold itself (e.g., the weather, a price or a map).
+**You would need it when** your product needs facts from the outside world (e.g., the weather, economic figures, company filings, nutrition facts, stock prices or news).
 
 **Step 1. See what your app will receive.** There is no account to create and no key. Paste this address into your browser:
 
@@ -2029,9 +1954,105 @@ When it works, add Open-Meteo to the Stack section of CLAUDE.md.
 
 **You'll know it worked when** your page shows a temperature that roughly matches a weather app on your phone, and it is still right when you check again tomorrow.
 
-**Never** assume a free data service is free for every use. Open-Meteo is free for non-commercial use, which covers a course project. If your product needs different data (e.g., maps, prices or news), ask Claude Code to suggest a free API for it, and read that service's terms before you build on it.
+**Other sources you can use.** If the weather is all your product needs, you can stop at Step 5. Otherwise, these are some of the sources student products tend to need. Prices and limits change often, so please check the provider's own page before you build on one (Step 6 asks Claude Code to do that for you).
 
-**If it works on your laptop and not on the live site,** tell Claude Code what you see on the live page. With no key involved, the cause is usually something small in how the request is made.
+*Free, and no key needed (or a key only for heavier use):*
+
+| Source | What it gives you | The catch |
+|---|---|---|
+| Open-Meteo | Weather forecasts and history | Free for non-commercial use only, up to 10,000 calls a day (Open-Meteo, *Pricing*) |
+| SEC EDGAR | Filings and financial statements of US public companies | No key, but the SEC asks every request to say who is asking (your app's name and a contact email), and allows at most 10 requests a second (SEC, *Accessing EDGAR Data*) |
+| U.S. Census Bureau | Population, income, housing and business counts by place | Up to 500 queries a day without a key. Above that you need a key, which is free (Census Bureau, *Census Data API User Guide*) |
+| OpenAlex | Research papers, authors and universities | Basic queries need no key. A free key raises your daily allowance (OpenAlex, *Rate limits and authentication*) |
+
+*Free, with a free key:*
+
+| Source | What it gives you | The catch |
+|---|---|---|
+| FRED (Federal Reserve Bank of St. Louis) | Economic time series, such as interest rates, inflation and unemployment | You agree to its terms, which ask you to credit FRED and not suggest that the Fed endorses your product (FRED, *API Terms of Use*) |
+| USDA FoodData Central | Nutrition facts for foods and branded products | Uses a free data.gov key, up to 1,000 requests an hour. The data is public domain, and USDA asks you to credit it (USDA, *FoodData Central API Guide*) |
+| TMDB | Movies and TV shows, with posters | Free for non-commercial use if you credit TMDB. A product meant to make money needs a license (TMDB, *FAQ*) |
+| Alpha Vantage | Stock prices and company fundamentals | 25 requests a day on the free key (Alpha Vantage, *Claim your free API key*) |
+| NewsAPI | Headlines and articles from news sources | The free plan is for development only, allows 100 requests a day, and its articles are a day old (NewsAPI, *Pricing*) |
+
+*Paid, or paid after a free allowance:*
+
+| Source | What it gives you | How you pay |
+|---|---|---|
+| Google Maps Platform | Maps, places, addresses and directions | A free number of calls each month for each service, then a charge per call. You have to turn on billing (which means adding a card) before you can use it at all, even within the free part (Google, *Google Maps Platform pricing overview* and *Get started*) |
+| Alpha Vantage, premium | The same data, much faster | Monthly plans from $49.99 (Alpha Vantage, *Premium*) |
+| NewsAPI, Business | Real-time articles that you may use in a live product | $449 a month (NewsAPI, *Pricing*) |
+| X (formerly Twitter) | Posts and user profiles | Pay per use since February 2026. You buy credits up front, and each post you read costs a fraction of a cent (Open Terms Archive, 2026) |
+| Yelp Places API | Local businesses, ratings and review excerpts | A short trial, then a paid monthly plan. Check Yelp's developer site for current prices |
+| Crunchbase | Startups, funding rounds and investors | Sold through its sales team on an enterprise license, with contracts reported in the tens of thousands of dollars a year (SpendHound, 2026) |
+
+**How you get access, by kind of source.**
+
+- **No key.** You do not need to set anything up. Ask Claude Code to call it, as in Steps 1 to 5.
+- **A free key.** Look for a "developers" or "API" link on the provider's site, create an account and copy the key. It then goes into `.env.local` and Vercel, exactly as in "How keys work" above.
+- **A paid plan you can sign up for yourself.** Build on the free allowance first, and only add a card once you know you need more. When you do, please set a spending limit or a billing alert on the same day. Some providers have a student or education program (Alpha Vantage, for example, offers unlimited requests to verified educational projects), so it is worth asking before you pay.
+- **Sold only through a sales team** (Crunchbase is one). Email them, say it is a university course project, and ask whether they offer student or startup access. If they say no, you can usually build your demo on a small sample you type in yourself, and say in your pitch which source you would license.
+- **Your university library's databases.** The UT Dallas library pays for many business databases, which are useful evidence for your pitch. The licenses usually cover your own research and seldom allow you to build the data into a product, so please ask a librarian before you connect one to your app.
+- **No API at all.** Some data comes only as a file to download (e.g., a spreadsheet from data.gov). You can load a file like that into your own database with 11b and query it there.
+
+**Step 6. Choose your source.** Paste this into Claude Code. It does research only and builds nothing.
+
+**PROMPT**
+
+```prompt
+Read CLAUDE.md and prd.md first.
+
+Our product needs [what data, for example: "the current US unemployment
+rate and how it changed over the last year"].
+
+Suggest two or three sources with an API that could provide it. For
+each one, tell me whether it needs a key, what it costs, what its free
+limits are, and what its terms say about using it in an app. Link the
+page where you found each fact. Do not build anything yet.
+```
+
+Please open the links and check the facts that matter to you (cost and the terms) yourself before you choose.
+
+**Step 7. Get the key, if your source needs one.** Create an account on the provider's developer page and copy the key. If there is no key, skip to Step 9.
+
+**Step 8. Put the key in `.env.local` and in Vercel.** Do this the same way as Steps 3 to 5 of 11c, using a name that matches your source (e.g., `FRED_API_KEY`) in place of `GEMINI_API_KEY`.
+
+**Step 9. Ask Claude Code to build it.**
+
+**PROMPT**
+
+```prompt
+Read CLAUDE.md and prd.md first.
+
+Add data from [source] to this app. [My key is in .env.local as
+KEY_NAME. / This source needs no key.]
+
+Show [what, for example: "the latest unemployment rate and a small chart
+of the last twelve months"] in [where on the page].
+
+If there is a key, it is secret. Call the API from code that runs on the
+server, never from the browser, and explain in plain English where that
+code lives.
+
+Keep a copy of the results for a sensible length of time so the app does
+not ask the API again on every page view, and tell me how often it will
+ask.
+
+If the request fails, is slow, or hits the free limit, show a short,
+friendly message and keep the rest of the page working.
+
+If the source's terms ask for credit, add it to the page.
+
+When it works, add [source] to the Stack section of CLAUDE.md.
+```
+
+**Step 10. Check it against the source, then on the live site.** Look the same figure up on the provider's own website and compare. Then get the change into `main`, wait for Vercel to deploy, and check the page at your live URL.
+
+**You'll know it worked when** the number on your page matches the provider's own website, on your laptop and on the live site. If your source uses a key, the friendly message should also appear when you change one character of the key and restart the app (please put the key back afterwards).
+
+**Never** assume a free data service is free for every use. Open-Meteo and TMDB are free for non-commercial use, which covers a course project but not a product that charges money. The free NewsAPI plan is narrower still, because it is for building and testing only, so a live site that real people use would probably need its paid plan or a different source. Read the terms before you build on a source, and never copy data off a website whose terms forbid it.
+
+**If it works on your laptop and not on the live site,** the key is probably missing from Vercel. With no key involved, tell Claude Code what you see on the live page, because the cause is usually something small in how the request is made. If it works for a while and then stops, you have probably hit the free limit, and asking Claude Code to keep results for longer usually fixes it.
 
 ### Steering Claude Code: skills and hooks
 
@@ -2336,7 +2357,7 @@ The moment a real person types real information into your app, you have taken on
 
 **What are you storing?** List it. Names, emails, whatever they type into your product. If you are sending their input to an AI API, that is also a thing you are doing with their data.
 
-**Where does it live?** Your Supabase database, and possibly Anthropic's or another provider's servers if you call an API. Know which.
+**Where does it live?** Your Supabase database, and possibly Google's servers if your app calls the Gemini API. Know which.
 
 **Who can see it?** Check this rather than assuming. A common and serious mistake is a database configured so that any user can read every other user's rows.
 
